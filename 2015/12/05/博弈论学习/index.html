@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前几天的CF的E题是博弈，于是我花了几天的时间学习了一下博弈论……虽然看起来并没有什么卵用…… 主要是从cxlove的blog学习的，强烈推荐 ACM_cxlove 先引入几个概念吧，这几天主要是先看了sg函数，然后发现没懂，在q巨的引导下去看了09年国家集训队讲博弈的论文，算是对此有了一定的理解，不过我现在还不能把这些懂的东西串联起来。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博弈论学习">
+<meta property="og:url" content="/2015/12/05/博弈论学习/index.html">
+<meta property="og:site_name" content="碌碌无为者">
+<meta property="og:description" content="前几天的CF的E题是博弈，于是我花了几天的时间学习了一下博弈论……虽然看起来并没有什么卵用…… 主要是从cxlove的blog学习的，强烈推荐 ACM_cxlove 先引入几个概念吧，这几天主要是先看了sg函数，然后发现没懂，在q巨的引导下去看了09年国家集训队讲博弈的论文，算是对此有了一定的理解，不过我现在还不能把这些懂的东西串联起来。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-07-08T05:01:57.415Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="博弈论学习">
+<meta name="twitter:description" content="前几天的CF的E题是博弈，于是我花了几天的时间学习了一下博弈论……虽然看起来并没有什么卵用…… 主要是从cxlove的blog学习的，强烈推荐 ACM_cxlove 先引入几个概念吧，这几天主要是先看了sg函数，然后发现没懂，在q巨的引导下去看了09年国家集训队讲博弈的论文，算是对此有了一定的理解，不过我现在还不能把这些懂的东西串联起来。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2015/12/05/博弈论学习/">
+
+
+
+
+
+  <title>博弈论学习 | 碌碌无为者</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9b0b4484e57d896e772945b550450cec";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">碌碌无为者</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2015/12/05/博弈论学习/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vigoss18">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xk57x.com1.z0.glb.clouddn.com/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="碌碌无为者">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">博弈论学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-05T21:40:04+08:00">
+                2015-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM-博弈论/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM-博弈论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/12/05/博弈论学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/05/博弈论学习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>前几天的CF的E题是博弈，于是我花了几天的时间学习了一下博弈论……虽然看起来并没有什么卵用……</p>
+<p>主要是从cxlove的blog学习的，强烈推荐</p>
+<p><a href="http://blog.csdn.net/acm_cxlove/article/details/7854526" target="_blank" rel="noopener">ACM_cxlove</a></p>
+<p>先引入几个概念吧，这几天主要是先看了sg函数，然后发现没懂，在q巨的引导下去看了09年国家集训队讲博弈的论文，算是对此有了一定的理解，不过我现在还不能把这些懂的东西串联起来。</p>
+<a id="more"></a>
+<p>##必败态（P）##：必败态就是指前一玩家（pre-player）将取胜的状态</p>
+<p>##必胜态（N）##：必胜态就是指后一玩家（next-player）将取胜的状态</p>
+<p>关于他们的属性有：<br>1.所有的终点都是必败态<br>2.从必胜态操作，一定有一个方法可以进入必败态。<br>3.从必败态操作，只能进入必胜态。</p>
+<p>关于nim有一个基本的定理那就是，当你的堆为（x1,x2…xn）时他们的异或和是0，则当前点为必败态。</p>
+<p>知道了上面的那个基本定理的话，最基本的nim是可以做了，先来练手。。</p>
+<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1850" target="_blank" rel="noopener">hdu1850</a></p>
+<p>就是最基本的nim博弈，要求输出可行的方案总数。于是我们先求出所有数的异或和，先判断是不是0，如果是0，当前就已经是必败态了。如果不是就遍历数组，取出一个数来后判断这个数是不是大于其余数的异或和，如果大于，那么久可以从那个状态转化到一个必败态。</p>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main()
+{
+    int n;
+    while(cin &gt;&gt; n &amp;&amp; n)
+    {
+        int a[111],t = 0;
+        for(int i = 0;i &lt; n;i++)
+        {
+            cin &gt;&gt; a[i];
+            t ^= a[i];
+        }
+        if(t == 0)
+            cout &lt;&lt; 0 &lt;&lt; endl;
+        else
+        {
+            int sum = 0;
+            for(int i = 0;i &lt; n;i++)
+            {
+                t ^= a[i];
+                if(a[i] &gt; t)
+                    sum++;
+                t ^= a[i];
+            }
+            cout &lt;&lt; sum &lt;&lt; endl;
+        }
+    }
+}
+</code></pre><p>然后引入SG定理，<a href="http://www.cnblogs.com/hsqdboke/archive/2012/04/21/2461034.html" target="_blank" rel="noopener">sprague-grundy定理</a></p>
+<p>我们可以把游戏转化成一个有向无环图，每个点对应一个状态，每条边代表一个合法的操作就可以把所有的点标出状态。</p>
+<p>sg函数的求解的话，就在于要了解一个mex运算，这是一个施加在整数集合上的运算，表示最小的不属于这个集合的非负整数，比如mex{1,2,4} = 3。</p>
+<p>例如：取石子问题，有1堆n个的石子，每次只能取{1，3,4}个石子，先取完石子者胜利，那么各个数的SG值为多少？</p>
+<p>sg[0]=0，f[]={1,3,4},</p>
+<p>x=1时，可以取走1-f{1}个石子，剩余{0}个，mex{sg[0]}={0}，故sg[1]=1;</p>
+<p>x=2时，可以取走2-f{1}个石子，剩余{1}个，mex{sg[1]}={1}，故sg[2]=0；</p>
+<p>x=3时，可以取走3-f{1,3}个石子，剩余{2,0}个，mex{sg[2],sg[0]}={0,0}，故sg[3]=1;</p>
+<p>x=4时，可以取走4-f{1,3,4}个石子，剩余{3,1,0}个，mex{sg[3],sg[1],sg[0]}={1,1,0},故sg[4]=2;</p>
+<p>x=5时，可以取走5-f{1,3,4}个石子，剩余{4,2,1}个，mex{sg[4],sg[2],sg[1]}={2,0,1},故sg[5]=3；</p>
+<p>以此类推…..</p>
+<p>x 0 1 2 3 4 5 6 7 8….</p>
+<p>sg[x] 0 1 0 1 2 3 2 0 1….</p>
+<p>计算从1-n范围内的SG值。</p>
+<p>然后扔一个求SG函数的模板</p>
+<pre><code>//f[]：可以取走的石子个数，即规则
+//sg[]:0~n的SG函数值
+//has[]:mex{}
+int f[N],sg[N],has[N];   
+void getSG(int n)
+{
+    int i,j;
+    memset(sg,0,sizeof(sg));
+    for(i=1;i&lt;=n;i++)
+    {
+        memset(has,0,sizeof(has));
+        for(j=1;f[j]&lt;=i;j++)
+            has[sg[i-f[j]]]=1;
+        for(j=0;j&lt;=n;j++)    //求mes{}中未出现的最小的非负整数
+        {
+            if(has[j]==0)
+            {
+                sg[i]=j;
+                break;
+            }
+        }
+    }
+}
+</code></pre><p>关于SG值的用处：SG值为零的点，则为P点(即，必败点)，否则为N点(即，必胜点)。以上SG值的性质满足必败点与必胜点的所有性质:(1)所有终结点的SG值为零，为必败点。(2)若SG值不为零，则其为必胜点。设其值为m，则有SG=g(x)={0,1,2,….m-1}=m，大括号中的0为其后继点的SG值，即该点为必败点。所以满足从必胜点至少有一种方法进入必败点。(3)若，SG值为零的点不是终结点，则必存在一个值为m的点，使得SG=g(x)={…，m，…}，大括号中的m为其后继点的SG值，即该点为必胜点。所以满足从必败点都只能进入必胜点。</p>
+<p>蛤蛤，看完上面这段话，我终于明白sg的用处拉！！！！做题去！</p>
+<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1536" target="_blank" rel="noopener">hdu1536</a></p>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int f[10001];  
+unsigned s[101];  
+int sNum;  
+
+int mex(int v)  
+{  
+    bool g[101]={0};  
+    for (int i=0;i&lt;sNum;i++)  
+    {  
+        int t=v-s[i];  
+        if(t&lt;0)  
+            break;  
+        if(f[t]==-1)  
+            f[t]=mex(t);  
+        g[f[t]]=1;  
+    }  
+    for (int i=0;i&lt;101;i++)  
+    {  
+        if(!g[i])  
+            return i;  
+    }  
+}  
+
+int main()
+{
+    while(cin &gt;&gt; sNum &amp;&amp; sNum)
+    {
+        for(int i = 0;i &lt; sNum;i++)
+        {
+            cin &gt;&gt; s[i];
+        }
+        sort(s,s + sNum);
+        int c;
+        cin &gt;&gt; c;
+        memset(f,-1,sizeof(f));
+        f[0] = 0;
+        while(c--)
+        {
+            int num,us = 0;
+            cin &gt;&gt; num;
+            while(num--)
+            {
+                int v;
+                cin &gt;&gt; v;
+                if(f[v] == -1)
+                    f[v] = mex(v);
+                us ^= f[v];
+            }
+            if(us == 0)
+                cout &lt;&lt; &quot;L&quot;;
+            else
+                cout &lt;&lt; &quot;W&quot;;
+        }
+        cout &lt;&lt; endl;
+    }
+}
+</code></pre><p>2015年12月6日 01:06:49，今天就到这里叭，明天校赛了，希望不要被学弟虐才好啊，复习一下dp睡觉去！</p>
+<p>2015年12月7日 20:19:15</p>
+<p>今天把CF那道E给补了，不过还是有细节不懂，先去把题解写了</p>
+<p>2016年7月8日 13:01:24</p>
+<p>啊，今天遇到一道用递归爆栈的，要到了一个非递归的</p>
+<pre><code>int sg[100005];
+
+// N求解范围 S[]数组是可以每次取的值，t是s的长度。
+void sg_solve(int *s, int t, int N) {
+    int i,j;
+    bool hash[N];
+    memset(sg,0,sizeof(sg));
+    for(i=1;i&lt;=N;i++) {
+        memset(hash,0,sizeof(hash));
+        for(j=0;j&lt;t;j++) {
+            if(i - s[j] &gt;= 0) {
+                hash[sg[i-s[j]]] = 1;
+            }
+        }
+        for(j=0;j&lt;=N;j++) {
+            if(!hash[j]) { break; }
+        }
+        sg[i] = j;
+    }
+}
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/05/HDU1251/" rel="next" title="HDU1251">
+                <i class="fa fa-chevron-left"></i> HDU1251
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/06/51nod1105/" rel="prev" title="51nod1105">
+                51nod1105 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2015/12/05/博弈论学习/" data-title="博弈论学习" data-url="/2015/12/05/博弈论学习/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://7xk57x.com1.z0.glb.clouddn.com/头像.jpg" alt="vigoss18">
+            
+              <p class="site-author-name" itemprop="name">vigoss18</p>
+              <p class="site-description motion-element" itemprop="description">It was the best of times,it was the worst of times.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">94</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/vigoss18" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-globe"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/ma-wu-yuan" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vigoss18</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"vigoss18"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

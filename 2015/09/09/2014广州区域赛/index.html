@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="自己队举办的模拟赛，这次比赛也算是告诉我自己离区域赛的水平还有多远吧，靠队友实力划水了5小时，醉了，把自己现在有能力做的补上先。题目网址在此 ##Wang Xifeng’s Little Plot题意很简单，要在给出的图中找到一条路，这条路的方向可以是八个方向中的任意一个，而且这条路只能有一个拐弯处，弯角必须是直角。学姐当时给我的做法是枚举每个点的每一个方向，一直贪心就行了，一开始我挺质疑复杂度的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2014广州区域赛网赛">
+<meta property="og:url" content="/2015/09/09/2014广州区域赛/index.html">
+<meta property="og:site_name" content="碌碌无为者">
+<meta property="og:description" content="自己队举办的模拟赛，这次比赛也算是告诉我自己离区域赛的水平还有多远吧，靠队友实力划水了5小时，醉了，把自己现在有能力做的补上先。题目网址在此 ##Wang Xifeng’s Little Plot题意很简单，要在给出的图中找到一条路，这条路的方向可以是八个方向中的任意一个，而且这条路只能有一个拐弯处，弯角必须是直角。学姐当时给我的做法是枚举每个点的每一个方向，一直贪心就行了，一开始我挺质疑复杂度的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2015-12-03T10:23:41.417Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2014广州区域赛网赛">
+<meta name="twitter:description" content="自己队举办的模拟赛，这次比赛也算是告诉我自己离区域赛的水平还有多远吧，靠队友实力划水了5小时，醉了，把自己现在有能力做的补上先。题目网址在此 ##Wang Xifeng’s Little Plot题意很简单，要在给出的图中找到一条路，这条路的方向可以是八个方向中的任意一个，而且这条路只能有一个拐弯处，弯角必须是直角。学姐当时给我的做法是枚举每个点的每一个方向，一直贪心就行了，一开始我挺质疑复杂度的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2015/09/09/2014广州区域赛/">
+
+
+
+
+
+  <title>2014广州区域赛网赛 | 碌碌无为者</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9b0b4484e57d896e772945b550450cec";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">碌碌无为者</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2015/09/09/2014广州区域赛/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vigoss18">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xk57x.com1.z0.glb.clouddn.com/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="碌碌无为者">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2014广州区域赛网赛</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-09-09T00:00:00+08:00">
+                2015-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM-模拟赛/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM-模拟赛</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/09/09/2014广州区域赛/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/09/2014广州区域赛/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>自己队举办的模拟赛，这次比赛也算是告诉我自己离区域赛的水平还有多远吧，靠队友实力划水了5小时，醉了，把自己现在有能力做的补上先。<br><a target="_blank" href="http://acm.hdu.edu.cn/search.php?field=problem&key=2014+ACM%2FICPC+Asia+Regional+Guangzhou+Online&source=1&searchmode=source">题目网址在此</a></p>
+<p>##Wang Xifeng’s Little Plot<br>题意很简单，要在给出的图中找到一条路，这条路的方向可以是八个方向中的任意一个，而且这条路只能有一个拐弯处，弯角必须是直角。学姐当时给我的做法是枚举每个点的每一个方向，一直贪心就行了，一开始我挺质疑复杂度的，但是没别的好思路也就不劝阻了，结果一发wa，然后开始debug，ORZ由于学姐的代码过于诡异我竟然没有发现判断越界的时候写错符号了，浪费了两个小时，我的锅啊！</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+#define ll long long
+using namespace std;
+
+char mapp[105][105];
+int n,maxx;
+
+void poi(int x,int y)
+{
+    int w1 = 0,w2 = 0,w3 = 0,w4 = 0,w5 = 0,w6 = 0,w7 = 0,w8 = 0;
+    for(int i = 1;;i++)
+    {
+        if(x + i == n || y + i == n || mapp[x + i][y + i] != &apos;.&apos;)
+            break;
+        w1++;
+    }
+    for(int i = 1;;i++)
+    {
+        if(x + i == n || y - i &lt; 0 || mapp[x + i][y - i] != &apos;.&apos;)
+            break;
+        w2++;
+    }
+    for(int i = 1;;i++)
+    {
+        if(x - i &lt; 0 || y + i == n || mapp[x - i][y + i] != &apos;.&apos;)
+            break;
+        w3++;
+    }
+    for(int i = 1;;i++)
+    {
+        if(x - i &lt; 0 || y - i &lt; 0 || mapp[x - i][y - i]  != &apos;.&apos;)
+            break;
+        w4++;
+    }
+    for(int i = 1;;i++)
+    {
+        if(x + i == n || mapp[x + i][y] != &apos;.&apos;)
+            break;
+        w5++;
+    }
+    for(int i = 1;;i++)
+    {
+        if(x - i &lt; 0 || mapp[x - i][y] != &apos;.&apos;)
+            break;
+        w6++;
+    }
+    for(int i = 1;;i++)
+    {
+        if(y + i == n || mapp[x][y + i] != &apos;.&apos;)
+            break;
+        w7++;
+    }
+    for(int i = 1;;i++)
+    {
+        if(y - i &lt; 0 || mapp[x][y - i] != &apos;.&apos;)
+            break;
+        w8++;
+    }
+    w2 = max(w2,w3);
+    w1 = max(w1,w4);
+    w5 = max(w5,w6);
+    w7 = max(w7,w8);
+    maxx = max(maxx,w1 + w2 + 1);
+    maxx = max(maxx,w5 + w7 + 1);
+}
+
+int main(){
+    while(cin &gt;&gt; n &amp;&amp; n)
+    {
+        maxx = 0;
+        for(int i = 0;i &lt; n;i++)
+        {
+            for(int j = 0;j &lt; n;j++)
+            {
+                cin &gt;&gt; mapp[i][j];
+            }
+        }
+        for(int i = 0;i &lt; n;i++)
+        {
+            for(int j = 0;j &lt; n;j++)
+            {
+                if(mapp[i][j] == &apos;.&apos;)
+                {
+                    poi(i,j);
+                }
+            }
+        }
+        cout &lt;&lt; maxx &lt;&lt; endl;
+    }
+    return 0;
+}
+</code></pre><p>##Saving Tang Monk<br>其实也不算难啊，模拟赛的时候有点自暴自弃地觉得自己就是写不了这种广搜，就放弃了，网赛的时候不能放弃了。题意就是唐僧被白骨精抓走辣，然后悟空要去救师傅，给你一个图，K代表起点，T代表师傅所在地，有N种钥匙，用数字1~9表示，还有不超过14条蛇，用S代表，一条蛇杀一次就会死，想要拿到第N把要是要把N-1把钥匙先拿到，拿到全部的钥匙之后才能再救到师傅。状压一下再广搜就行了。</p>
+<p>写了一个晚上终于过了样例尼玛竟然给我各种T，调试半小时无果，先扔代码，明天有时间再找学长debug一下吧，我自认为是没啥问题了啊！</p>
+<p>还有就是我竟然又忘记优先队列如何自定义排序规则了……真的是老了啊</p>
+<p>9-11更新，bug找到了，判断蛇的情况的时候我写成了if(temp.snake &gt;&gt;ｊ）忘记了右移ｊ位后可能还有好几位，谨记。</p>
+<pre><code>#include&lt;cstring&gt;
+#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+#include&lt;map&gt;
+#define ll long long
+using namespace std;
+
+char mapp[105][105];
+int n,m,stx,sty,edx,edy,vis[105][105][10][33],rx[] = {1,-1,0,0},ry[] = {0,0,1,-1},cnt;
+
+struct node
+{
+    int x,y,time,key,snake;
+    friend bool operator &lt;(node a,node b)
+    {
+        return a.time &gt; b.time;
+    }
+};
+
+struct nodd
+{
+    int x,y;
+}sn[10];
+
+int bfs()
+{
+    priority_queue&lt;node&gt; q;
+    node stt;
+    stt.x = stx,stt.y = sty,stt.time = 0,stt.key = 0,stt.snake = 0;
+    q.push(stt);
+    vis[stx][sty][0][0] = 1;
+    while(!q.empty())
+    {
+        node te = q.top();
+         q.pop();
+        if(te.x == edx &amp;&amp; te.y == edy &amp;&amp; te.key &gt;= m)
+        {
+            return te.time;
+        }
+        for(int i = 0;i &lt; 4;i++)
+        {
+            node temp = te;
+            int nx = temp.x + rx[i],ny = temp.y + ry[i];
+            if(nx &lt; 0 || nx &gt;= n || ny &lt; 0 || ny &gt;= n)
+                continue;
+            if(vis[nx][ny][temp.key][temp.snake])
+                continue;
+            if(mapp[nx][ny] == &apos;#&apos;)
+                continue;
+            if(mapp[nx][ny] == &apos;S&apos;)
+            {
+                for(int j = 0;j &lt; cnt;j++)
+                {
+                    if(nx == sn[j].x &amp;&amp; ny ==  sn[j].y)
+                    {
+                        if((temp.snake &gt;&gt; j) % 2 == 1)
+                        {
+                            temp.time++;
+                            temp.x = nx,temp.y = ny;
+                            vis[nx][ny][temp.key][temp.snake] = 1;
+                            q.push(temp);
+                        }
+                        else
+                        {
+                            temp.snake += (1 &lt;&lt; j);
+                            temp.time += 2;
+                            temp.x = nx,temp.y = ny;
+                            vis[nx][ny][temp.key][temp.snake] = 1;
+                            q.push(temp);
+                        }
+                        break;
+                    }
+                }
+            }
+            else if(mapp[nx][ny] &gt;= &apos;1&apos; &amp;&amp; mapp[nx][ny] &lt;= &apos;9&apos;)
+            {
+                if(temp.key + 1 == mapp[nx][ny] - &apos;0&apos;)
+                {
+                    temp.key++;
+                }
+                temp.time++;
+                temp.x = nx,temp.y = ny;
+                vis[nx][ny][temp.key][temp.snake] = 1;
+                q.push(temp);
+            }
+            else
+            {
+                temp.x = nx,temp.y = ny;
+                temp.time++;
+                vis[nx][ny][temp.key][temp.snake] = 1;
+                q.push(temp);
+            }
+        }
+    }
+    return -1;
+}
+
+int main(){
+    while(cin &gt;&gt; n &gt;&gt; m &amp;&amp; (n || m))
+    {
+        cnt = 0;
+        memset(vis,0,sizeof(vis));
+        memset(sn,0,sizeof(sn));
+        for(int i = 0;i &lt; n;i++)
+        {
+            getchar();
+            for(int j = 0;j &lt; n;j++)
+            {
+                scanf(&quot;%c&quot;,&amp;mapp[i][j]);
+                if(mapp[i][j] == &apos;K&apos;)
+                    stx = i,sty = j;
+                else if(mapp[i][j] == &apos;T&apos;)
+                    edx = i,edy = j;
+                else if(mapp[i][j] == &apos;S&apos;)
+                {
+                    sn[cnt].x = i,sn[cnt].y = j;
+                    cnt++;
+                }
+            }
+        }
+        int ss = bfs();
+        if(ss == -1)
+            cout &lt;&lt; &quot;impossible\n&quot;;
+        else
+            cout &lt;&lt; ss &lt;&lt; endl;
+
+    }
+    return 0;
+}
+</code></pre><p>##Lines<br>题意就是给你一个格子图，每个格子上标记了这个格子被几条线穿过，要求最少划几条线就能满足整个图的标记值。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/08/Reginoal 2014 Western Subregional/" rel="next" title="Reginoal 2014 Western Subregional">
+                <i class="fa fa-chevron-left"></i> Reginoal 2014 Western Subregional
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/13/Regional 2015 长春赛网赛/" rel="prev" title="Regional 2015 长春赛区网赛">
+                Regional 2015 长春赛区网赛 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2015/09/09/2014广州区域赛/" data-title="2014广州区域赛网赛" data-url="/2015/09/09/2014广州区域赛/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://7xk57x.com1.z0.glb.clouddn.com/头像.jpg" alt="vigoss18">
+            
+              <p class="site-author-name" itemprop="name">vigoss18</p>
+              <p class="site-description motion-element" itemprop="description">It was the best of times,it was the worst of times.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">94</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/vigoss18" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-globe"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/ma-wu-yuan" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vigoss18</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"vigoss18"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

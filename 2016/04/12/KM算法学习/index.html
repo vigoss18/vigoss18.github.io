@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="啊……今天学着套了一下KM的模板。 KM算法求的是完备匹配下的最大权匹配：在一个二分图里，左顶点为x，右顶点为y，对于每组左右连接的点有权值w，求一种匹配使得所有的w之和最大。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KM算法学习">
+<meta property="og:url" content="/2016/04/12/KM算法学习/index.html">
+<meta property="og:site_name" content="碌碌无为者">
+<meta property="og:description" content="啊……今天学着套了一下KM的模板。 KM算法求的是完备匹配下的最大权匹配：在一个二分图里，左顶点为x，右顶点为y，对于每组左右连接的点有权值w，求一种匹配使得所有的w之和最大。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-04-12T12:41:53.698Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KM算法学习">
+<meta name="twitter:description" content="啊……今天学着套了一下KM的模板。 KM算法求的是完备匹配下的最大权匹配：在一个二分图里，左顶点为x，右顶点为y，对于每组左右连接的点有权值w，求一种匹配使得所有的w之和最大。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2016/04/12/KM算法学习/">
+
+
+
+
+
+  <title>KM算法学习 | 碌碌无为者</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9b0b4484e57d896e772945b550450cec";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">碌碌无为者</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2016/04/12/KM算法学习/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vigoss18">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xk57x.com1.z0.glb.clouddn.com/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="碌碌无为者">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">KM算法学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-04-12T19:45:37+08:00">
+                2016-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM-图论/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM-图论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/04/12/KM算法学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/KM算法学习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>啊……今天学着套了一下KM的模板。</p>
+<p>KM算法求的是完备匹配下的最大权匹配：在一个二分图里，左顶点为x，右顶点为y，对于每组左右连接的点有权值w，求一种匹配使得所有的w之和最大。</p>
+<a id="more"></a>
+<p>KM算法是建立在hungary算法基础上的一种算法，因为离省赛有点近了，也就不仔细研究代码的细节了，先让自己会用。扔个模板先：</p>
+<pre><code>#include&lt;string&gt;
+#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstdio&gt;
+#include&lt;map&gt;
+#include&lt;vector&gt;
+using namespace std;
+
+const int N = 310;
+const int INF = 0x3f3f3f3f;
+int nx,ny;//两边点数
+int g[555][555];//二分图描述    
+int linker[N],lx[N],ly[N];//y中各点匹配状态，xy中的点标号
+int slack[N];
+bool visx[N],visy[N];
+
+bool DFS(int x)
+{
+    visx[x] = true;
+    for(int y = 0;y &lt; ny;y++)
+    {
+        if(visy[y]) continue;
+        int tmp = lx[x] + ly[y] - g[x][y];
+        if(tmp == 0)
+        {
+            visy[y] = true;
+            if(linker[y] == - 1 || DFS(linker[y]))
+            {
+                linker[y] = x;
+                return true;
+            }
+        }
+        else if(slack[y] &gt; tmp)
+            slack[y] = tmp;
+    }
+    return false;
+}
+
+int KM()
+{
+    memset(linker,-1,sizeof(linker));
+    memset(ly,0,sizeof(ly));
+    for(int i = 0;i &lt; nx;i++)
+    {
+        lx[i] = -INF;
+        for(int j = 0;j &lt; ny;j++)
+            if(g[i][j] &gt; lx[i])
+                lx[i] = g[i][j];
+    }
+    for(int x = 0;x &lt; nx;x++)
+    {
+        for(int i = 0;i &lt; ny;i++)
+            slack[i] = INF;
+        while(1)
+        {
+            memset(visx,false,sizeof(visx));
+            memset(visy,false,sizeof(visy));
+            if(DFS(x)) break;
+            int d = INF;
+            for(int i = 0;i &lt; ny;i++)
+                if(!visy[i] &amp;&amp; d &gt; slack[i])
+                    d = slack[i];
+            for(int i = 0;i &lt; nx;i++)
+                if(visx[i])
+                    lx[i] -= d;
+            for(int i = 0;i &lt; ny;i++)
+            {
+                if(visy[i]) ly[i] += d;
+                else slack[i] -= d;
+            }
+        }
+    }
+    int res = 0;
+    for(int i = 0;i &lt; ny;i++)
+    {
+        if(linker[i] != -1)
+            res += g[linker[i]][i];
+    }
+    return res;
+}
+
+int main()
+{
+    int n;
+    while(cin &gt;&gt; n)
+    {
+        for(int i = 0;i &lt; n;i++)
+        {
+            for(int j = 0;j &lt; n;j++)
+            {
+                scanf(&quot;%d&quot;,&amp;g[i][j]);
+            }
+        }
+        nx = ny = n;
+        cout &lt;&lt; KM() &lt;&lt; endl;
+    }
+}
+</code></pre><p>然后搞一套模板题做做……</p>
+<h2 id="HDU2255"><a href="#HDU2255" class="headerlink" title="HDU2255"></a>HDU2255</h2><p>题目链接:<a href="奔小康赚大钱">http://acm.hdu.edu.cn/showproblem.php?pid=2255</a></p>
+<p>中文题意……代码就是我扔的模板……</p>
+<h2 id="HDU1533"><a href="#HDU1533" class="headerlink" title="HDU1533"></a>HDU1533</h2><p>题目链接:<a href="Going Home">http://acm.hdu.edu.cn/showproblem.php?pid=1533</a></p>
+<p>给你一个图，要求每个人都要进一个房子，要求最后总的哈密顿距离最短，这里要求的是最短，所以需要稍微修改一下，在读入的时候把所有的距离处理成负值，最后输出的时候再处理一下就好了……</p>
+<pre><code>#include&lt;string&gt;
+#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstdio&gt;
+#include&lt;map&gt;
+#include&lt;vector&gt;
+using namespace std;
+
+const int N = 310;
+const int INF = 0x3f3f3f3f;
+int nx,ny;//两边点数
+int g[555][555];//二分图描述    
+int linker[N],lx[N],ly[N];//y中各点匹配状态，xy中的点标号
+int slack[N];
+bool visx[N],visy[N];
+
+bool DFS(int x)
+{
+    visx[x] = true;
+    for(int y = 0;y &lt; ny;y++)
+    {
+        if(visy[y]) continue;
+        int tmp = lx[x] + ly[y] - g[x][y];
+        if(tmp == 0)
+        {
+            visy[y] = true;
+            if(linker[y] == - 1 || DFS(linker[y]))
+            {
+                linker[y] = x;
+                return true;
+            }
+        }
+        else if(slack[y] &gt; tmp)
+            slack[y] = tmp;
+    }
+    return false;
+}
+
+int KM()
+{
+    memset(linker,-1,sizeof(linker));
+    memset(ly,0,sizeof(ly));
+    for(int i = 0;i &lt; nx;i++)
+    {
+        lx[i] = -INF;
+        for(int j = 0;j &lt; ny;j++)
+            if(g[i][j] &gt; lx[i])
+                lx[i] = g[i][j];
+    }
+    for(int x = 0;x &lt; nx;x++)
+    {
+        for(int i = 0;i &lt; ny;i++)
+            slack[i] = INF;
+        while(1)
+        {
+            memset(visx,false,sizeof(visx));
+            memset(visy,false,sizeof(visy));
+            if(DFS(x)) break;
+            int d = INF;
+            for(int i = 0;i &lt; ny;i++)
+                if(!visy[i] &amp;&amp; d &gt; slack[i])
+                    d = slack[i];
+            for(int i = 0;i &lt; nx;i++)
+                if(visx[i])
+                    lx[i] -= d;
+            for(int i = 0;i &lt; ny;i++)
+            {
+                if(visy[i]) ly[i] += d;
+                else slack[i] -= d;
+            }
+        }
+    }
+    int res = 0;
+    for(int i = 0;i &lt; ny;i++)
+    {
+        if(linker[i] != -1)
+            res += g[linker[i]][i];
+    }
+    return res;
+}
+
+int main()
+{
+    int n,m;
+    while(cin &gt;&gt; n &gt;&gt; m &amp;&amp; n + m != 0)
+    {
+        vector&lt;pair&lt;int,int&gt;&gt;h,mm;
+        for(int i = 0;i &lt; n;i++)
+        {
+            string s;
+            cin &gt;&gt; s;
+            for(int j = 0;j &lt; m;j++)
+            {
+                if(s[j] == &apos;H&apos;)
+                    h.push_back(make_pair(i,j));
+                if(s[j] == &apos;m&apos;)
+                    mm.push_back(make_pair(i,j));
+            }
+        }
+        for(int i = 0;i &lt; mm.size();i++)
+        {
+            for(int j = 0;j &lt; h.size();j++)
+            {
+                g[i][j] = -abs(mm[i].first - h[j].first) - abs(mm[i].second - h[j].second);
+            }
+        }
+        nx = mm.size(),ny = h.size();
+        cout &lt;&lt; -KM() &lt;&lt; endl;
+    }
+}
+</code></pre><h2 id="HDU1853"><a href="#HDU1853" class="headerlink" title="HDU1853"></a>HDU1853</h2><p>题目链接:<a href="Cyclic Tour">http://acm.hdu.edu.cn/showproblem.php?pid=1853</a></p>
+<p>题意就是有个人要旅游，每个城市只能经过一次，问你最少的花费是多少。</p>
+<p>注意重边</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/18/HDU1540/" rel="next" title="HDU1540（线段树的区间合并）">
+                <i class="fa fa-chevron-left"></i> HDU1540（线段树的区间合并）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/14/FZU2218（状压dp）/" rel="prev" title="FZU2218（状压dp）">
+                FZU2218（状压dp） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2016/04/12/KM算法学习/" data-title="KM算法学习" data-url="/2016/04/12/KM算法学习/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://7xk57x.com1.z0.glb.clouddn.com/头像.jpg" alt="vigoss18">
+            
+              <p class="site-author-name" itemprop="name">vigoss18</p>
+              <p class="site-description motion-element" itemprop="description">It was the best of times,it was the worst of times.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">94</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/vigoss18" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-globe"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/ma-wu-yuan" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HDU2255"><span class="nav-number">1.</span> <span class="nav-text">HDU2255</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HDU1533"><span class="nav-number">2.</span> <span class="nav-text">HDU1533</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HDU1853"><span class="nav-number">3.</span> <span class="nav-text">HDU1853</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vigoss18</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"vigoss18"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
