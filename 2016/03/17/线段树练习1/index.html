@@ -1,0 +1,2056 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="拜托裸模板题开始练习线段树……希望如果遇到不是很难的线段树都能做出来0.0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线段树练习1">
+<meta property="og:url" content="/2016/03/17/线段树练习1/index.html">
+<meta property="og:site_name" content="碌碌无为者">
+<meta property="og:description" content="拜托裸模板题开始练习线段树……希望如果遇到不是很难的线段树都能做出来0.0">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-04-22T09:30:53.305Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="线段树练习1">
+<meta name="twitter:description" content="拜托裸模板题开始练习线段树……希望如果遇到不是很难的线段树都能做出来0.0">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2016/03/17/线段树练习1/">
+
+
+
+
+
+  <title>线段树练习1 | 碌碌无为者</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9b0b4484e57d896e772945b550450cec";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">碌碌无为者</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2016/03/17/线段树练习1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vigoss18">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xk57x.com1.z0.glb.clouddn.com/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="碌碌无为者">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">线段树练习1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-17T19:44:02+08:00">
+                2016-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM-线段树/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM-线段树</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/17/线段树练习1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/17/线段树练习1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>拜托裸模板题开始练习线段树……希望如果遇到不是很难的线段树都能做出来0.0</p>
+<a id="more"></a>
+<p>2016-01-28 19:55:02</p>
+<h2 id="51NOD1019"><a href="#51NOD1019" class="headerlink" title="51NOD1019"></a>51NOD1019</h2><p>题目链接：<a href="http://www.51nod.com/onlineJudge/submitDetail.html#!judgeId=63163" target="_blank" rel="noopener">逆序数</a></p>
+<p>我们用PII来存储点，记录每个点的位置和数值，然后按照数值大小递减排序，每次把最大的数抠出来扔到线段树上的对应位置（输入顺序的位置），然后每扔一个，就求一次次位置之前的区间和，就好了。</p>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define sp system(&quot;pause&quot;)
+#define INF 1e18
+#define MAXN 50005
+#define PI acos(-1.0)
+#define eps 1e-4
+
+struct node
+{
+    int l,r,sum,lazy;
+    int get_sum()
+    {
+        return (l - r + 1) * lazy + sum;
+    }
+}M[MAXN &lt;&lt; 2];
+
+int ans;
+pii a[MAXN];
+
+void build(int ind,int l,int r)
+{
+    M[ind].l = l,M[ind].r = r;
+    M[ind].sum = 0,M[ind].lazy = 0;
+    if(l != r)
+    {
+        build(ind &lt;&lt; 1,l,(l + r) &gt;&gt; 1),build(ind &lt;&lt; 1 | 1,((l + r) &gt;&gt; 1) + 1,r);
+    }
+    return;
+}
+
+void push_up(int ind)
+{
+    M[ind].sum = M[ind &lt;&lt; 1].get_sum() + M[ind &lt;&lt; 1 | 1].get_sum();
+}
+
+void push_down(int ind)
+{
+    M[ind].sum = M[ind].get_sum();
+    M[ind &lt;&lt; 1].lazy += M[ind].lazy;
+    M[ind &lt;&lt; 1 | 1].lazy += M[ind].lazy;
+    M[ind].lazy = 0;
+}
+
+
+void query(int ind,int x,int y)
+{//cout &lt;&lt; ind &lt;&lt; &quot; &quot; &lt;&lt; M[ind].l &lt;&lt; &quot; &quot; &lt;&lt; M[ind].r &lt;&lt; endl;sp;
+    if(x &gt; M[ind].r || y &lt; M[ind].l)
+        return;
+    if(x &lt;= M[ind].l &amp;&amp; y &gt;= M[ind].r)
+    {
+        ans += M[ind].get_sum();
+        return;
+    }
+    //cout &lt;&lt; &quot;in&quot; &lt;&lt; &quot; &quot; &lt;&lt; ans &lt;&lt; endl;
+    push_down(ind);
+    query(ind &lt;&lt; 1,x,y);
+    query(ind &lt;&lt; 1 | 1,x,y);
+    push_up(ind);
+
+}
+
+
+void update(int ind,int x,int value)
+{
+    if(M[ind].l &gt; x || M[ind].r &lt; x)
+        return;
+    M[ind].sum += value;
+    if(M[ind].l == M[ind].r &amp;&amp; M[ind].l == x)
+        return;
+    push_down(ind);
+    update(ind &lt;&lt; 1,x,value);
+    update(ind &lt;&lt; 1 | 1,x,value);
+    push_up(ind);
+}
+
+bool cmp(pii a,pii b)
+{
+    return a.first &gt; b.first;
+}
+
+int main()
+{
+    int n;
+    cin &gt;&gt; n;
+    for(int i = 1;i &lt;= n;i++)
+    {
+        scanf(&quot;%d&quot;,&amp;a[i].first);
+        a[i].second = i;
+    }
+    sort(a + 1,a + n + 1,cmp);
+    build(1,1,n);
+    ans = 0;
+    for(int i = 1;i &lt;= n;i++)
+    {
+        update(1,a[i].second,1);
+        if(a[i].second &gt; 1)
+            query(1,1,a[i].second - 1);
+    }
+    cout &lt;&lt; ans &lt;&lt; endl;
+}
+</code></pre><p>2016年2月26日 12:44:23</p>
+<p>啊我又来练习线段树了，做一套kuangbin带你飞看看能做几题啊。不得不说一个月不怎么做，以前做的题目重写的时候又遇到了好多问题。</p>
+<p>训练连接：<a href="http://acm.hust.edu.cn/vjudge/contest/view.action?cid=107497#overview" target="_blank" rel="noopener">线段树练习</a></p>
+<h2 id="A·HDU1166"><a href="#A·HDU1166" class="headerlink" title="A·HDU1166"></a>A·HDU1166</h2><p>再次写敌兵布阵啊……好久没看到1Y了</p>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define sp system(&quot;pause&quot;)
+#define INF 1e9
+#define MAXN 50005
+#define PI acos(-1.0)
+#define eps 1e-10
+const int MOD = 1e9 + 7;
+
+int a[MAXN],ans;
+
+struct node
+{
+    int l,r,sum,lazy;
+    int getsum()
+    {
+        return (l + r - 1) * lazy + sum;
+    }
+}M[MAXN &lt;&lt; 2];
+
+void build(int ind,int l,int r)
+{
+    //cout &lt;&lt; l &lt;&lt; &quot; &quot; &lt;&lt; r &lt;&lt; &quot; &quot; &lt;&lt; ind &lt;&lt; endl;sp;
+    M[ind].l = l,M[ind].r = r;
+    M[ind].lazy = 0;
+    if(l == r)
+    {
+        M[ind].sum = a[l];
+        return;
+    }
+    build(ind &lt;&lt; 1,l,(l + r) &gt;&gt; 1);
+    build(ind &lt;&lt; 1 | 1,((l + r) &gt;&gt; 1) + 1,r);
+    M[ind].sum = M[ind &lt;&lt; 1].sum + M[ind &lt;&lt; 1 | 1].sum;
+}
+
+void push_up(int ind)
+{
+    M[ind].sum = M[ind &lt;&lt; 1].getsum() + M[ind &lt;&lt; 1 | 1].getsum();
+}
+
+void push_down(int ind)
+{
+    M[ind].sum = M[ind].getsum();
+    M[ind &lt;&lt; 1].lazy += M[ind].lazy;
+    M[ind &lt;&lt; 1 |1].lazy += M[ind].lazy;
+    M[ind].lazy = 0;
+}
+
+void update(int ind,int p,int value)
+{
+    if(p &gt; M[ind].r || p &lt; M[ind].l)
+        return;
+    M[ind].sum += value;
+    if(p == M[ind].l &amp;&amp; M[ind].l == M[ind].r)
+        return;
+    push_down(ind);
+    update(ind &lt;&lt; 1,p,value);
+    update(ind &lt;&lt; 1 | 1,p,value);
+    push_up(ind);
+}
+
+void query(int ind,int l,int r)
+{
+    if(l &gt; M[ind].r || r &lt; M[ind].l)
+        return;
+    if(l &lt;= M[ind].l &amp;&amp; r &gt;= M[ind].r)
+    {
+        ans += M[ind].getsum();
+        return;
+    }
+    push_down(ind);
+    query(ind &lt;&lt; 1,l,r);
+    query(ind &lt;&lt; 1 | 1,l,r);
+    push_up(ind);
+}
+
+int main()
+{
+    int t,cas = 1;
+    cin &gt;&gt; t;
+    while(t--)
+    {
+        int n;
+        cin &gt;&gt; n;
+        mst(M,0);
+        for(int i = 1;i &lt;= n;i++)
+        {
+            scanf(&quot;%d&quot;,&amp;a[i]);
+        }
+        build(1,1,n);
+        printf(&quot;Case %d:\n&quot;,cas++);
+        char ch[11];
+        int p,v;
+        getchar();
+        while(scanf(&quot;%s&quot;,ch))
+        {
+            if(ch[0] == &apos;E&apos;)
+                break;
+            else
+            {
+                ans = 0;
+                scanf(&quot;%d %d&quot;,&amp;p,&amp;v);
+                if(ch[0] == &apos;Q&apos;)
+                    query(1,p,v),printf(&quot;%d\n&quot;,ans);
+                else if(ch[0] == &apos;A&apos;)
+                    update(1,p,v);
+                else
+                    update(1,p,-v);
+            }
+        }
+    }
+}
+</code></pre><h2 id="B·HDU1754"><a href="#B·HDU1754" class="headerlink" title="B·HDU1754"></a>B·HDU1754</h2><p>神tm各种wa，后来发现原来是范围搞错了……在注释里注出来了</p>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define sp system(&quot;pause&quot;)
+#define INF 1e9
+#define MAXN 210005
+#define PI acos(-1.0)
+#define eps 1e-10
+const int MOD = 1e9 + 7;
+
+int a[MAXN],ans;
+
+struct node
+{
+    int l,r,s;
+}M[MAXN &lt;&lt; 2];
+
+void build(int ind,int l,int r)
+{
+    M[ind].l = l,M[ind].r = r;
+    if(l == r)
+        M[ind].s = a[l];
+    else
+    {
+        build(ind &lt;&lt; 1,l,(l + r) &gt;&gt; 1);
+        build(ind &lt;&lt; 1 | 1,((l + r) &gt;&gt; 1) + 1,r);
+        M[ind].s = max(M[ind &lt;&lt; 1].s,M[ind &lt;&lt; 1 | 1].s);
+    }
+}
+
+void update(int ind,int pos,int score)
+{
+    if(pos &lt; M[ind].l || pos &gt; M[ind].r)
+        return;
+    if(pos == M[ind].l &amp;&amp; M[ind].l == M[ind].r)
+    {
+        M[ind].s = score;
+        return;
+    }
+    update(ind &lt;&lt; 1,pos,score);
+    update(ind &lt;&lt; 1 | 1,pos,score);
+    M[ind].s = max(M[ind &lt;&lt; 1].s,M[ind &lt;&lt; 1 | 1].s);
+}
+
+void query(int ind,int l,int r)
+{
+    if(l &gt; M[ind].r || r &lt; M[ind].l)
+        return;
+    else if(l &lt;= M[ind].l &amp;&amp; r &gt;= M[ind].r)//WA在这里，应该是查询的区间完全包括此时的区间
+    {
+        ans = max(ans,M[ind].s);
+        //M[ind].s = ans;
+        return;
+    }
+    query(ind &lt;&lt; 1,l,r);
+    query(ind &lt;&lt; 1 | 1,l,r);
+    //M[ind].s = max(M[ind &lt;&lt; 1].s,M[ind &lt;&lt; 1 | 1].s);
+}
+
+int main()
+{
+    int n,m;
+    while(~scanf(&quot;%d%d&quot;,&amp;n,&amp;m))
+    {
+        mst(M,0);
+        for(int i = 1;i &lt;= n;i++)
+            scanf(&quot;%d&quot;,&amp;a[i]);
+        build(1,1,n);
+        for(int i = 0;i &lt; m;i++)
+        {
+            ans = 0;
+            char ch;
+            int a,b;
+            getchar();
+            scanf(&quot;%c %d %d&quot;,&amp;ch,&amp;a,&amp;b);
+            if(ch == &apos;Q&apos;)
+                query(1,a,b),printf(&quot;%d\n&quot;,ans);
+            else
+                update(1,a,b);
+        }
+    }
+}
+</code></pre><h2 id="C·POJ3468"><a href="#C·POJ3468" class="headerlink" title="C·POJ3468"></a>C·POJ3468</h2><p>也是很裸的区间更新查询……一开始没写对竟然是因为我定义了ll结果读入的时候用了%d，导致读入错误，把以前写的代码优化了一下，从更新sum变成了更新lazy标记。</p>
+<pre><code>//#include &lt;bits/stdc++.h&gt; 
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define sp system(&quot;pause&quot;)
+#define INF 1e9
+#define MAXN 100005
+#define PI acos(-1.0)
+#define eps 1e-10
+const int MOD = 1e9 + 7;
+
+ll a[MAXN],ans;
+
+struct node
+{
+    int l,r;
+    ll sum,lazy;
+    ll getsum()
+    {
+        return (r - l + 1) * lazy + sum;
+    }
+}M[MAXN &lt;&lt; 2];
+
+void build(int ind,int l,int r)
+{
+    //cout &lt;&lt; l &lt;&lt; &quot; &quot; &lt;&lt; r &lt;&lt; &quot; &quot; &lt;&lt; ind &lt;&lt; endl;sp;
+    M[ind].l = l,M[ind].r = r;
+    M[ind].lazy = 0;
+    if(l == r)
+    {
+        M[ind].sum = a[l];
+        return;
+    }
+    build(ind &lt;&lt; 1,l,(l + r) &gt;&gt; 1);
+    build(ind &lt;&lt; 1 | 1,((l + r) &gt;&gt; 1) + 1,r);
+    M[ind].sum = M[ind &lt;&lt; 1].sum + M[ind &lt;&lt; 1 | 1].sum;
+}
+
+void push_up(int ind)
+{
+    M[ind].sum = M[ind &lt;&lt; 1].getsum() + M[ind &lt;&lt; 1 | 1].getsum();
+}
+
+void push_down(int ind)
+{
+    M[ind].sum = M[ind].getsum();
+    M[ind &lt;&lt; 1].lazy += M[ind].lazy;
+    M[ind &lt;&lt; 1 |1].lazy += M[ind].lazy;
+    M[ind].lazy = 0;
+}
+
+void update(int ind,int l,int r,ll value)
+{
+    //cout &lt;&lt; l &lt;&lt; &quot; &quot; &lt;&lt; r &lt;&lt; &quot; &quot; &lt;&lt; endl;cout &lt;&lt; M[ind].l &lt;&lt; &quot; &quot; &lt;&lt; M[ind].r &lt;&lt; endl;sp;
+    if(l &gt; M[ind].r || r &lt; M[ind].l)
+        return;
+    if(l &lt;= M[ind].l &amp;&amp; r &gt;= M[ind].r)
+    {
+        M[ind].lazy += value;
+        return;
+    }
+    push_down(ind); 
+    update(ind &lt;&lt; 1,l,r,value);
+    update(ind &lt;&lt; 1 | 1,l,r,value);
+    push_up(ind);
+}
+
+void query(int ind,int l,int r)
+{
+    if(l &gt; M[ind].r || r &lt; M[ind].l)
+        return;
+    if(l &lt;= M[ind].l &amp;&amp; r &gt;= M[ind].r)
+    {
+        ans += M[ind].getsum();
+        return;
+    }
+    push_down(ind);
+    query(ind &lt;&lt; 1,l,r);
+    query(ind &lt;&lt; 1 | 1,l,r);
+    push_up(ind);
+}
+
+int main()
+{
+    int n,m;
+    cin &gt;&gt; n &gt;&gt; m;
+    for(int i = 1;i &lt;= n;i++)
+    {
+        scanf(&quot;%lld&quot;,&amp;a[i]);
+    }
+    build(1,1,n);
+    char ch[11];
+    int p,v;
+    getchar();
+    for(int i = 0;i &lt; m;i++)
+    {
+        scanf(&quot;%s&quot;,ch);
+        if(ch[0] == &apos;C&apos;)
+        {
+            int ls,rs;
+            ll value;
+            scanf(&quot;%d %d %lld&quot;,&amp;ls,&amp;rs,&amp;value);
+            //cout &lt;&lt; ls &lt;&lt; &quot; &quot; &lt;&lt; rs &lt;&lt; &quot; &quot; &lt;&lt; value &lt;&lt; endl;sp;
+            update(1,ls,rs,value);
+        }
+        else
+        {
+            ans = 0;
+            scanf(&quot;%d %d&quot;,&amp;p,&amp;v);
+                query(1,p,v),printf(&quot;%lld\n&quot;,ans);
+        }
+
+    }
+}
+</code></pre><h2 id="D·POJ2528"><a href="#D·POJ2528" class="headerlink" title="D·POJ2528"></a>D·POJ2528</h2><p>给出n个区间，按顺序覆盖更新，问最后有多少区间是在最上面能看见的……</p>
+<p>因为给的值的范围在100W以内，所以需要加上离散化，需要的注意的是，假设原数据为1 10,1 4,6 10,直接离散化的话为1 4,1 2,3 4，查询出来的应该是2，和原本的答案是不符的，需要在所有相差大于1的点之间再加入一个点。<br>我想吐槽的是一开始离散化没有注意到这点的时候，竟然也能过，线段树建的很小，也能过，强烈吐槽这题的SB数据啊……</p>
+<p>没想到这个题竟然搞了我两三天……一开始是有个地方想错了，每次push_down的时候，如果这个点的lazy值不在了，就不能push_down，否则会覆盖原来的值。然后我就开始无限TLE了……搞了几天没搞懂到底为什么。结果今天发现神tm竟然是离散化的时候T了，以后就用二分来离散化吧……</p>
+<pre><code>//#include &lt;bits/stdc++.h&gt; 
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;set&gt;
+#include &lt;map&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define complete_unique(a) a.erase(unique(a.begin(),a.end()),a.end())
+#define sp system(&quot;pause&quot;)
+#define INF 1e9
+#define MAXN 100005
+#define PI acos(-1.0)
+#define eps 1e-10
+const int MOD = 1e9 + 7;
+
+int ans = 0,vis[MAXN &lt;&lt; 1];
+
+struct node
+{
+    int l,r,lazy;
+}M[MAXN &lt;&lt; 3];
+
+void build(int ind,int l,int r)
+{
+    M[ind].l = l,M[ind].r = r;
+    M[ind].lazy = 0;
+    if(l == r)
+        return;
+    build(ind &lt;&lt; 1,l,(l + r) &gt;&gt; 1);
+    build(ind &lt;&lt; 1 | 1,((l + r) &gt;&gt; 1) + 1,r);
+}
+
+void push_down(int ind)
+{
+    M[ind &lt;&lt; 1].lazy = M[ind].lazy;
+    M[ind &lt;&lt; 1 | 1].lazy = M[ind].lazy;
+    M[ind].lazy = 0;
+}
+
+void update(int ind,int l,int r,int value)
+{
+    if(l &gt; M[ind].r || r &lt; M[ind].l)
+        return;
+    if(l &lt;= M[ind].l &amp;&amp; r &gt;= M[ind].r)
+        M[ind].lazy = value;
+    else
+    {
+        if(M[ind].lazy)//我第一次写完之后的WA点，如果一个区间已经被标记过了，就不能pushdown，这样会把原来的lazy值覆盖掉
+            push_down(ind);
+        update(ind &lt;&lt; 1,l,r,value);
+        update(ind &lt;&lt; 1 | 1,l,r,value);
+    }
+}
+
+void query(int ind)
+{
+    if(M[ind].lazy != 0)
+    {
+        if(!vis[M[ind].lazy])
+        {
+            vis[M[ind].lazy] = 1;
+            ans++;
+        }
+        return;
+    }
+    if(M[ind].l == M[ind].r)
+    {
+        return;
+    }
+    if(M[ind].lazy)
+        push_down(ind);
+    query(ind &lt;&lt; 1);
+    query(ind &lt;&lt; 1 | 1);
+}
+int ma1[MAXN &lt;&lt; 3];
+vi ele;
+vector&lt;pii&gt; segs;
+
+int main()
+{
+    int t;
+    cin &gt;&gt; t;
+    while(t--)
+    {
+        int n;
+        scanf(&quot;%d&quot;,&amp;n);
+        ele.clear();
+        segs.clear();
+        mst(vis,0);
+        for(int i = 1;i &lt;= n;i++)
+        {
+            int a,b;
+            scanf(&quot;%d %d&quot;,&amp;a,&amp;b);
+            ele.PB(a);ele.PB(b);
+            segs.PB(MP(a,b));
+        }
+        sort(ele.begin(),ele.end());
+        complete_unique(ele);
+        vi new_ele;
+        for(int i = 0;i &lt; ele.size();i++)
+        {
+            new_ele.PB(ele[i] + 1);
+            new_ele.PB(ele[i] - 1);
+            new_ele.PB(ele[i]);
+        }
+        sort(new_ele.begin(),new_ele.end());
+        complete_unique(new_ele);
+        for(int i = 0;i &lt; n;i++)
+        {
+            segs[i].first = LB(new_ele.begin(),new_ele.end(),segs[i].first)-new_ele.begin();
+            segs[i].second = LB(new_ele.begin(),new_ele.end(),segs[i].second)-new_ele.begin();
+        }
+        build(1,1,MAXN); 
+        for(int i = 0;i &lt; n;i++)
+        {
+            //cout &lt;&lt; a[i] &lt;&lt; &quot; &quot; &lt;&lt; b[i] &lt;&lt; endl;
+            update(1,segs[i].first,segs[i].second,i + 1);
+        }
+        //cout &lt;&lt; &quot;ij&quot; &lt;&lt; M[1].l &lt;&lt; &quot; &quot; &lt;&lt; M[1].r &lt;&lt; &quot; &quot; &lt;&lt; M[1].lazy &lt;&lt; endl;
+        ans = 0;
+        query(1);
+        printf(&quot;%d\n&quot;,ans);
+    }
+}
+</code></pre><h2 id="E·HDU1698"><a href="#E·HDU1698" class="headerlink" title="E·HDU1698"></a>E·HDU1698</h2><p>有一段长为n的钩子，每次更新一段区间为一个新值，求最后钩子的价值和。<br>比前面两三题，又有点让我搞不懂了。一开始我天真的按照前几题的写法强行搞，结果区间值一直不对。<br>应该是这么想的，lazy标记表示这一整个区间都曾经被覆盖过，当你更新到当前点的时候，先判断此区间是否被完整更新过，如果被完整更新过，就把lazy标记往下压，同时更新左右子区间的sum值，最后不小心超时了几下，ORZ又是数组开小了……</p>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define sp system(&quot;pause&quot;)
+#define iin(x) scanf(&quot;%d&quot;,&amp;x)
+#define INF 1e9
+#define MAXN 100005
+#define PI acos(-1.0)
+#define eps 1e-10
+const int MOD = 1e9 + 7;
+
+int a[MAXN],ans;
+
+struct node
+{
+    int l,r,sum,lazy;
+}M[MAXN &lt;&lt; 2];
+
+void build(int ind,int l,int r)
+{
+    M[ind].l = l,M[ind].r = r;
+    M[ind].lazy = 0;
+    if(l == r)
+    {
+        M[ind].sum = 1;
+        return;
+    }
+    build(ind &lt;&lt; 1,l,(l + r) &gt;&gt; 1);
+    build(ind &lt;&lt; 1 | 1,((l + r) &gt;&gt; 1) + 1,r);
+    //M[ind].sum = M[ind &lt;&lt; 1].sum + M[ind &lt;&lt; 1 | 1].sum;
+}
+
+void push_up(int ind)
+{
+    M[ind].sum = M[ind &lt;&lt; 1].sum + M[ind &lt;&lt; 1 | 1].sum;
+}
+
+void push_down(int ind)
+{
+    if(M[ind].lazy)
+    {
+        int num = M[ind].r - M[ind].l + 1;
+        M[ind &lt;&lt; 1].lazy = M[ind].lazy,M[ind &lt;&lt; 1 | 1].lazy = M[ind].lazy;
+        M[ind &lt;&lt; 1].sum = (num - (num &gt;&gt; 1)) * M[ind].lazy;
+        M[ind &lt;&lt; 1 |1].sum = (num &gt;&gt; 1) * M[ind].lazy;
+        M[ind].lazy = 0;
+    }
+
+}
+
+void update(int ind,int l,int r,int value)
+{
+    if(l &lt;= M[ind].l &amp;&amp; r &gt;= M[ind].r)
+    {
+        M[ind].lazy = value;
+        M[ind].sum = (M[ind].r - M[ind].l + 1) * value;
+        return;
+    }
+    push_down(ind);
+    int mid = ((M[ind].l + M[ind].r) &gt;&gt; 1);
+    if(l &lt;= mid)
+        update(ind &lt;&lt; 1,l,r,value);
+    if(r &gt; mid)
+        update(ind &lt;&lt; 1 | 1,l,r,value);
+    push_up(ind);
+}
+
+int main()
+{
+    int t,cas = 1;
+    cin &gt;&gt; t;
+    while(t--)
+    {
+        int n;
+        cin &gt;&gt; n;
+        mst(M,0);
+        build(1,1,n);
+        int h;
+        cin &gt;&gt; h;
+        while(h--)
+        {
+            int a,b,c;
+            iin(a),iin(b),iin(c);
+            update(1,a,b,c);
+        }
+        printf(&quot;Case %d: The total value of the hook is %d.\n&quot;,cas++,M[1].sum);
+    }
+}
+</code></pre><h2 id="F·ZOJ1610"><a href="#F·ZOJ1610" class="headerlink" title="F·ZOJ1610"></a>F·ZOJ1610</h2><p>每次给$l_i$到$r_i$的区间涂色，问你最后有多少段颜色。</p>
+<p>以前模拟赛的时候也做到过类似的啊，这道的关键还是在于延迟标记，我觉得和B题类似啊……模拟赛的时候没想到怎么存同色的信息……今天一想，只要你用另外一个数组存一下每个点是什么颜色就好啦2333。</p>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define sp system(&quot;pause&quot;)
+#define iin(x) scanf(&quot;%d&quot;,&amp;x)
+#define INF 1e9
+#define MAXN 10005
+#define PI acos(-1.0)
+#define eps 1e-10
+const int MOD = 1e9 + 7;
+
+int a[MAXN],ans,sv[8005],maxn = 0;
+
+struct node
+{
+    int l,r,sum,lazy;
+}M[MAXN &lt;&lt; 2];
+
+void build(int ind,int l,int r)
+{
+    M[ind].l = l,M[ind].r = r;
+    M[ind].lazy = -1,M[ind].sum = -1;
+    if(l == r)
+    {
+        return;
+    }
+    build(ind &lt;&lt; 1,l,(l + r) &gt;&gt; 1);
+    build(ind &lt;&lt; 1 | 1,((l + r) &gt;&gt; 1) + 1,r);
+    //M[ind].sum = M[ind &lt;&lt; 1].sum + M[ind &lt;&lt; 1 | 1].sum;
+}
+
+void push_down(int ind)
+{
+    if(M[ind].lazy != -1)
+    {
+        M[ind &lt;&lt; 1].lazy = M[ind].lazy,M[ind &lt;&lt; 1 | 1].lazy = M[ind].lazy;
+        M[ind].lazy = -1;
+    }
+}
+
+void update(int ind,int l,int r,int value)
+{
+    if(l &gt; M[ind].r || r &lt; M[ind].l)
+        return;
+    if(l &lt;= M[ind].l &amp;&amp; r &gt;= M[ind].r)
+    {
+        M[ind].lazy = value;
+        return;
+    }
+    push_down(ind);
+    update(ind &lt;&lt; 1,l,r,value);
+    update(ind &lt;&lt; 1 | 1,l,r,value);
+}
+
+void query(int ind)
+{
+    if(M[ind].l &gt; maxn)
+        return;
+    //cout &lt;&lt; M[ind].l &lt;&lt; &quot; &quot; &lt;&lt; M[ind].r &lt;&lt; &quot; &quot; &lt;&lt; M[ind].lazy &lt;&lt; endl;
+    if(M[ind].lazy != -1)
+    {
+        for(int i = M[ind].l;i &lt;= M[ind].r;i++)
+            sv[i] = M[ind].lazy;
+        return;
+    }
+    if(M[ind].l == M[ind].r)
+    {
+        return;
+    }
+    query(ind &lt;&lt; 1);
+    query(ind &lt;&lt; 1 | 1);
+}
+
+int main()
+{
+    int n;
+    while(cin &gt;&gt; n)
+    {
+        mst(sv,-1);
+        build(1,1,8005);
+        maxn = 0;
+        for(int i = 0;i &lt; n;i++)
+        {
+            int a,b,c;
+            iin(a),iin(b),iin(c);
+            a++,b++;
+            maxn = max(maxn,b);
+            update(1,a,b - 1,c);
+        }
+        query(1);
+        int hh[8888],flag;
+        mst(hh,0);int i;
+        for(i = 1;i &lt; 8001;i++)
+        {
+            if(sv[i] != -1)
+            {
+                flag = sv[i];
+                break;
+            }
+        }
+        for(;i &lt;= maxn;i++)
+        {
+            if(sv[i] == -1)
+            {
+                hh[flag]++;
+            }
+            else if(sv[i] != flag)
+            {
+                hh[flag]++,flag = sv[i];
+            }
+        }
+        int ok = 0;
+        for(int i = 0;i &lt; 8001;i++)
+        {
+            if(hh[i] != 0)
+            {
+                printf(&quot;%d %d\n&quot;,i,hh[i]);ok = 1;
+            }
+        }
+            printf(&quot;\n&quot;);
+    }
+}
+</code></pre><h2 id="G·POJ3264"><a href="#G·POJ3264" class="headerlink" title="G·POJ3264"></a>G·POJ3264</h2><p>给你一个数列，查询q次某一区间的最大差值。</p>
+<p>裸的……存一下极值就好了……<br>顺便吐槽一下POJ……就不能升级一下编译器的版本……</p>
+<pre><code>//#include &lt;bits/stdc++.h&gt; 
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define sp system(&quot;pause&quot;)
+#define iin(x) scanf(&quot;%d&quot;,&amp;x)
+#define INF 1e9
+#define MAXN 50005
+#define PI acos(-1.0)
+#define eps 1e-10
+const int MOD = 1e9 + 7;
+
+int a[MAXN],maxn,minn;
+
+struct node
+{
+    int l,r,maxx,minn;
+}M[MAXN &lt;&lt; 2];
+
+void build(int ind,int l,int r)
+{
+    M[ind].l = l,M[ind].r = r;
+    if(l == r)
+    {
+        M[ind].maxx = a[l],M[ind].minn = a[l];
+        return;
+    }
+    build(ind &lt;&lt; 1,l,(l + r) &gt;&gt; 1);
+    build(ind &lt;&lt; 1 | 1,((l + r) &gt;&gt; 1) + 1,r);
+    M[ind].maxx = max(M[ind &lt;&lt; 1].maxx,M[ind &lt;&lt; 1 | 1].maxx);
+    M[ind].minn = min(M[ind &lt;&lt; 1].minn,M[ind &lt;&lt; 1 | 1].minn);
+}
+
+void query(int ind,int l,int r)
+{
+    if(l &gt; M[ind].r || r &lt; M[ind].l)
+        return;
+    if(l &lt;= M[ind].l &amp;&amp; r &gt;= M[ind].r)
+    {
+        maxn = max(maxn,M[ind].maxx);
+        minn = min(minn,M[ind].minn);
+        return;
+    }
+    query(ind &lt;&lt; 1,l,r);
+    query(ind &lt;&lt; 1 | 1,l,r);
+}
+
+int main()
+{
+    int n,q;
+    cin &gt;&gt; n &gt;&gt; q;
+    for(int i = 1;i &lt;= n;i++)
+    {
+        iin(a[i]);
+    }
+    build(1,1,n);
+    for(int i = 0;i &lt; q;i++)
+    {
+        int h,j;
+        iin(h);iin(j);
+        maxn = 0,minn = INF;
+        query(1,h,j);
+        printf(&quot;%d\n&quot;,maxn - minn);
+    }
+}
+</code></pre><h2 id="H·HDU4027"><a href="#H·HDU4027" class="headerlink" title="H·HDU4027"></a>H·HDU4027</h2><p>给出一个数列，你可以进行两个操作，一种是对区间内的每个数都开方，一种是查询区间和。<br>首先想想能不能用lazy标记，好像不能对区间直接进行开方啊……也就是每次更新都要更新到底咯。可是有10W个数，每次更新到底肯定不行的。<br>其实对一个$2^63$内的数，最多进行8次开方就到1了，那么判断是否继续向下更新的依据就来了，如果一个区间$[l,r]$内的和已经达到了$r - l + 1$了就说明里面每个数都已经是1了，就无需向下更新了。<br>想吐槽的他竟然没有规定输入的区间的第一个数一定是右区间值，搞的我WA了几次……好气啊……哦对了还要记得sum是longlong的，用int一开始T了。</p>
+<pre><code>//#include &lt;bits/stdc++.h&gt; 
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define sp system(&quot;pause&quot;)
+#define iin(x) scanf(&quot;%d&quot;,&amp;x)
+#define INF 1e9
+#define MAXN 100005
+#define PI acos(-1.0)
+#define eps 1e-10
+const int MOD = 1e9 + 7;
+
+ll a[MAXN];
+ll ans;
+
+struct node
+{
+    int l,r;
+    ll sum;
+}M[MAXN &lt;&lt; 2];
+
+void build(int ind,int l,int r)
+{
+    M[ind].l = l,M[ind].r = r;
+    if(l == r)
+    {
+        M[ind].sum = a[l];
+        return;
+    }
+    build(ind &lt;&lt; 1,l,(l + r) &gt;&gt; 1);
+    build(ind &lt;&lt; 1 | 1,((l + r) &gt;&gt; 1) + 1,r);
+    M[ind].sum = M[ind &lt;&lt; 1].sum + M[ind &lt;&lt; 1 | 1].sum;
+}
+
+void push_up(int ind)
+{
+    M[ind].sum = M[ind &lt;&lt; 1].sum + M[ind &lt;&lt; 1 | 1].sum;
+}
+
+void update(int ind,int l,int r)
+{
+    if(l &gt; M[ind].r || r &lt; M[ind].l || M[ind].sum == (ll)M[ind].r - (ll)M[ind].l + 1LL)
+        return;
+    if(M[ind].l == M[ind].r)
+        M[ind].sum = (ll)(sqrt(M[ind].sum * 1.0));
+    else
+    {
+        update(ind &lt;&lt; 1,l,r);
+        update(ind &lt;&lt; 1 | 1,l,r);
+        push_up(ind);
+    }
+
+}
+
+void query(int ind,int l,int r)
+{
+    if(l &gt; M[ind].r || r &lt; M[ind].l)
+        return;
+    if(l &lt;= M[ind].l &amp;&amp; r &gt;= M[ind].r)
+    {
+        ans += M[ind].sum;
+        return;
+    }
+    query(ind &lt;&lt; 1,l,r);
+    query(ind &lt;&lt; 1 | 1,l,r);
+}
+
+int main()
+{
+    int n,cas = 1;
+    while(cin &gt;&gt; n)
+    {
+        for(int i = 1;i &lt;= n;i++)
+        {
+            scanf(&quot;%lld&quot;,&amp;a[i]);
+        }
+        printf(&quot;Case #%d:\n&quot;,cas++);
+        build(1,1,n);
+        int q;
+        cin &gt;&gt; q;
+        for(int i = 0;i &lt; q;i++)
+        {
+            int t,b,c;
+            iin(t),iin(b),iin(c);
+            int x1 = min(b,c),x2 = max(b,c);
+            if(t)
+            {
+                ans = 0;
+                query(1,x1,x2);
+                printf(&quot;%lld\n&quot;,ans);
+            }
+            else
+            {
+                update(1,x1,x2);
+            }
+        }
+        printf(&quot;\n&quot;);
+    }
+}
+</code></pre><h2 id="I·HDU1540"><a href="#I·HDU1540" class="headerlink" title="I·HDU1540"></a>I·HDU1540</h2><p>这道题里新学了一点东西，另开一篇文章写。</p>
+<h2 id="M·HDU4553"><a href="#M·HDU4553" class="headerlink" title="M·HDU4553"></a>M·HDU4553</h2><p>也是一道区间合并的题目……</p>
+<p>用不同的标记来表示屌丝、女神、空余的状态。。然后区间合并一下就好了。。需要注意的query的时候先query左边再query中间在query右边来确保返回的是最前面的合法区间……</p>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define sp system(&quot;pause&quot;)
+#define iin(x) scanf(&quot;%d&quot;,&amp;x)
+#define INF 1e9
+#define MAXN 100005
+#define hash hhash
+#define PI acos(-1.0)
+#define eps 1e-4
+
+struct node
+{
+    int l,r;
+    int d,n,s;
+    int ls,rs,ms;
+    int nls,nrs,nms;
+}M[MAXN &lt;&lt; 2];
+
+void study(int ind)
+{
+    M[ind].s = 1;
+    M[ind].d = 0;M[ind].n = 0;
+    M[ind].ls = M[ind].rs = M[ind].ms = M[ind].r - M[ind].l + 1;
+    M[ind].nls = M[ind].nrs = M[ind].nms = M[ind].r - M[ind].l + 1;
+}
+
+void diaosi(int ind)
+{
+    M[ind].d = 1;
+    M[ind].ls = M[ind].rs = M[ind].ms = 0;
+}
+
+void nvshen(int ind)
+{
+    M[ind].d = 0;M[ind].n = 1;
+    M[ind].ls = M[ind].rs = M[ind].ms = 0;
+    M[ind].nls = M[ind].nrs = M[ind].nms = 0;
+}
+
+void push_up(int ind)
+{
+    M[ind].ms = max(M[ind &lt;&lt; 1].ms,M[ind &lt;&lt; 1 | 1].ms);
+    M[ind].ms = max(M[ind].ms,M[ind &lt;&lt; 1].rs + M[ind &lt;&lt; 1 | 1].ls);
+    M[ind].nms = max(M[ind &lt;&lt; 1].nms,M[ind &lt;&lt; 1 | 1].nms);
+    M[ind].nms = max(M[ind].nms,M[ind &lt;&lt; 1].nrs + M[ind &lt;&lt; 1 | 1].nls);
+
+    M[ind].ls = M[ind &lt;&lt; 1].ls,M[ind].rs = M[ind &lt;&lt; 1 | 1].rs;
+    if(M[ind &lt;&lt; 1].ls == M[ind &lt;&lt; 1].r - M[ind &lt;&lt; 1].l + 1)
+        M[ind].ls += M[ind &lt;&lt; 1 | 1].ls;
+    if(M[ind &lt;&lt; 1 | 1].rs == M[ind &lt;&lt; 1 | 1].r - M[ind &lt;&lt; 1 | 1].l + 1)
+        M[ind].rs += M[ind &lt;&lt; 1].rs;
+
+    M[ind].nls = M[ind &lt;&lt; 1].nls,M[ind].nrs = M[ind &lt;&lt; 1 | 1].nrs;
+    if(M[ind &lt;&lt; 1].nls == M[ind &lt;&lt; 1].r - M[ind &lt;&lt; 1].l + 1)
+        M[ind].nls += M[ind &lt;&lt; 1 | 1].nls;
+    if(M[ind &lt;&lt; 1 | 1].nrs == M[ind &lt;&lt; 1 | 1].r - M[ind &lt;&lt; 1 | 1].l + 1)
+        M[ind].nrs += M[ind &lt;&lt; 1].nrs;
+
+
+}
+
+void push_down(int ind)
+{
+    if(M[ind].s)
+    {
+        study(ind &lt;&lt; 1),study(ind &lt;&lt; 1 | 1);
+        M[ind].s = 0;
+    }
+    if(M[ind].d)
+    {
+        diaosi(ind &lt;&lt; 1),diaosi(ind &lt;&lt; 1 | 1);
+        M[ind].d = 0;
+    }
+    if(M[ind].n)
+    {
+        nvshen(ind &lt;&lt; 1),nvshen(ind &lt;&lt; 1 | 1);
+        M[ind].n = 0;
+    }
+}
+
+void build(int ind,int l,int r)
+{
+    M[ind].l = l,M[ind].r = r;
+    M[ind].d = 0,M[ind].n = 0,M[ind].s = 0;
+    if(l == r)
+    {
+        M[ind].ls = 1,M[ind].rs = 1,M[ind].ms = 1;
+        M[ind].nls = 1,M[ind].nrs = 1,M[ind].nms = 1;
+        return;
+    }
+    build(ind &lt;&lt; 1,l,(l + r) &gt;&gt; 1);
+    build(ind &lt;&lt; 1 | 1,((l + r) &gt;&gt; 1) + 1,r);
+    push_up(ind);
+}
+
+int queryd(int ind,int len)
+{
+    if(M[ind].l == M[ind].r)
+        return M[ind].l;
+    push_down(ind);
+    if(M[ind &lt;&lt; 1].ms &gt;= len)
+        return queryd(ind &lt;&lt; 1,len);
+    else if(M[ind &lt;&lt; 1].rs + M[ind &lt;&lt; 1 | 1].ls &gt;= len)
+        return M[ind &lt;&lt; 1].r - M[ind &lt;&lt; 1].rs + 1;
+    else
+        return queryd(ind &lt;&lt; 1 | 1,len);
+}
+
+int queryn(int ind,int len)
+{
+    if(M[ind].l == M[ind].r)
+        return M[ind].l;
+    push_down(ind);
+
+    if(M[ind &lt;&lt; 1].nms &gt;= len)
+        return queryn(ind &lt;&lt; 1,len);
+    else if(M[ind &lt;&lt; 1].nrs + M[ind &lt;&lt; 1 | 1].nls &gt;= len)
+        return M[ind &lt;&lt; 1].r - M[ind &lt;&lt; 1].nrs + 1;
+    else
+        return queryn(ind &lt;&lt; 1 | 1,len);
+}
+
+void updated(int ind,int l,int r)
+{
+    if(M[ind].l &gt; r || M[ind].r &lt; l)
+        return;
+    if(M[ind].l &gt;= l &amp;&amp; M[ind].r &lt;= r)
+    {
+        diaosi(ind);
+        return;
+    }
+    else
+    {
+        push_down(ind);
+        updated(ind &lt;&lt; 1,l,r);
+        updated(ind &lt;&lt; 1 | 1,l,r);
+        push_up(ind);
+    }
+}
+
+void updaten(int ind,int l,int r)
+{
+    if(M[ind].l &gt; r || M[ind].r &lt; l)
+        return;
+    if(M[ind].l &gt;= l &amp;&amp; M[ind].r &lt;= r)
+    {
+        nvshen(ind);
+        return;
+    }
+    else
+    {
+        push_down(ind);
+        updaten(ind &lt;&lt; 1,l,r);
+        updaten(ind &lt;&lt; 1 | 1,l,r);
+        push_up(ind);
+    }
+}
+
+void updates(int ind,int l,int r)
+{
+    if(M[ind].l &gt; r || M[ind].r &lt; l)
+        return;
+    if(M[ind].l &gt;= l &amp;&amp; M[ind].r &lt;= r)
+    {
+        study(ind);
+        return;
+    }
+    else
+    {
+        push_down(ind);
+        updates(ind &lt;&lt; 1,l,r);
+        updates(ind &lt;&lt; 1 | 1,l,r);
+        push_up(ind);
+    }
+}
+
+int main()
+{
+    //fr(&quot;sample.in&quot;);
+    int t,cas = 1;
+    cin &gt;&gt; t;
+    while(t--)
+    {
+        printf(&quot;Case %d:\n&quot;,cas++);
+        int t,n;
+        cin &gt;&gt; t &gt;&gt; n;
+        build(1,1,t);
+        for(int i = 0;i &lt; n;i++)
+        {
+            char ch[11];
+            scanf(&quot;%s&quot;,ch);
+            int a,b;
+            if(ch[0] == &apos;D&apos;)
+            {
+                iin(a);
+                //cout &lt;&lt; M[1].ms &lt;&lt; endl;
+                if(M[1].ms &lt; a)
+                    printf(&quot;fly with yourself\n&quot;);
+                else
+                {
+                    int ans = queryd(1,a);
+                    updated(1,ans,ans + a - 1);
+                    printf(&quot;%d,let&apos;s fly\n&quot;,ans);
+                }
+            }
+            else if(ch[0] == &apos;N&apos;)
+            {
+                iin(a);
+                if(M[1].ms &lt; a)
+                {
+                    if(M[1].nms &lt; a)
+                        printf(&quot;wait for me\n&quot;);
+                    else
+                    {
+                        //cout &lt;&lt; &quot;in\n&quot;;
+                        int ans = queryn(1,a);
+                        updaten(1,ans,ans + a - 1);
+                        printf(&quot;%d,don&apos;t put my gezi\n&quot;,ans);
+                    }
+                }
+                else
+                {
+                    int ans = queryd(1,a);
+                    updaten(1,ans,ans + a - 1);
+                    printf(&quot;%d,don&apos;t put my gezi\n&quot;,ans);
+                }
+            }
+            else
+            {
+                iin(a);iin(b);
+                updates(1,a,b);
+                printf(&quot;I am the hope of chinese chengxuyuan!!\n&quot;);
+            }
+        }
+    }
+    return 0;
+}
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/09/HZNUOJ1858/" rel="next" title="HZNUOJ1858">
+                <i class="fa fa-chevron-left"></i> HZNUOJ1858
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/18/HDU1540/" rel="prev" title="HDU1540（线段树的区间合并）">
+                HDU1540（线段树的区间合并） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2016/03/17/线段树练习1/" data-title="线段树练习1" data-url="/2016/03/17/线段树练习1/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://7xk57x.com1.z0.glb.clouddn.com/头像.jpg" alt="vigoss18">
+            
+              <p class="site-author-name" itemprop="name">vigoss18</p>
+              <p class="site-description motion-element" itemprop="description">It was the best of times,it was the worst of times.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">92</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/vigoss18" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-globe"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/ma-wu-yuan" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#51NOD1019"><span class="nav-number">1.</span> <span class="nav-text">51NOD1019</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A·HDU1166"><span class="nav-number">2.</span> <span class="nav-text">A·HDU1166</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B·HDU1754"><span class="nav-number">3.</span> <span class="nav-text">B·HDU1754</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C·POJ3468"><span class="nav-number">4.</span> <span class="nav-text">C·POJ3468</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D·POJ2528"><span class="nav-number">5.</span> <span class="nav-text">D·POJ2528</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E·HDU1698"><span class="nav-number">6.</span> <span class="nav-text">E·HDU1698</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F·ZOJ1610"><span class="nav-number">7.</span> <span class="nav-text">F·ZOJ1610</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#G·POJ3264"><span class="nav-number">8.</span> <span class="nav-text">G·POJ3264</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H·HDU4027"><span class="nav-number">9.</span> <span class="nav-text">H·HDU4027</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I·HDU1540"><span class="nav-number">10.</span> <span class="nav-text">I·HDU1540</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#M·HDU4553"><span class="nav-number">11.</span> <span class="nav-text">M·HDU4553</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vigoss18</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"vigoss18"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

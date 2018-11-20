@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第一次补到E…… A. Orchestra给你一个只包含#和的矩形，求有多少个矩形包含了至少m个。数据范围很小……暴力">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces_8VC_Venture_Cup">
+<meta property="og:url" content="/2016/03/02/Codeforces 8VC Venture Cup/index.html">
+<meta property="og:site_name" content="碌碌无为者">
+<meta property="og:description" content="第一次补到E…… A. Orchestra给你一个只包含#和的矩形，求有多少个矩形包含了至少m个。数据范围很小……暴力">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-04-09T05:56:13.797Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Codeforces_8VC_Venture_Cup">
+<meta name="twitter:description" content="第一次补到E…… A. Orchestra给你一个只包含#和的矩形，求有多少个矩形包含了至少m个。数据范围很小……暴力">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2016/03/02/Codeforces 8VC Venture Cup/">
+
+
+
+
+
+  <title>Codeforces_8VC_Venture_Cup | 碌碌无为者</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9b0b4484e57d896e772945b550450cec";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">碌碌无为者</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2016/03/02/Codeforces 8VC Venture Cup/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vigoss18">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xk57x.com1.z0.glb.clouddn.com/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="碌碌无为者">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Codeforces_8VC_Venture_Cup</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-02T17:37:21+08:00">
+                2016-03-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM—CF/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM—CF</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/02/Codeforces 8VC Venture Cup/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/02/Codeforces 8VC Venture Cup/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>第一次补到E……</p>
+<h2 id="A-Orchestra"><a href="#A-Orchestra" class="headerlink" title="A. Orchestra"></a>A. Orchestra</h2><p>给你一个只包含#和<em>的矩形，求有多少个矩形包含了至少m个</em>。<br>数据范围很小……暴力</p>
+<a id="more"></a>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define iin(x) scanf(&quot;%d&quot;,&amp;x)
+#define sp system(&quot;pause&quot;)
+#define INF 1e9
+#define MAXN 1000005
+#define PI acos(-1.0)
+#define eps 1e-10
+const ll MOD = 1e9 + 7;
+
+int main()   
+{   
+    int r,c,n,p,mp[11][11];
+    mst(mp,0);
+    int hh = 0;
+    cin &gt;&gt; r &gt;&gt; c &gt;&gt; n &gt;&gt; p;
+    for(int i = 0;i &lt; n;i++)
+    {
+        int a,b;
+        cin &gt;&gt; a &gt;&gt; b;
+        mp[a - 1][b - 1] = 1;
+    }
+    for(int i = 0;i &lt; r;i++)
+    {
+        for(int j = 0;j &lt; c;j++)
+        {
+            for(int a = i;a &lt; r;a++)
+            {
+                for(int b = j;b &lt; c;b++)
+                {
+                    int sum = 0;
+                    for(int q = i;q &lt;= a;q++)
+                    {
+                        for(int k = j;k &lt;= b;k++)
+                        {
+                            sum += mp[q][k];
+                        }
+                    }
+                    if(sum &gt;= p)
+                        hh++;
+                }
+            }
+        }
+    }
+    cout &lt;&lt; hh &lt;&lt; endl;
+}
+</code></pre><h2 id="B-Island-Puzzle"><a href="#B-Island-Puzzle" class="headerlink" title="B. Island Puzzle"></a>B. Island Puzzle</h2><p>问你B是不是A序列的循环表示……<br>暴力……</p>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define iin(x) scanf(&quot;%d&quot;,&amp;x)
+#define sp system(&quot;pause&quot;)
+#define INF 1e9
+#define MAXN 200005
+#define PI acos(-1.0)
+#define eps 1e-10
+const ll MOD = 1e9 + 7;
+
+int main()   
+{   
+    int n;
+    cin &gt;&gt; n;
+    string a,b,c;
+    for(int i = 0;i &lt; n;i++)
+    {
+        cin &gt;&gt; c;
+        if(c != &quot;0&quot;)
+            a += c;
+    }
+    for(int i = 0;i &lt; n;i++)
+    {
+        cin &gt;&gt; c;
+        if(c != &quot;0&quot;)
+            b += c;
+    }
+    a += a;
+    if(strstr(a.c_str(),b.c_str()) == NULL)
+        cout &lt;&lt; &quot;NO\n&quot;;
+    else
+        cout &lt;&lt; &quot;YES\n&quot;;
+}
+</code></pre><h2 id="C-XOR-Equation"><a href="#C-XOR-Equation" class="headerlink" title="C. XOR Equation"></a>C. XOR Equation</h2><p>给出n和m求有多少对数(a,b)使得a+b=n，且a^b=m。<br>分析一下，a^b要等于m那么最基本的可以使a=m,b=0,同时为了满足a+b=n，就只能在a为1的二进制位都更改为1，XD于是题目一下就变得简单了。</p>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define iin(x) scanf(&quot;%d&quot;,&amp;x)
+#define sp system(&quot;pause&quot;)
+#define INF 1e9
+#define MAXN 200005
+#define PI acos(-1.0)
+#define eps 1e-10
+const ll MOD = 1e9 + 7;
+
+int main()   
+{   
+    ll a,b,ok = 0;
+    cin &gt;&gt; a &gt;&gt; b;
+    if(a == b)
+        ok = 1;
+    ll c = (a - b) / 2;
+    if(c &lt; 0 || (2 * c + b != a) || (c &amp; b))
+    {
+        cout &lt;&lt; 0 &lt;&lt; endl;
+        return 0;
+    }
+    ll bits = 0;
+    while(b)
+    {
+        if(b &amp; 1)
+            bits++;
+        b &gt;&gt;= 1;
+    }
+    ll ou = 1LL &lt;&lt; bits;
+    if(ok)
+        ou -= 2;
+    cout &lt;&lt; ou &lt;&lt; endl;
+}
+</code></pre><h2 id="D-Factory-Repairs"><a href="#D-Factory-Repairs" class="headerlink" title="D. Factory Repairs"></a>D. Factory Repairs</h2><p>有一台机器，修理之前每天能生产a个物品，修理之后每天能生产b个物品，修理持续k天，输入p个操作，操作1为给第i天再分配ai个物品生产的任务，操作2为从第bi天开始修理这台机器（每次修理为独立的）。问你每次修理之后能完成多少生产任务。<br>很裸的线段树啊……单点更新和区间查询，注意区间查询的时候应该查询不属于query范围的区间。</p>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define iin(x) scanf(&quot;%d&quot;,&amp;x)
+#define sp system(&quot;pause&quot;)
+#define INF 1e9
+#define MAXN 200005
+#define PI acos(-1.0)
+#define eps 1e-10
+const ll MOD = 1e9 + 7;
+
+int n,k,a,b,q,ans;
+
+struct node
+{
+    int l,r,num,sum1,sum2;
+}M[MAXN &lt;&lt; 2];
+
+void build(int ind,int l,int r)
+{
+    M[ind].l = l,M[ind].r = r;
+    M[ind].num = 0,M[ind].sum1 = 0,M[ind].sum2 = 0;
+    if(l != r)
+        build(ind &lt;&lt; 1,l,(l + r) &gt;&gt; 1),build(ind &lt;&lt; 1 | 1,((l + r) &gt;&gt; 1) + 1,r);
+}
+
+void push_up(int ind)
+{
+    M[ind].sum1 = M[ind &lt;&lt; 1].sum1 + M[ind &lt;&lt; 1 | 1].sum1;
+    M[ind].sum2 = M[ind &lt;&lt; 1].sum2 + M[ind &lt;&lt; 1 | 1].sum2;
+}
+
+void update(int ind,int pos,int value)
+{
+    if(M[ind].r &lt; pos || M[ind].l &gt; pos)
+        return;
+    if(M[ind].l == M[ind].r &amp;&amp; M[ind].l == pos)
+        M[ind].num += value,M[ind].sum1 = min(M[ind].num,a),M[ind].sum2 = min(M[ind].num,b);
+    else
+    {
+        update(ind &lt;&lt; 1,pos,value);
+        update(ind &lt;&lt; 1 | 1,pos,value);
+        push_up(ind);
+    }
+}
+
+void query(int ind,int l,int r)
+{
+    if(l &lt;= M[ind].l &amp;&amp; r &gt;= M[ind].r)
+        return;
+    if(r &lt; M[ind].l)
+    {
+        ans += M[ind].sum1;//cout &lt;&lt; M[ind].l &lt;&lt; &quot; &quot; &lt;&lt; M[ind].r &lt;&lt; &quot; &quot; &lt;&lt; M[ind].sum2 &lt;&lt; endl;sp;
+        return;
+    }
+    else if(l &gt; M[ind].r)
+    {
+        ans += M[ind].sum2;//cout &lt;&lt; M[ind].l &lt;&lt; &quot; &quot; &lt;&lt; M[ind].r &lt;&lt; &quot; &quot; &lt;&lt; M[ind].sum1  &lt;&lt; endl;sp;
+        return;
+    }
+    else
+    {
+        query(ind &lt;&lt; 1,l,r);
+        query(ind &lt;&lt; 1 | 1,l,r);
+        push_up(ind);
+    }
+
+}
+
+int main()   
+{   
+
+    cin &gt;&gt; n &gt;&gt; k &gt;&gt; a &gt;&gt; b &gt;&gt; q;
+    build(1,1,n);
+    for(int i = 0;i &lt; q;i++)
+    {
+        int type,a,b;
+        iin(type);
+        if(type == 1)
+        {
+            iin(a),iin(b);
+            update(1,a,b);
+        }
+        else
+        {
+            iin(a);
+            ans = 0;
+            query(1,a,a + k - 1);
+            printf(&quot;%d\n&quot;,ans);
+        }
+    }
+}
+</code></pre><h2 id="E-Package-Delivery"><a href="#E-Package-Delivery" class="headerlink" title="E. Package Delivery"></a>E. Package Delivery</h2><p>有一条长d的路，一辆油箱上限为n的车，m个加油站，给出每个加油站的位置和油价，问你最少要付多少钱才能到达重点，起始油箱是满的。<br>贪心，对于当前一个位置的话，判断从此位置到终点为止的最低油价点有多远，如果在n的范围内，那么就加到刚好能到此位置的油，否则就加满游往下一个位置走。我们可以先用一个stack来处理出每个点到终点的最低油价点。<br>其实一开始我的想法不是这样的，我当初想的是对于每一个位置，我们判断离他最近的油价小于等于现在这个位置的油价的位置，如果能到达，就加油至刚好能到达位置，如果不能，就加满油，走到他所能走到的范围内最小的油价位置。结果无限WA7，然后和宝树讨论了一下，之后觉得如果不满足条件一的话直接加满后走到下一个加油站继续判断就可以了，结果就变成无限WA10了，想来想去并不懂为什么是错的啊……</p>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define iin(x) scanf(&quot;%d&quot;,&amp;x)
+#define sp system(&quot;pause&quot;)
+#define INF 1e9
+#define MAXN 200005
+#define PI acos(-1.0)
+#define eps 1e-10
+const ll MOD = 1e9 + 7;
+
+int l[MAXN];
+pii a[MAXN];
+int main()   
+{   
+    int d,n,m;
+    cin &gt;&gt; d &gt;&gt; n &gt;&gt; m;
+    stack&lt;int&gt;st;
+    for(int i = 1;i &lt;= m;i++)
+        iin(a[i].first),iin(a[i].second);
+    a[0] = MP(0,0),a[m + 1] = MP(d,0);
+    sort(a,a + m + 2);
+    st.push(m + 1);l[m + 1] = m + 1;
+    for(int i = m;i &gt;= 0;i--)//处理出从第i个位置开始到末尾为止最低油价点的下标
+    {
+        while(a[st.top()].second &gt; a[i].second)
+            st.pop();
+        l[i] = st.top();
+        st.push(i);
+    }
+    int gas = n;
+    ll sum = 0;
+    for(int i = 1;i &lt;= m + 1;i++)
+    {
+        gas -= a[i].first - a[i - 1].first;//依次跑到每个加油站
+        if(gas &lt; 0)
+        {
+            cout &lt;&lt; -1 &lt;&lt; endl;
+            return 0;
+        }
+        int newgas = a[l[i]].first - a[i].first;//距离下一个最低点的距离
+        int rem = min(newgas,n);//能否到达下一个最低点
+        if(rem &gt; gas)
+            sum += (ll)(rem - gas) * a[i].second,gas = rem;
+    }
+    cout &lt;&lt; sum &lt;&lt; endl;
+}
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/28/Codeforces 633B(二分)/" rel="next" title="Codeforces 633B(二分)">
+                <i class="fa fa-chevron-left"></i> Codeforces 633B(二分)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/02/ZOJ3602（树的同构）/" rel="prev" title="ZOJ3602（树的同构）">
+                ZOJ3602（树的同构） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2016/03/02/Codeforces 8VC Venture Cup/" data-title="Codeforces_8VC_Venture_Cup" data-url="/2016/03/02/Codeforces 8VC Venture Cup/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://7xk57x.com1.z0.glb.clouddn.com/头像.jpg" alt="vigoss18">
+            
+              <p class="site-author-name" itemprop="name">vigoss18</p>
+              <p class="site-description motion-element" itemprop="description">It was the best of times,it was the worst of times.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">92</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/vigoss18" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-globe"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/ma-wu-yuan" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Orchestra"><span class="nav-number">1.</span> <span class="nav-text">A. Orchestra</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Island-Puzzle"><span class="nav-number">2.</span> <span class="nav-text">B. Island Puzzle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-XOR-Equation"><span class="nav-number">3.</span> <span class="nav-text">C. XOR Equation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Factory-Repairs"><span class="nav-number">4.</span> <span class="nav-text">D. Factory Repairs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Package-Delivery"><span class="nav-number">5.</span> <span class="nav-text">E. Package Delivery</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vigoss18</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"vigoss18"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

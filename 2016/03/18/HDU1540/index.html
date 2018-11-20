@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这道线段树好，感觉我对线段树的理解又加深了。 题目链接：Tunnel Warfare 题意是有n个相连的村庄，有3种操作，第一种是操作D，可以把一个村庄摧毁掉，第二种是操作Q，查询包括$Q_i$在内的最长连续区间的长度，第三种是操作R，可以恢复最近被摧毁的一个村庄。 从简单的开始入手，操作R可以在进行操作D的时候用一个栈来存删除操作，等你需要进行R操作的时候只要从栈顶扣一个出来就行了，这样R和D都">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HDU1540（线段树的区间合并）">
+<meta property="og:url" content="/2016/03/18/HDU1540/index.html">
+<meta property="og:site_name" content="碌碌无为者">
+<meta property="og:description" content="这道线段树好，感觉我对线段树的理解又加深了。 题目链接：Tunnel Warfare 题意是有n个相连的村庄，有3种操作，第一种是操作D，可以把一个村庄摧毁掉，第二种是操作Q，查询包括$Q_i$在内的最长连续区间的长度，第三种是操作R，可以恢复最近被摧毁的一个村庄。 从简单的开始入手，操作R可以在进行操作D的时候用一个栈来存删除操作，等你需要进行R操作的时候只要从栈顶扣一个出来就行了，这样R和D都">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xk57x.com1.z0.glb.clouddn.com/HDU1540_%E7%A4%BA%E8%8C%83%E5%9B%BE1.jpg">
+<meta property="og:updated_time" content="2016-04-09T05:54:24.114Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HDU1540（线段树的区间合并）">
+<meta name="twitter:description" content="这道线段树好，感觉我对线段树的理解又加深了。 题目链接：Tunnel Warfare 题意是有n个相连的村庄，有3种操作，第一种是操作D，可以把一个村庄摧毁掉，第二种是操作Q，查询包括$Q_i$在内的最长连续区间的长度，第三种是操作R，可以恢复最近被摧毁的一个村庄。 从简单的开始入手，操作R可以在进行操作D的时候用一个栈来存删除操作，等你需要进行R操作的时候只要从栈顶扣一个出来就行了，这样R和D都">
+<meta name="twitter:image" content="http://7xk57x.com1.z0.glb.clouddn.com/HDU1540_%E7%A4%BA%E8%8C%83%E5%9B%BE1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2016/03/18/HDU1540/">
+
+
+
+
+
+  <title>HDU1540（线段树的区间合并） | 碌碌无为者</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9b0b4484e57d896e772945b550450cec";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">碌碌无为者</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2016/03/18/HDU1540/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vigoss18">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xk57x.com1.z0.glb.clouddn.com/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="碌碌无为者">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HDU1540（线段树的区间合并）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-18T11:50:45+08:00">
+                2016-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM-线段树/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM-线段树</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/18/HDU1540/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/18/HDU1540/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这道线段树好，感觉我对线段树的理解又加深了。</p>
+<p>题目链接：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=1540" target="_blank" rel="noopener">Tunnel Warfare</a></p>
+<p>题意是有n个相连的村庄，有3种操作，第一种是操作D，可以把一个村庄摧毁掉，第二种是操作Q，查询包括$Q_i$在内的最长连续区间的长度，第三种是操作R，可以恢复最近被摧毁的一个村庄。</p>
+<p>从简单的开始入手，操作R可以在进行操作D的时候用一个栈来存删除操作，等你需要进行R操作的时候只要从栈顶扣一个出来就行了，这样R和D都变成了update操作了。</p>
+<a id="more"></a>
+<p>然后就要开始考虑结点内存储的信息了，里面要存储三个信息。我们的结点是这样的：</p>
+<pre><code>struct node
+{
+    int l,r,ll,rr,ms;
+}M[MAXN &lt;&lt; 2];
+</code></pre><p>ll表示从l开始向右形成的区间有多长，rr表示从r开始向左形成的区间有多长，ms表示在$[l,r]$范围内最长的连续区间的长度。</p>
+<p>用一张图来理解一下就是：</p>
+<p><img src="http://7xk57x.com1.z0.glb.clouddn.com/HDU1540_%E7%A4%BA%E8%8C%83%E5%9B%BE1.jpg" alt=""></p>
+<p>对于表示这个区间的结点M，ll为a，rr为e，ms为abcde中最长的那一条。ll为a和rr为e的前提是a的开头刚好是在l，e的结尾刚好是在r，否则为0。关键是在update和query的地方，先来说update，此部分的代码是：</p>
+<pre><code>void push_up(int ind)
+{
+    M[ind].ll = M[ind &lt;&lt; 1].ll;
+    M[ind].rr = M[ind &lt;&lt; 1 | 1].rr;
+    M[ind].ms = max(M[ind &lt;&lt; 1].ms,M[ind &lt;&lt; 1 | 1].ms);
+    M[ind].ms = max(M[ind].ms,M[ind &lt;&lt; 1].rr + M[ind &lt;&lt; 1 | 1].ll);
+    if(M[ind &lt;&lt; 1].ll == M[ind &lt;&lt; 1].r - M[ind &lt;&lt; 1].l + 1)
+    {
+        M[ind].ll += M[ind &lt;&lt; 1 | 1].ll;
+    }
+    if(M[ind &lt;&lt; 1 | 1].rr == M[ind &lt;&lt; 1 | 1].r - M[ind &lt;&lt; 1 | 1].l + 1)
+    {
+        M[ind].rr += M[ind &lt;&lt; 1].rr;
+    }
+}
+
+void update(int ind,int pos,int value)
+{
+    if(M[ind].r &lt; pos || M[ind].l &gt; pos)
+        return;
+    if(M[ind].l == M[ind].r &amp;&amp; M[ind].l == pos)
+    {
+        M[ind].ll = M[ind].rr = M[ind].ms = value;
+        return;
+    }
+    update(ind &lt;&lt; 1,pos,value);
+    update(ind &lt;&lt; 1 | 1,pos,value);
+    push_up(ind);
+}
+</code></pre><p>应该说关键是在push_up，每次更新完回溯的时候一个结点的ll值等于左子树的ll值，rr值等于右子树的rr值，ms值先取左右子树ms值的较大值，再把左子树的rr值加上右子树的ll值再次取较大值，然后还需要再更新一下此结点的ll值和rr值，应该如果左子树是满的，那么这个结点的ll值应该是左子树的ll值加上右子树的ll值，右子树是满的也同理。到这里，我们的update是没有问题了。</p>
+<p>接下来是query，代码如下：</p>
+<pre><code>int query(int ind,int pos)
+{
+    if(M[ind].l == M[ind].r || M[ind].ms == M[ind].r - M[ind].l + 1 || M[ind].ms == 0)
+        return M[ind].ms;
+    int mid = (M[ind].l + M[ind].r) / 2;
+    if(pos &lt;= mid)
+    {
+        if(pos &gt;= M[ind &lt;&lt; 1].r - M[ind &lt;&lt; 1].rr + 1)
+            return query(ind &lt;&lt; 1,pos) + query(ind &lt;&lt; 1 | 1,mid + 1);
+        else
+            return query(ind &lt;&lt; 1,pos);
+    }
+    else
+    {
+        if(pos &lt;= M[ind &lt;&lt; 1 | 1].l + M[ind &lt;&lt; 1 | 1].ll - 1)
+            return query(ind &lt;&lt; 1 | 1,pos) + query(ind &lt;&lt; 1,mid);
+        else
+            return query(ind &lt;&lt; 1 | 1,pos);
+    }
+}
+</code></pre><p>如果查询到了叶子节点或者这个区间已经是满的或者是空的，就不需要继续向下查询下去了。对于一次向下查询，例如是查询右区间，那么就要看pos是不是在右区间的ll范围内，如果是在此范围内，就要同时查询左区间，用mid值向下查询（因为左右是相连的），同理如果查询左区间的时候发现pos在rr的范围内，也要同时查询右区间，用mid+1查询……</p>
+<p>代码写到这里算是写完了……注意要写仔细啊……我的无端不过sample竟然是因为各种手快打错……无语死了ORZ</p>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+/*#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdio&gt;*/
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define sp system(&quot;pause&quot;)
+#define iin(x) scanf(&quot;%d&quot;,&amp;x)
+#define INF 1e9
+#define MAXN 50005
+#define PI acos(-1.0)
+#define eps 1e-10
+const int MOD = 1e9 + 7;
+
+ll a[MAXN];
+ll ans;
+
+struct node
+{
+    int l,r,ll,rr,ms;
+}M[MAXN &lt;&lt; 2];
+
+void build(int ind,int l,int r)
+{
+    M[ind].l = l,M[ind].r = r;
+    M[ind].ll = M[ind].rr = M[ind].ms = r - l + 1;
+    if(l == r)
+    {
+        return;
+    }
+    build(ind &lt;&lt; 1,l,(l + r) &gt;&gt; 1);
+    build(ind &lt;&lt; 1 | 1,((l + r) &gt;&gt; 1) + 1,r);
+}
+
+void push_up(int ind)
+{
+    M[ind].ll = M[ind &lt;&lt; 1].ll;
+    M[ind].rr = M[ind &lt;&lt; 1 | 1].rr;
+    M[ind].ms = max(M[ind &lt;&lt; 1].ms,M[ind &lt;&lt; 1 | 1].ms);
+    M[ind].ms = max(M[ind].ms,M[ind &lt;&lt; 1].rr + M[ind &lt;&lt; 1 | 1].ll);
+    if(M[ind &lt;&lt; 1].ll == M[ind &lt;&lt; 1].r - M[ind &lt;&lt; 1].l + 1)
+    {
+        M[ind].ll += M[ind &lt;&lt; 1 | 1].ll;
+    }
+    if(M[ind &lt;&lt; 1 | 1].rr == M[ind &lt;&lt; 1 | 1].r - M[ind &lt;&lt; 1 | 1].l + 1)
+    {
+        M[ind].rr += M[ind &lt;&lt; 1].rr;
+    }
+}
+
+void update(int ind,int pos,int value)
+{
+    if(M[ind].r &lt; pos || M[ind].l &gt; pos)
+        return;
+    if(M[ind].l == M[ind].r &amp;&amp; M[ind].l == pos)
+    {
+        M[ind].ll = M[ind].rr = M[ind].ms = value;
+        return;
+    }
+    update(ind &lt;&lt; 1,pos,value);
+    update(ind &lt;&lt; 1 | 1,pos,value);
+    push_up(ind);
+}
+
+int query(int ind,int pos)
+{
+    //cout &lt;&lt; M[ind].l &lt;&lt; &quot; &quot; &lt;&lt; M[ind].r &lt;&lt; &quot; &quot; &lt;&lt; pos &lt;&lt; endl;
+    if(M[ind].l == M[ind].r || M[ind].ms == M[ind].r - M[ind].l + 1 || M[ind].ms == 0)
+        return M[ind].ms;
+    int mid = (M[ind].l + M[ind].r) / 2;
+    if(pos &lt;= mid)
+    {
+        if(pos &gt;= M[ind &lt;&lt; 1].r - M[ind &lt;&lt; 1].rr + 1)
+            return query(ind &lt;&lt; 1,pos) + query(ind &lt;&lt; 1 | 1,mid + 1);
+        else
+            return query(ind &lt;&lt; 1,pos);
+    }
+    else
+    {
+        //cout &lt;&lt; &quot;IN\n&quot;;
+        if(pos &lt;= M[ind &lt;&lt; 1 | 1].l + M[ind &lt;&lt; 1 | 1].ll - 1)
+            return query(ind &lt;&lt; 1 | 1,pos) + query(ind &lt;&lt; 1,mid);
+        else
+            return query(ind &lt;&lt; 1 | 1,pos);
+    }
+}
+
+int main()
+{
+    int n,m;
+    while(cin &gt;&gt; n &gt;&gt; m)
+    {
+        build(1,1,n);
+        stack&lt;int&gt;sta;
+
+        for(int i = 0;i &lt; m;i++)
+        {
+            getchar();
+            //cout &lt;&lt; &quot;in\n&quot;;
+            char ch;int h;
+            scanf(&quot;%c&quot;,&amp;ch);
+            if(ch == &apos;D&apos;)
+            {
+                iin(h);
+                update(1,h,0);
+                sta.push(h);
+            }
+            else if(ch == &apos;R&apos; &amp;&amp; sta.size() &gt; 0)
+            {
+                update(1,sta.top(),1);
+                sta.pop();
+            }
+            else if(ch == &apos;Q&apos;)
+            {
+                iin(h);
+                printf(&quot;%d\n&quot;,query(1,h));
+                //cout &lt;&lt; M[1].ms &lt;&lt; &quot; &quot; &lt;&lt; M[1].ll &lt;&lt; &quot; &quot; &lt;&lt; M[1].rr &lt;&lt; endl;
+            }
+        }
+    }
+}
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/17/线段树练习1/" rel="next" title="线段树练习1">
+                <i class="fa fa-chevron-left"></i> 线段树练习1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/12/KM算法学习/" rel="prev" title="KM算法学习">
+                KM算法学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2016/03/18/HDU1540/" data-title="HDU1540（线段树的区间合并）" data-url="/2016/03/18/HDU1540/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://7xk57x.com1.z0.glb.clouddn.com/头像.jpg" alt="vigoss18">
+            
+              <p class="site-author-name" itemprop="name">vigoss18</p>
+              <p class="site-description motion-element" itemprop="description">It was the best of times,it was the worst of times.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">92</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/vigoss18" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-globe"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/ma-wu-yuan" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vigoss18</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"vigoss18"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

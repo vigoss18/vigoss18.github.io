@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="首先庆祝自己上深蓝辣！深蓝好看啊……不要再变成浅蓝了ORZ A. Far Relative’s Birthday Cake给你一个矩阵，求每行没列上有几对C的和。暴力">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces_Round 343(Div.2)">
+<meta property="og:url" content="/2016/02/23/Codeforces_Round 343(Div.2)/index.html">
+<meta property="og:site_name" content="碌碌无为者">
+<meta property="og:description" content="首先庆祝自己上深蓝辣！深蓝好看啊……不要再变成浅蓝了ORZ A. Far Relative’s Birthday Cake给你一个矩阵，求每行没列上有几对C的和。暴力">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-04-09T05:58:01.731Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Codeforces_Round 343(Div.2)">
+<meta name="twitter:description" content="首先庆祝自己上深蓝辣！深蓝好看啊……不要再变成浅蓝了ORZ A. Far Relative’s Birthday Cake给你一个矩阵，求每行没列上有几对C的和。暴力">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2016/02/23/Codeforces_Round 343(Div.2)/">
+
+
+
+
+
+  <title>Codeforces_Round 343(Div.2) | 碌碌无为者</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9b0b4484e57d896e772945b550450cec";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">碌碌无为者</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2016/02/23/Codeforces_Round 343(Div.2)/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vigoss18">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xk57x.com1.z0.glb.clouddn.com/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="碌碌无为者">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Codeforces_Round 343(Div.2)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-23T11:51:52+08:00">
+                2016-02-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM-CF/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM-CF</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/02/23/Codeforces_Round 343(Div.2)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/23/Codeforces_Round 343(Div.2)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>首先庆祝自己上深蓝辣！深蓝好看啊……不要再变成浅蓝了ORZ</p>
+<h2 id="A-Far-Relative’s-Birthday-Cake"><a href="#A-Far-Relative’s-Birthday-Cake" class="headerlink" title="A. Far Relative’s Birthday Cake"></a>A. Far Relative’s Birthday Cake</h2><p>给你一个矩阵，求每行没列上有几对C的和。暴力</p>
+<a id="more"></a>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define sp system(&quot;pause&quot;)
+#define INF 1e9
+#define MAXN 100000
+#define PI acos(-1.0)
+#define eps 1e-10
+const ll MOD = 1e9 + 7;
+
+int main()
+{
+    int n;
+    cin &gt;&gt; n;
+    ll sum = 0;
+    string s[111];
+    for(int i = 0;i &lt; n;i++)
+        cin &gt;&gt; s[i];
+    for(int i = 0;i &lt; n;i++)
+    {
+        ll h = 0,hh = 0;
+        for(int j = 0;j &lt; n;j++){
+            if(s[i][j] == &apos;C&apos;)
+                h++;
+            if(s[j][i] == &apos;C&apos;)
+                hh++;
+        }
+        sum += hh * (hh - 1) + h * (h - 1);
+    }
+    cout &lt;&lt; sum / 2;
+}
+</code></pre><h2 id="B-Far-Relative’s-Problem"><a href="#B-Far-Relative’s-Problem" class="headerlink" title="B. Far Relative’s Problem"></a>B. Far Relative’s Problem</h2><p>求给出一些线段，求最多有多少线段覆盖某一区间。注意的是有两种线段，必须都覆盖才行。<br>因为数据范围只有300多，所以存的时候hash一下，然后直接暴力遍历一遍就行了。</p>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define sp system(&quot;pause&quot;)
+#define INF 1e9
+#define MAXN 100000
+#define PI acos(-1.0)
+#define eps 1e-10
+const ll MOD = 1e9 + 7;
+
+int main()
+{
+    int n;
+    cin &gt;&gt; n;
+    int m[444],maxn = 0;
+    mst(m,0);
+    for(int i = 0;i &lt; n;i++)
+    {
+        char ch;
+        int a,b;
+        cin &gt;&gt; ch &gt;&gt; a &gt;&gt; b;
+        if(ch == &apos;M&apos;)
+        {
+            for(int i = a;i &lt;= b;i++)
+                m[i] += 10000;
+        }
+        else
+        {
+            for(int i = a;i &lt;= b;i++)
+                m[i]++;
+        }
+    }
+    for(int i = 1;i &lt;= 366;i++)
+    {
+        maxn = max(maxn,min(m[i] % 10000,m[i] / 10000));
+    }
+    cout &lt;&lt; maxn * 2;
+}
+</code></pre><h2 id="C-Famil-Door-and-Brackets"><a href="#C-Famil-Door-and-Brackets" class="headerlink" title="C. Famil Door and Brackets"></a>C. Famil Door and Brackets</h2><p>给你一个长度为n的字符串（包含左右括号），让你补全到m的长度，补充方式是原字符串为s，补充为q+s+p。合法的字符串有需要满足两个条件：1、左括号的总数必须等于右括号的总数。2、对于任意字符串的任意前缀，左括号的数量都必须大于等于右括号的数量。<br>Q神说可以推公式，组合数搞一搞但是我并不能想出来然后就让别人教了我一个dp的做法。dp[i][j]表示长度为i的字符串左括号比右括号多j个，预处理之后再for一遍就行了注意的是为了满足条件2，需要从q的长度为max(-mx,0)开始，mx代表s字符串中至少需要的左括号数。同时还要注意p的长度也有一定的限制条件。</p>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define sp system(&quot;pause&quot;)
+#define INF 1e9
+#define MAXN 50005
+#define PI acos(-1.0)
+#define eps 1e-10
+const int MOD = 1e9 + 7;
+
+ll dp[2055][2055];//长度为i的串，(比)多j个的方案数
+
+int main()
+{
+    int n,m;
+    cin &gt;&gt; n &gt;&gt; m;
+    string s;
+    cin &gt;&gt; s;
+    int x = 0,mx = INF;
+    mst(dp,0);
+    for(int i = 0;i &lt; s.size();i++)
+    {
+        if(s[i] == &apos;(&apos;)
+            x++;
+        else
+            x--;
+        mx = min(x,mx);
+    }
+    dp[0][0] = 1;
+    for(int i = 1;i &lt; 2005;i++)
+    {
+        for(int j = 0;j &lt;= i;j++)
+        {
+            if(j)
+                dp[i][j] = (dp[i - 1][j + 1] + dp[i - 1][j - 1]) % MOD;
+            else
+                dp[i][j] = dp[i - 1][j + 1];
+        }
+    }
+    ll ans = 0;
+    for(int i = max(-mx,0);i &lt;= n - m;i++)
+    {
+        for(int j = max(-mx,0);j &lt;= i;j++)
+        {
+            if(j + x &gt; n - m - i)
+                break;
+            ans = (ans + dp[i][j] * dp[n - m - i][j + x]) % MOD;
+        }
+    }
+    cout &lt;&lt; ans &lt;&lt; endl;
+}
+</code></pre><h2 id="D-Babaei-and-Birthday-Cake"><a href="#D-Babaei-and-Birthday-Cake" class="headerlink" title="D. Babaei and Birthday Cake"></a>D. Babaei and Birthday Cake</h2><p>简单地来说就是求最大上升子序列和，线段树、树状数组都可以做，我看到一种用map的办法。和求LIS那个nlogn的办法差不多，每次二分到最佳的插入位置，同时把对于当前来说已经不是最优解的记录全部删除。</p>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define sp system(&quot;pause&quot;)
+#define INF 1e18
+#define MAXN 50005
+#define PI acos(-1.0)
+#define eps 1e-4
+
+int main()
+{
+    map&lt;ll,ll&gt;mp;
+    ll ans = 0;
+    int n;
+    cin &gt;&gt; n;
+    mp[0] = 0;
+    for(int i = 0;i &lt; n;i++)
+    {
+        ll a,b;
+        scanf(&quot;%lld%lld&quot;,&amp;a,&amp;b);
+        ll v = a * a * b;
+        auto it = mp.LB(v);
+        it--;
+        ll v2 = it -&gt; second + v;
+        mp[v] = v2;
+        ans = max(ans,v2);
+        it = mp.find(v);
+        it++;
+        while(it != mp.end())
+        {
+            if(it -&gt; second &lt;= v2)
+            {
+                auto it2 = it;
+                it++;
+                mp.erase(it2);
+            }
+            else
+                break;
+        }
+    }
+    printf(&quot;%.10f\n&quot;,ans * PI);
+}
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/19/厦门游/" rel="next" title="厦门游后记">
+                <i class="fa fa-chevron-left"></i> 厦门游后记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/26/Codeforces 633C(trie)/" rel="prev" title="Codeforces 663C(trie)">
+                Codeforces 663C(trie) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2016/02/23/Codeforces_Round 343(Div.2)/" data-title="Codeforces_Round 343(Div.2)" data-url="/2016/02/23/Codeforces_Round 343(Div.2)/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://7xk57x.com1.z0.glb.clouddn.com/头像.jpg" alt="vigoss18">
+            
+              <p class="site-author-name" itemprop="name">vigoss18</p>
+              <p class="site-description motion-element" itemprop="description">It was the best of times,it was the worst of times.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">92</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/vigoss18" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-globe"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/ma-wu-yuan" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Far-Relative’s-Birthday-Cake"><span class="nav-number">1.</span> <span class="nav-text">A. Far Relative’s Birthday Cake</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Far-Relative’s-Problem"><span class="nav-number">2.</span> <span class="nav-text">B. Far Relative’s Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Famil-Door-and-Brackets"><span class="nav-number">3.</span> <span class="nav-text">C. Famil Door and Brackets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Babaei-and-Birthday-Cake"><span class="nav-number">4.</span> <span class="nav-text">D. Babaei and Birthday Cake</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vigoss18</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"vigoss18"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这是昨天做的一套比赛，2014年的一场北美地区赛，就不把题目挂上来了，直接放题意和代码吧。题目网址在此 ##A·Height Ordering一眼题，求一串数列冒泡排序时进行操作的次数。比赛的时候是队友做出来的，只要懂如何写冒泡排序即可，复杂度为O(N^2)。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Regional 2014 Gearter NY">
+<meta property="og:url" content="/2015/08/19/Regional 2014 Gearter NY/index.html">
+<meta property="og:site_name" content="碌碌无为者">
+<meta property="og:description" content="这是昨天做的一套比赛，2014年的一场北美地区赛，就不把题目挂上来了，直接放题意和代码吧。题目网址在此 ##A·Height Ordering一眼题，求一串数列冒泡排序时进行操作的次数。比赛的时候是队友做出来的，只要懂如何写冒泡排序即可，复杂度为O(N^2)。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-04-09T05:58:50.296Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Regional 2014 Gearter NY">
+<meta name="twitter:description" content="这是昨天做的一套比赛，2014年的一场北美地区赛，就不把题目挂上来了，直接放题意和代码吧。题目网址在此 ##A·Height Ordering一眼题，求一串数列冒泡排序时进行操作的次数。比赛的时候是队友做出来的，只要懂如何写冒泡排序即可，复杂度为O(N^2)。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2015/08/19/Regional 2014 Gearter NY/">
+
+
+
+
+
+  <title>Regional 2014 Gearter NY | 碌碌无为者</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9b0b4484e57d896e772945b550450cec";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">碌碌无为者</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2015/08/19/Regional 2014 Gearter NY/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vigoss18">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xk57x.com1.z0.glb.clouddn.com/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="碌碌无为者">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Regional 2014 Gearter NY</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-19T00:00:00+08:00">
+                2015-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM-模拟赛/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM-模拟赛</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/08/19/Regional 2014 Gearter NY/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/19/Regional 2014 Gearter NY/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这是昨天做的一套比赛，2014年的一场北美地区赛，就不把题目挂上来了，直接放题意和代码吧。<br><a target="_blank" href="https://icpcarchive.ecs.baylor.edu/index.php?option=com_onlinejudge&Itemid=8&category=660">题目网址在此</a></p>
+<p>##A·Height Ordering<br>一眼题，求一串数列冒泡排序时进行操作的次数。比赛的时候是队友做出来的，只要懂如何写冒泡排序即可，复杂度为O(N^2)。</p>
+<a id="more"></a>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+
+int main(){
+    int t;
+    cin &gt;&gt; t;
+    while(t--)
+    {
+        int cnt,a[20],sum = 0;
+        cin &gt;&gt; cnt;
+        for(int i = 0;i &lt; 20;i++)
+            cin &gt;&gt; a[i];
+        for(int i = 0;i &lt; 20;i++)
+        {
+            for(int j = i;j &lt; 20;j++)
+            {
+                if(a[i] &gt; a[j])
+                {
+                    sum++;
+                    swap(a[i],a[j]);
+                }
+            }
+        }
+        cout &lt;&lt; cnt &lt;&lt; &quot; &quot; &lt;&lt; sum &lt;&lt; endl;
+    }
+    return 0;
+}
+</code></pre><p>##B·Islands in the Data Stream<br>一眼题，当时这道题目是我做的，队友表示看不懂这道题目的意思，我根据他的样例脑补了一下规律。就是每次删除一串数列中最小的一个数，求剩余的子串数，需要注意的是可能会有重复计算，如 0,1,0,0,2,0，如果不排除重复计算的结果，答案则为3，所以这里用set进行处理，最后输出set的size即可。</p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;set&gt;
+#include&lt;map&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+
+int main(){
+    int t;
+    cin &gt;&gt; t;
+    while(t--)
+    {
+        int cnt,a[12];
+        set&lt;int&gt;st;
+        set&lt;pair&lt;int,int&gt; &gt; mp;
+        cin &gt;&gt; cnt;
+        for(int i = 0;i &lt; 12;i++)
+        {
+            cin &gt;&gt; a[i];
+            st.insert(a[i]);
+        }
+        set&lt;int&gt;::iterator it = st.begin();
+        int siz = st.size();
+        while(siz--)
+        {
+            for(int i = 0;i &lt; 12;i++)
+            {
+                if(a[i] == *it)
+                    a[i] = -1;
+            }
+            int ok = 0,flag = 0;
+            for(int i = 0;i &lt; 12;i++)
+            {
+                if(ok)
+                {
+                    if(a[i] != -1)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        ok = 0;
+                        mp.insert(make_pair(flag,i - 1));
+                    }
+                }
+                else
+                {
+                    if(a[i] != -1)
+                    {
+                        ok = 1;
+                        flag = i;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
+            it++;
+        }
+        cout &lt;&lt; cnt &lt;&lt; &quot; &quot; &lt;&lt; mp.size() &lt;&lt; endl;
+    }
+    return 0;
+}
+</code></pre><p>##C·Floating-Point Format Conversion<br>听浙大的大神们说是什么一道浮点精度的模拟题（？）有很多判断的条件，ORZZ暂时没看懂，留坑待填</p>
+<p>##D·Happy Happy Prime Prime<br>一眼题，给出一个数先判断这个数是不是素数，如果是素数，判断其经过一定的运算之后能否成为1，运算为对数上每一位的数进行平方求和，注意加上vis判断，防止死循环。</p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+
+bool isprime(int x)
+{
+    if(x == 1 || x == 2)
+        return false;
+    for(int i = 2;i * i &lt;= x;i++)
+    {
+        if(x % i == 0)
+            return false;
+    }
+    return true;
+}
+int main(){
+    int t;
+    cin &gt;&gt; t;
+    while(t--)
+    {
+        int cnt,n,vis[1 &lt;&lt; 16];
+        cin &gt;&gt; cnt &gt;&gt; n;
+        cout &lt;&lt; cnt &lt;&lt; &quot; &quot; &lt;&lt; n;
+        if(!isprime(n))
+        {
+            cout &lt;&lt; &quot; NO\n&quot;;
+        }
+        else
+        {
+            memset(vis,0,sizeof(vis));
+            while(!vis[n] &amp;&amp; n != 1)
+            {
+                int te = 0;
+                vis[n] = 1;
+                while(n)
+                {
+                    te += (n % 10) * (n % 10);
+                    n /= 10;
+                }
+                n = te;
+            }
+            if(n == 1)
+                cout &lt;&lt; &quot; YES\n&quot;;
+            else
+                cout &lt;&lt; &quot; NO\n&quot;;
+        }
+    }
+    return 0;
+}
+</code></pre><p>##E·Mancala<br>规律题，ORZ比赛的时候明明非常接近规律了可就是死活没推出来啊，赛后一经点拨就恍然大悟<br>QAQ买不起专业版的MDPAD2，就不发图了，大意就是给出几个筒子，让你放几个小点进去，每次的操作是找到一个筒子满足b[n]=n，就将其中的小点全部分配给前面的筒子，直到最后所有的小点都在第一个筒子里面。规律就是每次都会把一个筒清空，那么就用递推就行了，从前一个的情况往后一个情况推，每次多出一个满的筒子，最后保存答案，离线回答一下就行了。</p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;vector&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+
+int main(){
+    int mark[2000][80],siz[2000];
+    siz[0] = 1,mark[0][0] = 1;
+    for(int i = 1;i &lt; 2000;i++)
+    {
+        for(int j = 0;j &lt; siz[i - 1];j++)
+        {
+            mark[i][j] = mark[i - 1][j];
+        }
+        siz[i] = siz[i - 1];
+        int ok = 0,pos;
+        for(int j = 0;j &lt; siz[i];j++)
+        {
+            if(mark[i][j] == 0)
+            {
+                ok = 1;
+                pos = j;
+                break;
+            }
+        }
+        if(ok)
+        {
+            for(int j = 0;j &lt; pos;j++)
+            {
+                mark[i][j]--;
+            }
+            mark[i][pos] = pos + 1;
+        }
+        else
+        {   
+            for(int j = 0;j &lt; siz[i];j++)
+            {
+                mark[i][j]--;
+            }
+            siz[i]++;
+            mark[i][siz[i] - 1] = siz[i];
+        }
+    }
+    int t;
+    cin &gt;&gt; t;
+    while(t--)
+    {
+        int cnt,n;
+        cin &gt;&gt; cnt &gt;&gt; n;
+        cout &lt;&lt; cnt &lt;&lt; &quot; &quot; &lt;&lt; siz[n - 1] &lt;&lt; endl;
+        for(int i = 0;i &lt; siz[n - 1];i++)
+        {
+            if(i % 10 == 0)
+                cout &lt;&lt; mark[n - 1][i];
+            else
+                cout &lt;&lt; &quot; &quot; &lt;&lt; mark[n - 1][i];
+            if((i + 1) % 10 == 0 || i == siz[n - 1] - 1)
+                cout &lt;&lt; endl;
+        }
+    }
+    return 0;
+}
+</code></pre><p>##F·A Rational Sequence<br>队友做出来的，题意就是构造一棵树，满足三个条件：<br><br><strong>The label of the root is 1/1<br><br>The left child of label p/q is p/(p + q)<br><br>The right child of label p/q is (p + q)/q<br></strong><br>给你一个节点，让你求下一个节点是多少。<br>当时是队友做出来的，暂不明，待填</p>
+<p>##G·Growing Rectangular Spiral<br>这道题是我做的，题意是一个点由原点出发，依照右上左下的次序运动，每次运动出来的直线至少比前一条长1，现在给你一个坐标，让你判断这个点能否到达这个坐标，输出使到达这个坐标最短的路径的方法。当时我做出了一个假设，如果能到达的话，最多只需要6次，然后要先判断这个坐标的横坐标是不是小于纵坐标，如果成立就做两次，否则判断能不能做6次到，六条线的长度分别为1,2,3,x+5-y,x+2,x+3。代码就不放了，最简单的if判断而已</p>
+<p>##F·Farey Sums<br>找规律题，给你一个n，找出所有的a/b满足(0 &lt; a &lt;= b)且a与b互质，将其升序排序，然后求b[i]的分母/b[i+1]的分母的和，规律是每加入一对互质的数，就会让最终答案+3，搞一搞就出来了。然而我并没有在比赛的时候发现这个规律……果然含是我的脑洞不够大的缘故吗。8-20ps：代码是写出来的结果交上去T了，然后我又离线搞了一下，才1w的数组竟然不让提交我也醉了，估计把代码扔着吧。</p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+
+int gcd(int x,int y)
+{
+    return (y == 0 ? x : gcd(y,x % y));
+}
+
+int main(){
+    //freopen(&quot;h.in&quot;,&quot;r&quot;,stdin);
+    //freopen(&quot;h.txt&quot;,&quot;w&quot;,stdout);
+    int mark[10005];
+    mark[2] = 4;
+    for(int i = 3;i &lt;= 10000;i++)
+    {
+        mark[i] = mark[i - 1];
+        for(int j = 1;j &lt; i;j++)
+        {
+            if(gcd(i,j) == 1)
+                mark[i] += 3;
+        }
+    }
+    int t;
+    cin &gt;&gt; t;
+    while(t--)
+    {
+        int cnt,n;
+        cin &gt;&gt; cnt &gt;&gt; n;
+        cout &lt;&lt; cnt &lt;&lt; &quot; &quot; &lt;&lt; mark[n] + 1 &lt;&lt; &quot;/2\n&quot;;
+    }
+    return 0;
+}
+</code></pre><p>##I·The Queen’s Super-circular Patio<br>迷之数学，并不能懂……</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/19/这些日子的总结/" rel="next" title="近况">
+                <i class="fa fa-chevron-left"></i> 近况
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/21/Regional 2014 Rocky Mountain/" rel="prev" title="Regional 2014 Gearter NY">
+                Regional 2014 Gearter NY <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2015/08/19/Regional 2014 Gearter NY/" data-title="Regional 2014 Gearter NY" data-url="/2015/08/19/Regional 2014 Gearter NY/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://7xk57x.com1.z0.glb.clouddn.com/头像.jpg" alt="vigoss18">
+            
+              <p class="site-author-name" itemprop="name">vigoss18</p>
+              <p class="site-description motion-element" itemprop="description">It was the best of times,it was the worst of times.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">92</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/vigoss18" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-globe"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/ma-wu-yuan" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vigoss18</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"vigoss18"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

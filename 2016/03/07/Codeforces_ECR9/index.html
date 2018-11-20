@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="少摸鱼多学习…… A. Grandma Laura and Apples初始有p个苹果，每次卖一半，如果苹果剩余个数是奇数，就把多出来的那个以一半的价钱顺便卖掉。现在给你每次卖的情况（单双），让你求出总共赚了多少钱。水题……竟然因为longlong，wa了一次……">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces_ECR7">
+<meta property="og:url" content="/2016/03/07/Codeforces_ECR9/index.html">
+<meta property="og:site_name" content="碌碌无为者">
+<meta property="og:description" content="少摸鱼多学习…… A. Grandma Laura and Apples初始有p个苹果，每次卖一半，如果苹果剩余个数是奇数，就把多出来的那个以一半的价钱顺便卖掉。现在给你每次卖的情况（单双），让你求出总共赚了多少钱。水题……竟然因为longlong，wa了一次……">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-04-09T05:57:12.556Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Codeforces_ECR7">
+<meta name="twitter:description" content="少摸鱼多学习…… A. Grandma Laura and Apples初始有p个苹果，每次卖一半，如果苹果剩余个数是奇数，就把多出来的那个以一半的价钱顺便卖掉。现在给你每次卖的情况（单双），让你求出总共赚了多少钱。水题……竟然因为longlong，wa了一次……">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="/2016/03/07/Codeforces_ECR9/">
+
+
+
+
+
+  <title>Codeforces_ECR7 | 碌碌无为者</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9b0b4484e57d896e772945b550450cec";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">碌碌无为者</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2016/03/07/Codeforces_ECR9/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vigoss18">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://7xk57x.com1.z0.glb.clouddn.com/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="碌碌无为者">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Codeforces_ECR7</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-07T12:32:11+08:00">
+                2016-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/07/Codeforces_ECR9/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/07/Codeforces_ECR9/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>少摸鱼多学习……</p>
+<h2 id="A-Grandma-Laura-and-Apples"><a href="#A-Grandma-Laura-and-Apples" class="headerlink" title="A. Grandma Laura and Apples"></a>A. Grandma Laura and Apples</h2><p>初始有p个苹果，每次卖一半，如果苹果剩余个数是奇数，就把多出来的那个以一半的价钱顺便卖掉。现在给你每次卖的情况（单双），让你求出总共赚了多少钱。<br>水题……竟然因为longlong，wa了一次……</p>
+<a id="more"></a>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define iin(x) scanf(&quot;%d&quot;,&amp;x)
+#define sp system(&quot;pause&quot;)
+#define INF 1e9
+#define MAXN 200005
+#define PI acos(-1.0)
+#define eps 1e-10
+const ll MOD = 1e9 + 7;
+
+int main()   
+{   
+    int n,m;
+    cin &gt;&gt; n &gt;&gt; m;
+    ll sum = 0,ss = 0;
+    string s[111];
+    for(int i = 0;i &lt; n;i++)
+    {
+        cin &gt;&gt; s[i];
+
+    }
+    for(int i = n - 1;i &gt;= 0;i--)
+    {
+        if(s[i] == &quot;half&quot;)
+            sum *= 2;
+        else
+            sum = sum * 2 + 1,ss++;
+    }
+    cout &lt;&lt; sum * m - m / 2 * ss &lt;&lt; endl;
+}
+</code></pre><h2 id="B-Alice-Bob-Two-Teams"><a href="#B-Alice-Bob-Two-Teams" class="headerlink" title="B. Alice, Bob, Two Teams"></a>B. Alice, Bob, Two Teams</h2><p>给你一个AB串，并且给出每个位置的val，你可以进行一次前缀或者后缀串的翻转，要求操作后可能得到的最大价值（B价值和）。<br>先求个前缀和，然后枚举翻转位置就行了……</p>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define iin(x) scanf(&quot;%d&quot;,&amp;x)
+#define sp system(&quot;pause&quot;)
+#define INF 1e9
+#define MAXN 500005
+#define PI acos(-1.0)
+#define eps 1e-10
+const ll MOD = 1e9 + 7;
+
+char s[MAXN];
+int a[MAXN];
+ll s1[MAXN],s2[MAXN];
+
+int main()   
+{   
+    int n;
+    cin &gt;&gt; n;
+    for(int i = 0;i &lt; n;i++)
+        iin(a[i]);
+    scanf(&quot;%s&quot;,s);
+    ll maxn = 0;mst(s1,0);mst(s2,0);
+    if(s[0] == &apos;A&apos;)
+        s2[0] = a[0];
+    else
+        s1[0] = a[0];
+    for(int i = 1;i &lt; n;i++)
+    {
+        if(s[i] == &apos;A&apos;)
+            s2[i] = s2[i - 1] + a[i],s1[i] = s1[i - 1];
+        else
+            s1[i] = s1[i - 1] + a[i],s2[i] = s2[i - 1];
+    }
+    maxn = max(s1[n - 1],s2[n - 1]);
+    for(int i = 0;i &lt; n - 1;i++)
+    {
+        maxn = max(maxn,max(s1[i] + s2[n - 1] - s2[i],s2[i] + s1[n - 1] - s1[i]));
+       // cout &lt;&lt; maxn &lt;&lt; endl;
+    }
+    cout &lt;&lt; maxn &lt;&lt; endl;
+}
+</code></pre><h2 id="C-The-Smallest-String-Concatenation"><a href="#C-The-Smallest-String-Concatenation" class="headerlink" title="C. The Smallest String Concatenation"></a>C. The Smallest String Concatenation</h2><p>给你n个字符串，让你把它们合成一个字符串，并且使其字典序最小。<br>写个cmp函数……</p>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define iin(x) scanf(&quot;%d&quot;,&amp;x)
+#define sp system(&quot;pause&quot;)
+#define INF 1e9
+#define MAXN 500005
+#define PI acos(-1.0)
+#define eps 1e-10
+const ll MOD = 1e9 + 7;
+
+bool cmp(string s1,string s2)
+{
+    return s1 + s2 &lt; s2 + s1;
+}
+
+int main()   
+{   
+    int n;
+    iin(n);
+    string ss[MAXN];
+    char s[111];
+    for(int i = 0;i &lt; n;i++)
+    {
+        scanf(&quot;%s&quot;,s);
+        ss[i] = (string)s;
+    }   
+    sort(ss,ss + n,cmp);
+    for(int i = 0;i &lt; n;i++)
+    {
+        printf(&quot;%s&quot;,ss[i].c_str());
+    }
+}
+</code></pre><h2 id="D-Longest-Subsequence"><a href="#D-Longest-Subsequence" class="headerlink" title="D. Longest Subsequence"></a>D. Longest Subsequence</h2><p>给你一个数列，让你在[1,m]的范围内找出一个数p，使得数列中尽可能多的数的最小公倍数是p。<br>数据范围是1e6，所以不能太暴力……用类似素数筛的办法来解决。先过滤掉所有大于m的数，然后遍历一遍剩下的数，对于每一个数，用yin[n]来存储有多少个数是n的因子，枚举到n*k &gt; m为止。最后从1枚举到m取个最大值就好了……</p>
+<pre><code>#include &lt;bits/stdc++.h&gt; 
+using namespace std;
+typedef long long ll;
+#define PB push_back
+#define UB upper_bound
+#define LB lower_bound
+#define MP make_pair
+#define pii pair&lt;int,int&gt;
+#define vi vector&lt;int&gt;
+#define vii vector&lt;vi&gt;
+#define mst(x,y) memset(x,y,sizeof(x))
+#define fr(x) freopen(x,&quot;r&quot;,stdin)
+#define fw(x) freopen(x,&quot;w&quot;,stdout)
+#define iin(x) scanf(&quot;%d&quot;,&amp;x)
+#define sp system(&quot;pause&quot;)
+#define INF 1e9
+#define MAXN 500005
+#define PI acos(-1.0)
+#define eps 1e-10
+const ll MOD = 1e9 + 7;
+
+int n,m,a[1000005],b[1000005],yin[1000005];
+
+int main()   
+{   
+    cin &gt;&gt; n &gt;&gt; m;
+    for(int i = 0;i &lt; n;i++)
+    {
+        iin(a[i]);
+        if(a[i] &lt;= m)
+        b[a[i]]++;
+    }
+    for(int i = 1;i &lt;= m;i++)
+    {
+        if(b[i])
+        {
+            for(int j = i;j &lt;= m;j += i)
+            {
+                yin[j] += b[i];
+            }
+        }  
+    }
+    int minn = 0,sv = 1;
+    for(int i = 1;i &lt;= m;i++)
+    {
+        if(yin[i] &gt; minn)
+        {
+            minn = yin[i];
+            sv = i;
+        }
+    }
+    cout &lt;&lt; sv &lt;&lt; &quot; &quot; &lt;&lt; minn &lt;&lt; endl;
+    int ok = 0;
+    for(int i = 0;i &lt; n;i++)
+    {
+        if(sv % a[i] == 0)
+        {
+            if(ok)
+                cout &lt;&lt; &quot; &quot; &lt;&lt; i + 1;
+            else
+                cout &lt;&lt; i + 1,ok = 1;
+        }
+    }
+}
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/02/ZOJ3602（树的同构）/" rel="next" title="ZOJ3602（树的同构）">
+                <i class="fa fa-chevron-left"></i> ZOJ3602（树的同构）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/07/近况/" rel="prev" title="近况">
+                近况 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2016/03/07/Codeforces_ECR9/" data-title="Codeforces_ECR7" data-url="/2016/03/07/Codeforces_ECR9/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://7xk57x.com1.z0.glb.clouddn.com/头像.jpg" alt="vigoss18">
+            
+              <p class="site-author-name" itemprop="name">vigoss18</p>
+              <p class="site-description motion-element" itemprop="description">It was the best of times,it was the worst of times.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">92</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/vigoss18" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-globe"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/ma-wu-yuan" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Grandma-Laura-and-Apples"><span class="nav-number">1.</span> <span class="nav-text">A. Grandma Laura and Apples</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Alice-Bob-Two-Teams"><span class="nav-number">2.</span> <span class="nav-text">B. Alice, Bob, Two Teams</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-The-Smallest-String-Concatenation"><span class="nav-number">3.</span> <span class="nav-text">C. The Smallest String Concatenation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Longest-Subsequence"><span class="nav-number">4.</span> <span class="nav-text">D. Longest Subsequence</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vigoss18</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"vigoss18"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
