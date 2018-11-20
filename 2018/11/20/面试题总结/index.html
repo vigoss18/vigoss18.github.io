@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="碌碌无为者">
 <meta property="og:description" content="虽然自己的第一次面试还是蛮顺利的，但是谁知道以后还会不会要面试呢，还是把自己总结起来的面试题目记录一下吧。 更新于2018年11月 C/C++extern C的作用：由于C++支持函数重载，但是C并不支持，所有用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。 const的作用：1、用于定义const常量。2、用于修饰函数的参数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-20T12:10:07.133Z">
+<meta property="og:updated_time" content="2018-11-20T13:32:25.110Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试题总结">
 <meta name="twitter:description" content="虽然自己的第一次面试还是蛮顺利的，但是谁知道以后还会不会要面试呢，还是把自己总结起来的面试题目记录一下吧。 更新于2018年11月 C/C++extern C的作用：由于C++支持函数重载，但是C并不支持，所有用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。 const的作用：1、用于定义const常量。2、用于修饰函数的参数">
@@ -368,11 +368,11 @@
 <p>const和define的区别：<br>1、const有数据类型，而define没有。<br>2、const能由编译器进行安全检查，但是define只是单纯的字符串替换，没有安全性。<br>3、集成化的调试工具能对const常量进行调试，但是不能对宏常量进行调试。</p>
 <p>在const成员函数中，用mutable修饰成员变量名之后就可以修改类的成员变量了。</p>
 <p>sizeof是一个运算符，sizeof()，括号内的内容是被替代类型，如：<br>int a = 8;sizeof(a)，这个a会被替代成int。用来计算一个类型的字节大小。<br>如果sizeof里面是指针，返回的永远是4。</p>
+<a id="more"></a>
 <p>内联函数和宏的差别：<br>1、内联函数在编译的时候可以直接被镶嵌到目标代码里去，宏只是简单的替换。<br>2、内联函数要做参数安全检查，宏不能。<br>3、内联函数是以增加空间消耗为代价的。</p>
 <p>内联函数的适用：<br>1、一个函数不断被重复调用。<br>2、函数简短，且不包含for、while、switch等语句。</p>
 <p>指针和引用的区别：<br>1、非空区别。任何情况下引用都不可能指向空值。<br>2、合法性区别。由于指针可能为空值，所以需要被测试，而引用则不需要测试合法性。<br>3、可修改区别。指针可以被赋值指向不同的对象，但是引用则只能指向在初始化时被指定的对象，但是对象的内容是可以改变的。<br>4、应用区别。综合上面三点区别，指针通常在考虑到可能会不指向任何对象的可能，或者可能会指向不同对象的可能时使用，其他时刻应该使用引用。</p>
 <p>引用传递，修改的结果直接影响实参。</p>
-<a id="more"></a>
 <p>指针具体部分先跳过，如果想搞嵌入式再具体看一下。</p>
 <p>struct和类的区别是struct里面默认的访问控制是public，class里是private。</p>
 <p>覆盖和重载：<br>覆盖是子类重新定义父类虚函数的做法，重载是允许存在多个重名函数，但这些函数的参数表不同。</p>
@@ -386,6 +386,13 @@
 <p>socket：<br>为什么服务器端在listen之前要调用bind函数？<br>通常服务器在启动的时候会绑定一个众所周知的地址，用于提供服务，这样客户端才能方便的通过它来连接服务器，而客户端只要由系统自动分配一个端口号和自身的ip地址结合就好了。</p>
 <p>阻塞式和非阻塞式（主要针对服务端）：<br>阻塞调用是指在结果返回之前，当前线程会被挂起（这个状态下CPU不会给该线程分配时间片）。函数只有在得到结果之后才会返回。<br>非阻塞式指在不能立刻得到结果的时候，该函数不会阻塞该线程，而会立即返回，并不断去查询是否已经得到返回结果。</p>
 <p>同步与异步（主要针对客户端）：<br>同步是指在发出一个功能调用之后，没有得到结果之前，该调用是不会返回的。也就是事情必须一件一件做。<br>异步与之相对，在调用部分完成之后，通过状态、通知和回调来通知调用者。</p>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p>Redis是一种key-value数据库，里面支持string，list，set，hash等数据结构。redis具有持久化的特性，虽然他的所有数据都是保存在内存中的，但是还是会把数据（改动）同步到硬盘中去</p>
+<p>Redis的优势：<br>1、性能极高，io速度快<br>2、数据类型丰富<br>3、原子性的操作，对于单次操作要么成功要么失败完全不执行<br>Redis的缺点：<br>1、由于物理内存的限制，不能处理海量数据，只能适用于数据不是很多的情况<br>2、集群中扩容困难，需要运维提前设置好足够多的内存，否则扩容起来相当麻烦</p>
+<p>RDB持久化：也称半持久化，在指定的时间间隔内，会把内存中的数据集写入到磁盘中，实际的操作是fork一个子进程，将数据集中写到临时文件中，写入成功后再替换之前的文件。<br>优点：由于是直接存储数据，所以灾后数据恢复会比较快；由于只是fork了一个子进程，所以性能较高<br>缺点：由于是间隔性的存储数据，不能保证数据的高可用性；当数据集过大时，可能会引起服务器短暂停止服务（几百毫秒级别）</p>
+<p>AOF持久化：也称全持久化，会以日志方式记录数据库的每一个增删操作。<br>优点：更高的数据安全性；当日志过大时，会将修改数据写入磁盘文件中，同时创建一个新的文件来记录此期间数据库的修改<br>缺点：由于是存储了对数据库的操作，所以恢复大数据时比较慢；运行效率上略低于半持久化</p>
+<p>目前知道的redis适用场景<br>1、广播订阅：redis内部分好几个频道，用户可以订阅订阅了频道X，那么当有消息发送到频道X的时候，所有订阅了频道X的用户都会收到该消息<br>2、单纯提高性能用：朋友的公司就是单纯把redis当做数据库的缓存，用来缓解读写压力</p>
+<p>额外扩展————如何处理秒杀功能等高并发情况<br>1、使用redis进行抢占式数据处理<br>2、分布式处理，将redis配置到集群中<br>3、做成异步，收到消息后立刻返回，之后再进行数据处理</p>
+<h2 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h2><p>先</p>
 
       
     </div>
@@ -410,8 +417,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/11/ACsuperman（自动AC）/" rel="next" title="ACsuperman（自动AC）">
-                <i class="fa fa-chevron-left"></i> ACsuperman（自动AC）
+              <a href="/2018/11/03/博客迁移（物理上）/" rel="next" title="重新开始更新博客了">
+                <i class="fa fa-chevron-left"></i> 重新开始更新博客了
               </a>
             
           </div>
@@ -517,7 +524,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -577,7 +584,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-C"><span class="nav-number">1.</span> <span class="nav-text">C/C++</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机网络"><span class="nav-number">2.</span> <span class="nav-text">计算机网络</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-C"><span class="nav-number">1.</span> <span class="nav-text">C/C++</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机网络"><span class="nav-number">2.</span> <span class="nav-text">计算机网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis"><span class="nav-number">3.</span> <span class="nav-text">Redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django"><span class="nav-number">4.</span> <span class="nav-text">Django</span></a></li></ol></div>
             
 
           </div>
