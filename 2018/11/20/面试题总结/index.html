@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="虽然自己的第一次面试还是蛮顺利的，但是谁知道以后还会不会要面试呢，还是把自己总结起来的面试题目记录一下吧。 更新于2018年11月 C/C++extern C的作用：由于C++支持函数重载，但是C并不支持，所有用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。 const的作用：1、用于定义const常量。2、用于修饰函数的参数">
+<meta name="description" content="虽然自己的第一次面试还是蛮顺利的，但是谁知道以后还会不会要面试呢，还是把自己总结起来的面试题目记录一下吧。 C/C++extern C的作用：由于C++支持函数重载，但是C并不支持，所有用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。 const的作用：1、用于定义const常量。2、用于修饰函数的参数和返回值等，被修饰的东西">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试题总结">
 <meta property="og:url" content="/2018/11/20/面试题总结/index.html">
 <meta property="og:site_name" content="碌碌无为者">
-<meta property="og:description" content="虽然自己的第一次面试还是蛮顺利的，但是谁知道以后还会不会要面试呢，还是把自己总结起来的面试题目记录一下吧。 更新于2018年11月 C/C++extern C的作用：由于C++支持函数重载，但是C并不支持，所有用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。 const的作用：1、用于定义const常量。2、用于修饰函数的参数">
+<meta property="og:description" content="虽然自己的第一次面试还是蛮顺利的，但是谁知道以后还会不会要面试呢，还是把自己总结起来的面试题目记录一下吧。 C/C++extern C的作用：由于C++支持函数重载，但是C并不支持，所有用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。 const的作用：1、用于定义const常量。2、用于修饰函数的参数和返回值等，被修饰的东西">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-20T13:32:25.110Z">
+<meta property="og:updated_time" content="2018-11-21T13:53:02.779Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试题总结">
-<meta name="twitter:description" content="虽然自己的第一次面试还是蛮顺利的，但是谁知道以后还会不会要面试呢，还是把自己总结起来的面试题目记录一下吧。 更新于2018年11月 C/C++extern C的作用：由于C++支持函数重载，但是C并不支持，所有用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。 const的作用：1、用于定义const常量。2、用于修饰函数的参数">
+<meta name="twitter:description" content="虽然自己的第一次面试还是蛮顺利的，但是谁知道以后还会不会要面试呢，还是把自己总结起来的面试题目记录一下吧。 C/C++extern C的作用：由于C++支持函数重载，但是C并不支持，所有用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。 const的作用：1、用于定义const常量。2、用于修饰函数的参数和返回值等，被修饰的东西">
 
 
 
@@ -362,7 +362,6 @@
 
       
         <p>虽然自己的第一次面试还是蛮顺利的，但是谁知道以后还会不会要面试呢，还是把自己总结起来的面试题目记录一下吧。</p>
-<p>更新于2018年11月</p>
 <h2 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h2><p>extern C的作用：<br>由于C++支持函数重载，但是C并不支持，所有用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。</p>
 <p>const的作用：<br>1、用于定义const常量。<br>2、用于修饰函数的参数和返回值等，被修饰的东西都受到了强制保护，能预防意外的发生，提高程序的健壮性。<br>3、const常量赋值时必须被初始化。</p>
 <p>const和define的区别：<br>1、const有数据类型，而define没有。<br>2、const能由编译器进行安全检查，但是define只是单纯的字符串替换，没有安全性。<br>3、集成化的调试工具能对const常量进行调试，但是不能对宏常量进行调试。</p>
@@ -379,10 +378,12 @@
 <p>派生类的三种继承方式：<br>1、公有继承方式：公有继承时，派生类的对象可以访问基类中的公有成员，派生类的的成员函数可以访问基类中的公有成员和保护成员。<br>2、私有继承方式：私有继承时，基类的成员只能由直接派生类访问，无法再往下继承。<br>3、保护继承方式：与私有继承方式相似。</p>
 <p>虚函数的作用：<br>实现多态性(将接口和实现分离)，当基类的一个函数成为虚函数的时候，所有派生类里面的此函数也会成为虚函数。</p>
 <p>private修饰符表示只能由同类里面的成员访问，protected修饰符表示继承时子类可以对基类拥有完全访问权。</p>
+<p>内存分配方式：<br>1、栈区：由编译器自动分配释放<br>2、堆区：由程序员自己控制分配释放，如果不管他，结束的时候可能会由系统自动回收<br>3、全局区（静态区）：全局变量和静态变量的存储是放在一起的，在程序结束之后由系统释放<br>4、文字常量区<br>5、程序代码区：存放函数体二进制代码的地方</p>
 <h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><p>TCP/IP的三次握手四次释放：<br>1、主机A向主机B发送连接请求数据包<br>2、主机B向主机A发送同意连接和要求同步的数据包（有两个）<br>3、主机A向主机B发送确认要求同步的数据包</p>
 <p>之所以释放多了一次，因为当主机B收到主机A的要求断开连接的数据包的时候，可能还在继续向主机A发送数据，所以会先发送确认收到要求的数据包，等数据全部传输完成之后再发送要求断开连接的数据包。</p>
 <p>UDP是与TCP相对应的协议，是面向非连接的协议，不与对方建立连接，而是直接把数据包发送过去。这样看来UDP的通信效率高，但是TCP的可靠性比较高。UDP适用于一次只传送少量数据。</p>
 <p>HTTP的工作过程：<br>1、地址解析<br>如果浏览器请求<a href="http://localhost.com:8080/index.html" target="_blank" rel="noopener">http://localhost.com:8080/index.html</a><br>从中分析出协议名、主机名、端口、对象路径等部分，上面那个地址的解析结果为：<br>协议名：http<br>主机名：localhost.com<br>端口：8080<br>对象路径：index.html<br>在这一步，需要域名系统DNS解析域名，来得到主机的IP地址。<br>2、封装HTTP请求数据包<br>把以上部分结合自己本机的信息，封装成一个HTTP请求数据包<br>3、封装成TCP包，建立TCP连接（此时考三次握手）<br>4、客户机发送请求命令<br>5、服务器响应<br>6、服务器关闭TCP连接</p>
+<p>get和Post的区别：<br>get的请求是在url中传参的，有长度限制，由于参数暴露，所以相比较于post更不安全<br>post的请求是存在request的body里的，没有长度限制<br>一般get用于查询之类的操作，post则更适用于提交表单</p>
 <p>socket：<br>为什么服务器端在listen之前要调用bind函数？<br>通常服务器在启动的时候会绑定一个众所周知的地址，用于提供服务，这样客户端才能方便的通过它来连接服务器，而客户端只要由系统自动分配一个端口号和自身的ip地址结合就好了。</p>
 <p>阻塞式和非阻塞式（主要针对服务端）：<br>阻塞调用是指在结果返回之前，当前线程会被挂起（这个状态下CPU不会给该线程分配时间片）。函数只有在得到结果之后才会返回。<br>非阻塞式指在不能立刻得到结果的时候，该函数不会阻塞该线程，而会立即返回，并不断去查询是否已经得到返回结果。</p>
 <p>同步与异步（主要针对客户端）：<br>同步是指在发出一个功能调用之后，没有得到结果之前，该调用是不会返回的。也就是事情必须一件一件做。<br>异步与之相对，在调用部分完成之后，通过状态、通知和回调来通知调用者。</p>
@@ -392,7 +393,10 @@
 <p>AOF持久化：也称全持久化，会以日志方式记录数据库的每一个增删操作。<br>优点：更高的数据安全性；当日志过大时，会将修改数据写入磁盘文件中，同时创建一个新的文件来记录此期间数据库的修改<br>缺点：由于是存储了对数据库的操作，所以恢复大数据时比较慢；运行效率上略低于半持久化</p>
 <p>目前知道的redis适用场景<br>1、广播订阅：redis内部分好几个频道，用户可以订阅订阅了频道X，那么当有消息发送到频道X的时候，所有订阅了频道X的用户都会收到该消息<br>2、单纯提高性能用：朋友的公司就是单纯把redis当做数据库的缓存，用来缓解读写压力</p>
 <p>额外扩展————如何处理秒杀功能等高并发情况<br>1、使用redis进行抢占式数据处理<br>2、分布式处理，将redis配置到集群中<br>3、做成异步，收到消息后立刻返回，之后再进行数据处理</p>
-<h2 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h2><p>先</p>
+<h2 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h2><p>FBV和CBV的简述：<br>F和C分别是function和class，一种是在视图函数里使用函数，一种是在视图函数里使用类，用类的话更好一些，因为可以分别写get和post操作的时候的逻辑，看起来简洁一点。</p>
+<p>ORM的理解：<br>中文为对象-关系-映射，他实现了数据库和数据模型的解耦，当你更换数据库的时候，就不需要再去修改里面的东西了，只要修改一下配置文件就好了。</p>
+<p>Model的几种继承类型：<br>抽象继承：和c++的抽象类类似，本身不会生成数据表，用来保存一下你不想重复录入的信息字段<br>多重表继承：父模型也会生成数据表的抽象继承<br>代理继承：当你只是想设置某模型的一些方法之类的东西时使用，比如增加一个查询最近录入数据的方法，或者修改他的默认manager，这些修改不会对父模型造成影响</p>
+<p>元数据：<br>用class Mate定义的一些数据，常用的有：<br>db_table：命名该模型创建的数据库的名字<br>ordering：设置默认某字段的排序顺序<br>verbose_name：给类起一个别名<br>abstract：配置该模型是否为抽象基类</p>
 
       
     </div>
@@ -417,8 +421,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/03/博客迁移（物理上）/" rel="next" title="重新开始更新博客了">
-                <i class="fa fa-chevron-left"></i> 重新开始更新博客了
+              <a href="/2017/04/11/ACsuperman（自动AC）/" rel="next" title="ACsuperman（自动AC）">
+                <i class="fa fa-chevron-left"></i> ACsuperman（自动AC）
               </a>
             
           </div>
@@ -426,6 +430,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/20/博客迁移（物理上）/" rel="prev" title="重新开始更新博客了">
+                重新开始更新博客了 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -513,7 +521,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">92</span>
+                  <span class="site-state-item-count">93</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
