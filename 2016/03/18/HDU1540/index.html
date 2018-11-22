@@ -86,12 +86,12 @@
 <meta property="og:site_name" content="碌碌无为者">
 <meta property="og:description" content="这道线段树好，感觉我对线段树的理解又加深了。 题目链接：Tunnel Warfare 题意是有n个相连的村庄，有3种操作，第一种是操作D，可以把一个村庄摧毁掉，第二种是操作Q，查询包括$Q_i$在内的最长连续区间的长度，第三种是操作R，可以恢复最近被摧毁的一个村庄。 从简单的开始入手，操作R可以在进行操作D的时候用一个栈来存删除操作，等你需要进行R操作的时候只要从栈顶扣一个出来就行了，这样R和D都">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xk57x.com1.z0.glb.clouddn.com/HDU1540_%E7%A4%BA%E8%8C%83%E5%9B%BE1.jpg">
-<meta property="og:updated_time" content="2018-11-20T13:37:37.213Z">
+<meta property="og:image" content="/images/HDU1540_示范图1.jpg">
+<meta property="og:updated_time" content="2018-11-22T12:56:11.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HDU1540（线段树的区间合并）">
 <meta name="twitter:description" content="这道线段树好，感觉我对线段树的理解又加深了。 题目链接：Tunnel Warfare 题意是有n个相连的村庄，有3种操作，第一种是操作D，可以把一个村庄摧毁掉，第二种是操作Q，查询包括$Q_i$在内的最长连续区间的长度，第三种是操作R，可以恢复最近被摧毁的一个村庄。 从简单的开始入手，操作R可以在进行操作D的时候用一个栈来存删除操作，等你需要进行R操作的时候只要从栈顶扣一个出来就行了，这样R和D都">
-<meta name="twitter:image" content="http://7xk57x.com1.z0.glb.clouddn.com/HDU1540_%E7%A4%BA%E8%8C%83%E5%9B%BE1.jpg">
+<meta name="twitter:image" content="/images/HDU1540_示范图1.jpg">
 
 
 
@@ -375,7 +375,7 @@
 }M[MAXN &lt;&lt; 2];
 </code></pre><p>ll表示从l开始向右形成的区间有多长，rr表示从r开始向左形成的区间有多长，ms表示在$[l,r]$范围内最长的连续区间的长度。</p>
 <p>用一张图来理解一下就是：</p>
-<p><img src="http://7xk57x.com1.z0.glb.clouddn.com/HDU1540_%E7%A4%BA%E8%8C%83%E5%9B%BE1.jpg" alt=""></p>
+<p><img src="/images/HDU1540_示范图1.jpg" alt=""></p>
 <p>对于表示这个区间的结点M，ll为a，rr为e，ms为abcde中最长的那一条。ll为a和rr为e的前提是a的开头刚好是在l，e的结尾刚好是在r，否则为0。关键是在update和query的地方，先来说update，此部分的代码是：</p>
 <pre><code>void push_up(int ind)
 {

@@ -86,12 +86,12 @@
 <meta property="og:site_name" content="碌碌无为者">
 <meta property="og:description" content="拖了那么久的树状数组学习…… 之前学的线段树，但是总是被嘲笑说，能用那么优雅的树状数组的题，为何要用长长的线段树呢？树状数组是干什么的就不作赘述了，就是能在lg复杂度下对数组进行维护和查询的一个东西。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xk57x.com1.z0.glb.clouddn.com/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%BB%93%E6%9E%84.png">
-<meta property="og:updated_time" content="2018-11-20T13:40:35.127Z">
+<meta property="og:image" content="/images/树状数组结构.png">
+<meta property="og:updated_time" content="2018-11-22T12:54:23.034Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树状数组的学习">
 <meta name="twitter:description" content="拖了那么久的树状数组学习…… 之前学的线段树，但是总是被嘲笑说，能用那么优雅的树状数组的题，为何要用长长的线段树呢？树状数组是干什么的就不作赘述了，就是能在lg复杂度下对数组进行维护和查询的一个东西。">
-<meta name="twitter:image" content="http://7xk57x.com1.z0.glb.clouddn.com/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%BB%93%E6%9E%84.png">
+<meta name="twitter:image" content="/images/树状数组结构.png">
 
 
 
@@ -366,7 +366,7 @@
         <p>拖了那么久的树状数组学习……</p>
 <p>之前学的线段树，但是总是被嘲笑说，能用那么优雅的树状数组的题，为何要用长长的线段树呢？<br>树状数组是干什么的就不作赘述了，就是能在lg复杂度下对数组进行维护和查询的一个东西。</p>
 <a id="more"></a>
-<p>我觉得学习的关键是看懂树状数组的结构，知道他是怎么存储数据的，理解这个之后学习起来就会方便很多。首先上一张从网络上copy来的图。<img src="http://7xk57x.com1.z0.glb.clouddn.com/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%BB%93%E6%9E%84.png" alt="">从图里可以看见A数组是原数组，C数组是树状数组，<br>C[1] = A[1],C[2] = A[1] + A[2],C[3] = A[3],C[4] = A[1] + A[2] + A[3] + A[4] = C[2] + C[3]，当我第一次学到这里的时候可能因为智商问题吧……我很奇怪为什么C[3]只是A[3]呢，这个时候，把所有的下标转化成二进制再来看一遍。C[1] = A[1],C[10] = A[1] + A[10],C[11] = A[11],C[100] = A[1] + A[10] + A[11] + A[100]，同时引入一个叫lowbit的东西，lowbot(k)代表的就是把k的所有高位1清空，只留下最低位的1，这时候再来看C数组和A数组的关系，C[i]表示的就是从A[i]开始往左求lowbit(i)个数的和，这时候再看C数组，就能很科学地理解了。<br>那么既然已经理解了如何存储了，那我们是如何来实现某一位置数据的更改的呢？（以下没有特殊说明都是二进制）<br>举个例子吧，如果我们要修改A[11]，就会依次修改C[11],C[100],C[1000]…,也就是依次修改了此时之前的lowbit点，此时我们维护使用的代码就是：</p>
+<p>我觉得学习的关键是看懂树状数组的结构，知道他是怎么存储数据的，理解这个之后学习起来就会方便很多。首先上一张从网络上copy来的图。<img src="/images/树状数组结构.png" alt="">从图里可以看见A数组是原数组，C数组是树状数组，<br>C[1] = A[1],C[2] = A[1] + A[2],C[3] = A[3],C[4] = A[1] + A[2] + A[3] + A[4] = C[2] + C[3]，当我第一次学到这里的时候可能因为智商问题吧……我很奇怪为什么C[3]只是A[3]呢，这个时候，把所有的下标转化成二进制再来看一遍。C[1] = A[1],C[10] = A[1] + A[10],C[11] = A[11],C[100] = A[1] + A[10] + A[11] + A[100]，同时引入一个叫lowbit的东西，lowbot(k)代表的就是把k的所有高位1清空，只留下最低位的1，这时候再来看C数组和A数组的关系，C[i]表示的就是从A[i]开始往左求lowbit(i)个数的和，这时候再看C数组，就能很科学地理解了。<br>那么既然已经理解了如何存储了，那我们是如何来实现某一位置数据的更改的呢？（以下没有特殊说明都是二进制）<br>举个例子吧，如果我们要修改A[11]，就会依次修改C[11],C[100],C[1000]…,也就是依次修改了此时之前的lowbit点，此时我们维护使用的代码就是：</p>
 <pre><code>void add(int k,int num)
 {
     while(k &lt;= n)

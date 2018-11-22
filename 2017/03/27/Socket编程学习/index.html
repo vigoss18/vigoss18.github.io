@@ -86,12 +86,12 @@
 <meta property="og:site_name" content="碌碌无为者">
 <meta property="og:description" content="由于想学习一下网络爬虫以及拿到的第一份offer涉及到socket编程，这几天初步学习一下Windows环境下的socket编程。 Socketsocket的本质是一种编程接口(API),它是应用层和TCP/IP协议族通信的中介。如果说HTTP是车的外壳，提供了封装或者显示数据的具体形式，那么socket就是发动机，给其提供了网络通信的功能。在一台连接了互联网的主机上，运行着多个软件，每个软件打开">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xk57x.com1.z0.glb.clouddn.com/socket%E5%9B%BE%E4%BE%8B.jpg">
-<meta property="og:updated_time" content="2018-11-20T12:09:19.648Z">
+<meta property="og:image" content="/images/socket图例.jpg">
+<meta property="og:updated_time" content="2018-11-22T12:55:57.453Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Socket编程学习————客户端和服务端的编程">
 <meta name="twitter:description" content="由于想学习一下网络爬虫以及拿到的第一份offer涉及到socket编程，这几天初步学习一下Windows环境下的socket编程。 Socketsocket的本质是一种编程接口(API),它是应用层和TCP/IP协议族通信的中介。如果说HTTP是车的外壳，提供了封装或者显示数据的具体形式，那么socket就是发动机，给其提供了网络通信的功能。在一台连接了互联网的主机上，运行着多个软件，每个软件打开">
-<meta name="twitter:image" content="http://7xk57x.com1.z0.glb.clouddn.com/socket%E5%9B%BE%E4%BE%8B.jpg">
+<meta name="twitter:image" content="/images/socket图例.jpg">
 
 
 
@@ -366,7 +366,7 @@
         <p>由于想学习一下网络爬虫以及拿到的第一份offer涉及到socket编程，这几天初步学习一下Windows环境下的socket编程。</p>
 <h1 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h1><p>socket的本质是一种编程接口(API),它是应用层和TCP/IP协议族通信的中介。如果说HTTP是车的外壳，提供了封装或者显示数据的具体形式，那么socket就是发动机，给其提供了网络通信的功能。<br>在一台连接了互联网的主机上，运行着多个软件，每个软件打开一个socket，并且绑定到一个端口上去，不同的端口对应不同的服务软件。正如socket的英文原意一样，socket就像一个多孔插座，每个插座有不同的编号，不同的插座提供不同的服务。</p>
 <a id="more"></a>
-<p><img src="http://7xk57x.com1.z0.glb.clouddn.com/socket%E5%9B%BE%E4%BE%8B.jpg" alt=""></p>
+<p><img src="/images/socket图例.jpg" alt=""></p>
 <p>先放上使用socket的示例图，服务器端先初始化Socket，然后与端口绑定(bind)，对端口进行监听(listen)，调用accept阻塞，等待客户端连接。在这时如果有个客户端初始化一个socket，然后连接服务器(connect)，如果连接成功，这时客户端与服务器端的连接就建立了。客户端发送数据请求，服务器端接收请求并处理请求，然后把回应数据发送给客户端，客户端读取数据，最后关闭连接，一次交互结束。</p>
 <p>下面来举例说明：</p>
 <h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><pre><code>#include &lt;cstdio&gt;
