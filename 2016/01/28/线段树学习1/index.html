@@ -86,12 +86,12 @@
 <meta property="og:site_name" content="无业游民">
 <meta property="og:description" content="今天开始进入线段树学习……先看了一下各种各样的模板，然后打算把模板题自己手敲出来，然后再进阶。 一：线段树基本概念1：概述线段树，类似区间树，是一个完全二叉树，它在各个节点保存一条线段（数组中的一段子数组），主要用于高效解决连续区间的动态查询问题，由于二叉结构的特性，它基本能保持每个操作的复杂度为O(lgN)。性质：父亲的区间是[a,b],(c=(a+b)/2)左儿子的区间是[a,c]，右儿子的区">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="/images/线段树的构造示例.jpg">
-<meta property="og:updated_time" content="2018-11-22T12:54:09.135Z">
+<meta property="og:image" content="/images/线段树的构造示例.JPG">
+<meta property="og:updated_time" content="2018-11-22T13:14:09.499Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线段树学习1">
 <meta name="twitter:description" content="今天开始进入线段树学习……先看了一下各种各样的模板，然后打算把模板题自己手敲出来，然后再进阶。 一：线段树基本概念1：概述线段树，类似区间树，是一个完全二叉树，它在各个节点保存一条线段（数组中的一段子数组），主要用于高效解决连续区间的动态查询问题，由于二叉结构的特性，它基本能保持每个操作的复杂度为O(lgN)。性质：父亲的区间是[a,b],(c=(a+b)/2)左儿子的区间是[a,c]，右儿子的区">
-<meta name="twitter:image" content="/images/线段树的构造示例.jpg">
+<meta name="twitter:image" content="/images/线段树的构造示例.JPG">
 
 
 
@@ -380,7 +380,7 @@
         M[ind] = max(M[ind &lt;&lt; 1],M[ind &lt;&lt; 1 | 1]);
     }
 }
-</code></pre><p>用数据1，7，6，3，1来做示范<br><img src="/images/线段树的构造示例.jpg" alt=""></p>
+</code></pre><p>用数据1，7，6，3，1来做示范<br><img src="/images/线段树的构造示例.JPG" alt=""></p>
 <p>是这样构造的……别记错了</p>
 <p>（2）区间查询 ：int query(int ind,int l,int r,int i,int j)<br>i和j是查询的区间，思想是把需要查询的区间变换成线段树上的节点，然后再把这些节点合并起来来得到需要查询的东西（这里也用RMQ运用到的查询来做示例）</p>
 <pre><code>int query(int ind,int l,int r,int i,int j)
