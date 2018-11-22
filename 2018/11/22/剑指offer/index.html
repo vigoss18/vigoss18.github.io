@@ -79,19 +79,17 @@
 
 
 
-<meta name="description" content="拖了那么久的树状数组学习…… 之前学的线段树，但是总是被嘲笑说，能用那么优雅的树状数组的题，为何要用长长的线段树呢？树状数组是干什么的就不作赘述了，就是能在lg复杂度下对数组进行维护和查询的一个东西。">
+<meta name="description" content="LeetCode有点多……先把剑指offer刷一遍复健一下…… 二维数组中的查找：题意：一个从左到右，从上到下都是递增的二维数组，求是否存在n解法：for一遍，对于第x行，判断n是否在v[x][0]到v[x][v[x].size() - 1]之间，判断成功再for一遍check该行是否存在n就行了 替换空格：题意：给一个字符串，把其中的空格替换成%20解法：本来想用纯c的，写来写去都CE，干脆用s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树状数组的学习">
-<meta property="og:url" content="/2016/02/14/树状数组的学习/index.html">
+<meta property="og:title" content="剑指offer题目大意和思路汇总">
+<meta property="og:url" content="/2018/11/22/剑指offer/index.html">
 <meta property="og:site_name" content="碌碌无为者">
-<meta property="og:description" content="拖了那么久的树状数组学习…… 之前学的线段树，但是总是被嘲笑说，能用那么优雅的树状数组的题，为何要用长长的线段树呢？树状数组是干什么的就不作赘述了，就是能在lg复杂度下对数组进行维护和查询的一个东西。">
+<meta property="og:description" content="LeetCode有点多……先把剑指offer刷一遍复健一下…… 二维数组中的查找：题意：一个从左到右，从上到下都是递增的二维数组，求是否存在n解法：for一遍，对于第x行，判断n是否在v[x][0]到v[x][v[x].size() - 1]之间，判断成功再for一遍check该行是否存在n就行了 替换空格：题意：给一个字符串，把其中的空格替换成%20解法：本来想用纯c的，写来写去都CE，干脆用s">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xk57x.com1.z0.glb.clouddn.com/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%BB%93%E6%9E%84.png">
-<meta property="og:updated_time" content="2018-11-20T13:40:35.127Z">
+<meta property="og:updated_time" content="2018-11-22T12:37:44.890Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="树状数组的学习">
-<meta name="twitter:description" content="拖了那么久的树状数组学习…… 之前学的线段树，但是总是被嘲笑说，能用那么优雅的树状数组的题，为何要用长长的线段树呢？树状数组是干什么的就不作赘述了，就是能在lg复杂度下对数组进行维护和查询的一个东西。">
-<meta name="twitter:image" content="http://7xk57x.com1.z0.glb.clouddn.com/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%BB%93%E6%9E%84.png">
+<meta name="twitter:title" content="剑指offer题目大意和思路汇总">
+<meta name="twitter:description" content="LeetCode有点多……先把剑指offer刷一遍复健一下…… 二维数组中的查找：题意：一个从左到右，从上到下都是递增的二维数组，求是否存在n解法：for一遍，对于第x行，判断n是否在v[x][0]到v[x][v[x].size() - 1]之间，判断成功再for一遍check该行是否存在n就行了 替换空格：题意：给一个字符串，把其中的空格替换成%20解法：本来想用纯c的，写来写去都CE，干脆用s">
 
 
 
@@ -121,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="/2016/02/14/树状数组的学习/">
+  <link rel="canonical" href="/2018/11/22/剑指offer/">
 
 
 
 
 
-  <title>树状数组的学习 | 碌碌无为者</title>
+  <title>剑指offer题目大意和思路汇总 | 碌碌无为者</title>
   
 
 
@@ -264,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2016/02/14/树状数组的学习/">
+    <link itemprop="mainEntityOfPage" href="/2018/11/22/剑指offer/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vigoss18">
@@ -281,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">树状数组的学习</h1>
+          <h1 class="post-title" itemprop="name headline">剑指offer题目大意和思路汇总</h1>
         
 
         <div class="post-meta">
@@ -293,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-14T14:09:01+08:00">
-                2016-02-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-22T16:03:19+08:00">
+                2018-11-22
               </time>
             
 
@@ -316,8 +314,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM</span>
+                  <a href="/categories/面试/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
                   </a>
                 </span>
 
@@ -334,8 +332,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/02/14/树状数组的学习/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/14/树状数组的学习/" itemprop="commentCount"></span>
+                <a href="/2018/11/22/剑指offer/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/11/22/剑指offer/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -363,34 +361,21 @@
       
 
       
-        <p>拖了那么久的树状数组学习……</p>
-<p>之前学的线段树，但是总是被嘲笑说，能用那么优雅的树状数组的题，为何要用长长的线段树呢？<br>树状数组是干什么的就不作赘述了，就是能在lg复杂度下对数组进行维护和查询的一个东西。</p>
+        <p>LeetCode有点多……先把剑指offer刷一遍复健一下……</p>
+<p>二维数组中的查找：<br>题意：一个从左到右，从上到下都是递增的二维数组，求是否存在n<br>解法：for一遍，对于第x行，判断n是否在v[x][0]到v[x][v[x].size() - 1]之间，判断成功再for一遍check该行是否存在n就行了</p>
+<p>替换空格：<br>题意：给一个字符串，把其中的空格替换成%20<br>解法：本来想用纯c的，写来写去都CE，干脆用string来写了，新建一个string逐个字符进行操作，要注意的是最后需要用strcpy函数把string.c_str()拷贝过来，不能直接用等号</p>
+<p>从尾到头打印链表：<br>题意：给一个链表，让你返回链表值从尾到头的vector<br>解法：先用栈存val，然后再存回vector就好了，需要注意的是结构体里取值是用-&gt;，太久不用c++都忘记了…</p>
 <a id="more"></a>
-<p>我觉得学习的关键是看懂树状数组的结构，知道他是怎么存储数据的，理解这个之后学习起来就会方便很多。首先上一张从网络上copy来的图。<img src="http://7xk57x.com1.z0.glb.clouddn.com/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E7%BB%93%E6%9E%84.png" alt="">从图里可以看见A数组是原数组，C数组是树状数组，<br>C[1] = A[1],C[2] = A[1] + A[2],C[3] = A[3],C[4] = A[1] + A[2] + A[3] + A[4] = C[2] + C[3]，当我第一次学到这里的时候可能因为智商问题吧……我很奇怪为什么C[3]只是A[3]呢，这个时候，把所有的下标转化成二进制再来看一遍。C[1] = A[1],C[10] = A[1] + A[10],C[11] = A[11],C[100] = A[1] + A[10] + A[11] + A[100]，同时引入一个叫lowbit的东西，lowbot(k)代表的就是把k的所有高位1清空，只留下最低位的1，这时候再来看C数组和A数组的关系，C[i]表示的就是从A[i]开始往左求lowbit(i)个数的和，这时候再看C数组，就能很科学地理解了。<br>那么既然已经理解了如何存储了，那我们是如何来实现某一位置数据的更改的呢？（以下没有特殊说明都是二进制）<br>举个例子吧，如果我们要修改A[11]，就会依次修改C[11],C[100],C[1000]…,也就是依次修改了此时之前的lowbit点，此时我们维护使用的代码就是：</p>
-<pre><code>void add(int k,int num)
-{
-    while(k &lt;= n)
-    {
-        tree[k] += num;
-        k += lowbit(k);
-    }
-}
-</code></pre><p>那如果我们要求和呢？也很简单了，如果要求0001~0111的话，就是C[0100]+C[0110]+C[0111]就可以了，求和的办法和修改的时候恰好相反，看一下：</p>
-<pre><code>int read(int k)//1~k的区间和
-{
-    int sum = 0;
-    while(k)
-    {
-        sum += tree[k];
-        k -= lowbit(k);
-    }
-}
-</code></pre><p>说了那么久，这个lowbit到底怎么求呢？很神奇的东西：</p>
-<pre><code>int lowbit(int k)
-{
-    return x &amp; -x
-}
-</code></pre>
+<p>用两个栈实现队列：<br>题意：用两个栈实现队列的pop和push操作<br>解法：一个栈用来做push，需要pop的时候把第一个栈的东西都倒腾到第二个栈里，然后pop就行了，注意不需要再把栈二的东西倒腾回去</p>
+<p>旋转数组的最小数字：<br>题意：对于一个[3,4,5,1,2]这样的数组（非递减），找到该数组中最小的值<br>解法：O(n)最简单暴力，优化的话用二分，把vector[mid]和数组最后一个比较大小就能判断是往左还是往右二分了<br>备注：二分姿势为mid = (l + r) &gt;&gt; 1;l = mid + 1;r = mid;</p>
+<p>跳台阶：<br>题意：青蛙一次可以跳1或2个台阶，问跳n个台阶有多少办法<br>解答：就是求斐波那契，因为n个台阶的跳法必定是n-1个台阶跳一个或者n-2的台阶跳两个</p>
+<p>听来的题（一）：<br>题意：给一个数组，其中一个数只出现了一次，其余都出现了两次，求只出现一次的是什么数<br>解答：直接异或过去，最后得到的值就是答案</p>
+<p>听来的题（二）：<br>题意：给一个数组，其中一个数只出现了一次，其余都出现了三次，求只出现一次的是什么数<br>解答：在外面做一个32的for循环，对每一个数的当前二进制位求和算有几个1，然后%3就知道当前这个位数有没有只出现一次的1了</p>
+<h2 id="重建二叉树"><a href="#重建二叉树" class="headerlink" title="重建二叉树"></a>重建二叉树</h2><p>题意：给你一个二叉树先序遍历和中序遍历的结果，让你重建出这颗二叉树<br>解答：举例来说一棵树的先序遍历为{1,2,4,7,3,5,6,8}，中序遍历为{4,7,2,1,5,3,8,6}，是这样的，先序遍历的第一个值必定是当前树的根节点，对应到中序遍历就是1的左边为树的左边，右边则为树的右边，理解了这个就好做了，分别把这两个数组拆分成两颗子树的两个遍历序列，不断递归到为空就行了。</p>
+<p>高级跳台阶：<br>题意：青蛙一次可以跳1-n个台阶，问跳n个台阶有多少种办法<br>解答：可推导出f(n)=f(n-1)+f(n-2)+…+f(0)，又知道f(n-1)=f(n-2)+…+f(0)，所以f(n) = 2f(n-1)</p>
+<p>矩形覆盖：<br>题意：用n个1<em>2的矩形去构造一个2</em>n大小的矩形，有多少种办法<br>解答：还是斐波那契</p>
+<p>二进制中1的个数:<br>题意：对于一个数求他二进制中1的个数<br>解答：一开始是操作这个n</p>
+
       
     </div>
     
@@ -414,8 +399,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/11/Codeforces_ECR7/" rel="next" title="Codeforces ECR7">
-                <i class="fa fa-chevron-left"></i> Codeforces ECR7
+              <a href="/2018/11/20/博客迁移（物理上）/" rel="next" title="重新开始更新博客了">
+                <i class="fa fa-chevron-left"></i> 重新开始更新博客了
               </a>
             
           </div>
@@ -423,10 +408,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/19/厦门游/" rel="prev" title="厦门游后记">
-                厦门游后记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -460,7 +441,7 @@
 
   
     <div class="comments" id="comments">
-      <div class="ds-thread" data-thread-key="2016/02/14/树状数组的学习/" data-title="树状数组的学习" data-url="/2016/02/14/树状数组的学习/">
+      <div class="ds-thread" data-thread-key="2018/11/22/剑指offer/" data-title="剑指offer题目大意和思路汇总" data-url="/2018/11/22/剑指offer/">
       </div>
     </div>
 
@@ -487,8 +468,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -566,6 +556,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重建二叉树"><span class="nav-number">1.</span> <span class="nav-text">重建二叉树</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
