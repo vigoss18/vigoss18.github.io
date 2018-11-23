@@ -86,10 +86,12 @@
 <meta property="og:site_name" content="无业游民">
 <meta property="og:description" content="LeetCode有点多……先把剑指offer刷一遍复健一下…… 二维数组中的查找：题意：一个从左到右，从上到下都是递增的二维数组，求是否存在n解法：for一遍，对于第x行，判断n是否在v[x][0]到v[x][v[x].size() - 1]之间，判断成功再for一遍check该行是否存在n就行了 替换空格：题意：给一个字符串，把其中的空格替换成%20解法：本来想用纯c的，写来写去都CE，干脆用s">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-22T12:37:44.890Z">
+<meta property="og:image" content="/images/剑指offer顺时针打印矩形.png">
+<meta property="og:updated_time" content="2018-11-23T09:09:26.278Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指offer题目大意和思路汇总">
 <meta name="twitter:description" content="LeetCode有点多……先把剑指offer刷一遍复健一下…… 二维数组中的查找：题意：一个从左到右，从上到下都是递增的二维数组，求是否存在n解法：for一遍，对于第x行，判断n是否在v[x][0]到v[x][v[x].size() - 1]之间，判断成功再for一遍check该行是否存在n就行了 替换空格：题意：给一个字符串，把其中的空格替换成%20解法：本来想用纯c的，写来写去都CE，干脆用s">
+<meta name="twitter:image" content="/images/剑指offer顺时针打印矩形.png">
 
 
 
@@ -374,7 +376,15 @@
 <h2 id="重建二叉树"><a href="#重建二叉树" class="headerlink" title="重建二叉树"></a>重建二叉树</h2><p>题意：给你一个二叉树先序遍历和中序遍历的结果，让你重建出这颗二叉树<br>解答：举例来说一棵树的先序遍历为{1,2,4,7,3,5,6,8}，中序遍历为{4,7,2,1,5,3,8,6}，是这样的，先序遍历的第一个值必定是当前树的根节点，对应到中序遍历就是1的左边为树的左边，右边则为树的右边，理解了这个就好做了，分别把这两个数组拆分成两颗子树的两个遍历序列，不断递归到为空就行了。</p>
 <p>高级跳台阶：<br>题意：青蛙一次可以跳1-n个台阶，问跳n个台阶有多少种办法<br>解答：可推导出f(n)=f(n-1)+f(n-2)+…+f(0)，又知道f(n-1)=f(n-2)+…+f(0)，所以f(n) = 2f(n-1)</p>
 <p>矩形覆盖：<br>题意：用n个1<em>2的矩形去构造一个2</em>n大小的矩形，有多少种办法<br>解答：还是斐波那契</p>
-<p>二进制中1的个数:<br>题意：对于一个数求他二进制中1的个数<br>解答：一开始是操作这个n</p>
+<p>二进制中1的个数:<br>题意：对于一个数求他二进制中1的个数<br>解答：一开始是操作这个n，每次&gt;&gt;1，结果错了……然后反过来用1来&lt;&lt;1就好了……不是很懂这个</p>
+<h2 id="数值的整数次方："><a href="#数值的整数次方：" class="headerlink" title="数值的整数次方："></a>数值的整数次方：</h2><p>题意：求x的y次方<br>解答：快速幂可以把复杂度降到logn，做法就是把y拆成二进制，这样每做一次右移位运算，将当前的x更新为x^2，这么一来复杂度就下来了</p>
+<p>调整数组顺序使奇数位于偶数前面：<br>题意：给你一个整数数组，要求把所有的奇数移动到偶数前面，但是相对位置不变<br>解答：可以当作是冒泡排序，只是交换条件换了一下，因为冒泡排序是稳定的；也可以新创建两个数组，分别存奇数和偶数然后再赋值回去</p>
+<p>链表中倒数第k个结点：<br>题意：给你一个链表，返回倒数第k个结点<br>解答：两个指针都指向头结点，当第一个指针移动到第k个之后，第二个指针同步移动，坑是k可能为0，或者头结点可能为null</p>
+<p>反转链表：<br>题意：给你一个链表，反转他，返回头结点<br>解答：新建一个头结点n，对于当前遍历到的原头结点，将其next设置为n，然后把这个修改过的结点赋值给n，再还原这个原头结点，就好了（叫头插法）</p>
+<p>合并两个排序的链表：<br>题意：给你两个递增链表，要求合并<br>解答：直接上就完事了，记得赋值方法是ret-&gt;next = pHead</p>
+<p>树的子结构：<br>题意：给你二叉树A和B，判断B是不是A的子树<br>解答：递归搜一下即可，如果当前点与当前树B的val一致，就左右都递归搜他们的子树对不对，搜到B树为NULL直接返回true，如果val值不一致，则只递归树A的子树，树B保持原样传参</p>
+<p>二叉树的镜像：<br>题意：把一颗二叉树镜像翻转<br>解答：直接swap(root-&gt;right, root-&gt;left)，递归到底就好了</p>
+<p>顺时针打印矩阵：<br>题意：把一个n<em>m的矩形顺时针打印出来<br>解答：这样跑一边<img src="/images/剑指offer顺时针打印矩形.png" alt="">，需要注意的是跑完前两个for和前三个for的时候都要check一次总和是不是已经达到了，因为我这里没有考虑奇数情况（或者也可以check当前loop</em>2+1是不是等于行数或者列数就直接continue）</p>
 
       
     </div>
@@ -566,7 +576,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重建二叉树"><span class="nav-number">1.</span> <span class="nav-text">重建二叉树</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重建二叉树"><span class="nav-number">1.</span> <span class="nav-text">重建二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值的整数次方："><span class="nav-number">2.</span> <span class="nav-text">数值的整数次方：</span></a></li></ol></div>
             
 
           </div>
