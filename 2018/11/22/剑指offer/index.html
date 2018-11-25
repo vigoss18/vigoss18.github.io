@@ -87,7 +87,7 @@
 <meta property="og:description" content="LeetCode有点多……先把剑指offer刷一遍复健一下…… 二维数组中的查找：题意：一个从左到右，从上到下都是递增的二维数组，求是否存在n解法：for一遍，对于第x行，判断n是否在v[x][0]到v[x][v[x].size() - 1]之间，判断成功再for一遍check该行是否存在n就行了 替换空格：题意：给一个字符串，把其中的空格替换成%20解法：本来想用纯c的，写来写去都CE，干脆用s">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="/images/剑指offer顺时针打印矩形.png">
-<meta property="og:updated_time" content="2018-11-24T06:04:50.455Z">
+<meta property="og:updated_time" content="2018-11-25T15:10:05.495Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指offer题目大意和思路汇总">
 <meta name="twitter:description" content="LeetCode有点多……先把剑指offer刷一遍复健一下…… 二维数组中的查找：题意：一个从左到右，从上到下都是递增的二维数组，求是否存在n解法：for一遍，对于第x行，判断n是否在v[x][0]到v[x][v[x].size() - 1]之间，判断成功再for一遍check该行是否存在n就行了 替换空格：题意：给一个字符串，把其中的空格替换成%20解法：本来想用纯c的，写来写去都CE，干脆用s">
@@ -384,7 +384,7 @@
 <p>合并两个排序的链表：<br>题意：给你两个递增链表，要求合并<br>解答：直接上就完事了，记得赋值方法是ret-&gt;next = pHead</p>
 <p>树的子结构：<br>题意：给你二叉树A和B，判断B是不是A的子树<br>解答：递归搜一下即可，如果当前点与当前树B的val一致，就左右都递归搜他们的子树对不对，搜到B树为NULL直接返回true，如果val值不一致，则只递归树A的子树，树B保持原样传参</p>
 <p>二叉树的镜像：<br>题意：把一颗二叉树镜像翻转<br>解答：直接swap(root-&gt;right, root-&gt;left)，递归到底就好了</p>
-<p>顺时针打印矩阵：<br>题意：把一个n*m的矩形顺时针打印出来<br>解答：这样跑一边<img src="/images/剑指offer顺时针打印矩形.png" alt="">，需要注意的是跑完前两个for和前三个for的时候都要check一次总和是不是已经达到了，因为我这里没有考虑奇数情况（或者也可以check当前loop*2+1是不是等于行数或者列数就直接continue）</p>
+<p>顺时针打印矩阵：<br>题意：把一个n*m的矩形顺时针打印出来<br>解答：这样跑一边<img src="/images/剑指offer顺时针打印矩形.png" alt="">，因为我这里没有考虑奇数情况，所以要check当前loop*2+1是不是等于行数或者列数就直接continue</p>
 <p>第一个只出现一次的字符:<br>题意：输出第一个只出现了一次的字符的位置<br>解答：vis[i]为-1是未出现，-2为多次出现，否则就是位置，遍历一遍字符串后取最小的vis[i]即可</p>
 <p>包含min函数的栈：<br>题意：实现一个栈类，其中包含一下O(1)查询函数min，返回栈中最小的数<br>解答：需要一个辅助栈，当一个新数入栈时，对比stack.top()，如果top更小则push(top)，否则push(value)</p>
 <p>栈的压入、弹出序列：<br>题意：给你一个栈的压入序列和弹出序列，判断这个弹出序列是否合法<br>解答：直接建一个栈，每次push一个，同时用while来check当前的popV[pos]是否和stack.top()一致，一致则pos++，最后看一下栈是不是空的就好了</p>
@@ -392,6 +392,37 @@
 <p>二叉搜索树的后序遍历序列：<br>题意：给出一棵树的后序遍历序列，判断其是不是一颗二叉搜索树<br>解答：后序遍历序列举例为{1,4,3,6,8,7,5}，其特征是最后一个点是根节点，前面的数列可以分为两段，分别全都小于（大于）这个根节点，于是我们就可以递归做了</p>
 <p>二叉树中和为某一值的路径：<br>题意：给你一颗二叉树，要求出所有从根节点到叶子节点（也就是没有子节点的节点），路径上的值之和为e的路径，要求路径长度长的在前面<br>解答：递归深搜，构造是check(vector&lt;vector<int>&gt; &amp;ret, vector<int> &amp;v, TreeNode *root, e)，当e==root-&gt;val且当前节点没有左右子节点的时候，将当前的v存到ret中，当左右子节点都存在时，判断一下，优先递归值比较小的，这样路径长的就在前面了（大概）</int></int></p>
 <p>复杂链表的复制：<br>题意：一个复杂链表，比普通链表多了一个指向任意节点的指针，要求复制他<br>解答：先在每个节点后面插入复制的新节点，然后根据每个节点的随机指针，赋值给复制的节点，因为每个节点后面跟着的就是复制节点，所有只要ptr-&gt;random = ptr-&gt;random-&gt;next就好了，最后把链表拆开来；竟然有坑……random指针竟然有可能会指向空…………</p>
+<p><strong>二叉搜索树与双向链表</strong><br>题意：给你一颗二叉搜索树，把他变成一个有序的双向链表，不允许创建新的结点<br>解答：对二叉搜索树进行中序遍历，刚好就是按值从小到大遍历的，我们利用这个特性，构造函数check(TreeNode<em> cur, TreeNode</em>&amp; pre)，pre存的是目前为止还没有被转换的最小值节点，每次左子树遍历完回来的时候，就将pre和cur改为互相指向，然后再把pre更新就好了</p>
+<p>字符串的排列：<br>题意：给你一个字符串，按字典树输出他的全排列<br>解答：虽然他说了有重复，但是直接用next_permutation(str.begin(), str.end())也对了……标准方法是递归，对于当前递归到的位置，for一遍，所有和首字母不同的位置都可以交换，继续递归到底，然后把结果存到vector里。<br>额外小知识：next_permutation在C++中的实现是用非递归的方法，构造方式是从左往右找到第一个逆序数，然后再找一遍找到第一个大于该数的数，交换位置，然后再翻转从逆序数到末尾的全部数，就能构造出排列的下一个</p>
+<p>数组中出现次数超过一半的数字：<br>题意：找出数组中出现次数超过长度一半的数<br>解答：首先先到排序后直接取中位数，这样复杂度是nlogn；更优的做法是O(n)的，因为出现次数超过长度的一半，所以count[N]应该大于count[]其余所有数的和，所以直接遍历一遍，存当前出现次数最多的数，最后check一次就好了，扔一下代码</p>
+<pre><code>int MoreThanHalfNum_Solution(vector&lt;int&gt; numbers) {
+        if(numbers.size() == 0) return 0;
+        int count = 1;
+        int num = numbers[0];
+        for(int i = 1;i &lt; (int)numbers.size();i++)
+        {
+            if(num != numbers[i])
+                count--;
+            else
+                count++;
+            if(count == 0)
+                count = 1, num = numbers[i];
+        }
+        count = 0;
+        for(int i = 0;i &lt; (int)numbers.size();i++)
+        {
+            if(numbers[i] == num)
+                count++;
+        }
+        if(count * 2 &gt; (int)numbers.size())
+            return num;
+        else
+            return 0;
+    }
+</code></pre><p>最小的K个数：<br>题意：输出数组中最小的k个数<br>解答：直接用STL的优先队列就好了；或者可以维护一个最小堆，每次和堆顶对比，复杂度是k*logn<br>额外小知识：优先队列的底层实现就是用堆的，所以其实这两个方法是一样的</p>
+<p>连续子数组的最大和：<br>题意：在数组中找出和最大的连续子序列<br>解答：双指针扫一遍就好了，当sum[st-&gt;ed]&lt;0的时候，把头指针往后挪到sum&gt;0为止，记录一下最大值</p>
+<p>整数中1出现的次数（从1到n整数中1出现的次数）：<br>题意：如题，解答拓展到了任意一个数x<br>解答：按位置分别计算，拿百位出现x的计算举例，如果百位数小于x，那么出现的次数与高位有关，15311出现4的次数就是15次；如果百位数等于x，那么出现的次数与高位低位都有关，如15411，出现4的次数就是15+11+1；如果大于x的话，那么也只与高位有关，15511出现4的次数就是15+1次，然后就能算了；还需要注意的特性就是高位算次数的时候需要*n，n为当前位数，比如百位n就是100</p>
+<p>把数组排成最小的数：<br>题意：把数组所有的数拼接起来后输出，要求字典序最小<br>解答：定义个cmp函数sort一下就完事了</p>
 
       
     </div>
@@ -426,7 +457,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/24/page/" rel="prev" title="失业之后">
+              <a href="/2018/11/24/失业之后/" rel="prev" title="失业之后">
                 失业之后 <i class="fa fa-chevron-right"></i>
               </a>
             
