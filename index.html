@@ -835,11 +835,11 @@
       
         
           <p>失业专用……</p>
-<h2 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h2><p>extern C的作用：<br>由于C++支持函数重载，但是C并不支持，所有用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。</p>
+<h2 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h2><p>extern C的作用：<br>由于C++支持函数重载，但是C并不支持，所以用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。</p>
 <p>const的作用：<br>1、用于定义const常量。<br>2、用于修饰函数的参数和返回值等，被修饰的东西都受到了强制保护，能预防意外的发生，提高程序的健壮性。<br>3、const常量赋值时必须被初始化。</p>
 <p>const和define的区别：<br>1、const有数据类型，而define没有。<br>2、const能由编译器进行安全检查，但是define只是单纯的字符串替换，没有安全性。<br>3、集成化的调试工具能对const常量进行调试，但是不能对宏常量进行调试。</p>
 <p>在const成员函数中，用mutable修饰成员变量名之后就可以修改类的成员变量了。</p>
-<p>sizeof是一个运算符，sizeof()，括号内的内容是被替代类型，如：<br>int a = 8;sizeof(a)，这个a会被替代成int。用来计算一个类型的字节大小。<br>如果sizeof里面是指针，返回的永远是4。</p>
+<p>sizeof是一个运算符，sizeof()，括号内的内容是被替代类型，如：<br>int a = 8;sizeof(a)，这个a会被替代成int。用来计算一个类型的字节大小。<br>如果sizeof里面是指针，返回的永远是4（备注：64位系统指针返回的是8）</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/11/20/面试题总结/#more" rel="contents">

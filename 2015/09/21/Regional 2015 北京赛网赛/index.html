@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="无业游民">
 <meta property="og:description" content="哇咔咔终于在这次网络赛中有所表现了，在学长的帮助下A出了一道模拟题，顺利获得现场赛名额，我表示很开心……不过废话不多说，还是补题吧……题目网址在此">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-20T13:38:36.912Z">
+<meta property="og:updated_time" content="2018-11-27T07:43:46.101Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Regional 2015 北京赛网赛">
 <meta name="twitter:description" content="哇咔咔终于在这次网络赛中有所表现了，在学长的帮助下A出了一道模拟题，顺利获得现场赛名额，我表示很开心……不过废话不多说，还是补题吧……题目网址在此">
@@ -361,7 +361,7 @@
       
 
       
-        <p>哇咔咔终于在这次网络赛中有所表现了，在学长的帮助下A出了一道模拟题，顺利获得现场赛名额，我表示很开心……不过废话不多说，还是补题吧……<a herf="http://hihocoder.com/problemset">题目网址在此</a></p>
+        <p>哇咔咔终于在这次网络赛中有所表现了，在学长的帮助下A出了一道模拟题，顺利获得现场赛名额，我表示很开心……不过废话不多说，还是补题吧……<a href="http://hihocoder.com/problemset" target="_blank" rel="noopener">题目网址在此</a></p>
 <a id="more"></a>
 <p>##Mission Impossible 6<br>首先放我做出来的模拟题吧，花了十多分钟仔细研读了一遍题意，觉得可做，也是我唯一可做的了……于是就开始写，读读写写花了半个多小时，跑了一下样例，一个都没对，然后就开始调试，一个样例能找出我的一个bug，八个样例跑完，自信提交，wa，就开始找小黄鸭，然后又零零碎碎找出好几个bug，当我都要绝望的时候一发提交，竟然ac了！！！！果然模拟题还是不能放弃的啊。题意为你在监视一个人的文本输入，出现L表示光标左移，出现R表示光标右移，S表示切换输入方式，D表示删除右边的一个字符，B表示删除右边的一个字符，C会使其进入copy状态，此时除了LRD以外的所有输入都会使copy状态失效，copy状态时如果按D，则会删除所有从copy状态起始点到此时光标点的所有字符，如果在copy状态时再次按下C,则会把此时处于状态起始点和当前光标之间的字符串存入到粘贴板中，每次按下V会进行粘贴操作，需要注意的是任何会使字符串长度超过限制长度的操作都会被无视。</p>
 <p>说说我遇到的几个坑点吧，首先粘贴操作之后光标的移动被我无视了，然后我以为在覆盖模式的时候是不用判断有没有超过文本限制的，其实不然。其他好像没啥记得的了……虽然当时错了很多，估计都是光标处理的时候的问题了。</p>

@@ -87,7 +87,7 @@
 <meta property="og:description" content="LeetCode有点多……先把剑指offer刷一遍复健一下…… 二维数组中的查找：题意：一个从左到右，从上到下都是递增的二维数组，求是否存在n解法：for一遍，对于第x行，判断n是否在v[x][0]到v[x][v[x].size() - 1]之间，判断成功再for一遍check该行是否存在n就行了 替换空格：题意：给一个字符串，把其中的空格替换成%20解法：本来想用纯c的，写来写去都CE，干脆用s">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="/images/剑指offer顺时针打印矩形.png">
-<meta property="og:updated_time" content="2018-11-25T15:10:05.495Z">
+<meta property="og:updated_time" content="2018-11-27T03:20:43.830Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指offer题目大意和思路汇总">
 <meta name="twitter:description" content="LeetCode有点多……先把剑指offer刷一遍复健一下…… 二维数组中的查找：题意：一个从左到右，从上到下都是递增的二维数组，求是否存在n解法：for一遍，对于第x行，判断n是否在v[x][0]到v[x][v[x].size() - 1]之间，判断成功再for一遍check该行是否存在n就行了 替换空格：题意：给一个字符串，把其中的空格替换成%20解法：本来想用纯c的，写来写去都CE，干脆用s">
@@ -423,6 +423,22 @@
 <p>连续子数组的最大和：<br>题意：在数组中找出和最大的连续子序列<br>解答：双指针扫一遍就好了，当sum[st-&gt;ed]&lt;0的时候，把头指针往后挪到sum&gt;0为止，记录一下最大值</p>
 <p>整数中1出现的次数（从1到n整数中1出现的次数）：<br>题意：如题，解答拓展到了任意一个数x<br>解答：按位置分别计算，拿百位出现x的计算举例，如果百位数小于x，那么出现的次数与高位有关，15311出现4的次数就是15次；如果百位数等于x，那么出现的次数与高位低位都有关，如15411，出现4的次数就是15+11+1；如果大于x的话，那么也只与高位有关，15511出现4的次数就是15+1次，然后就能算了；还需要注意的特性就是高位算次数的时候需要*n，n为当前位数，比如百位n就是100</p>
 <p>把数组排成最小的数：<br>题意：把数组所有的数拼接起来后输出，要求字典序最小<br>解答：定义个cmp函数sort一下就完事了</p>
+<p><strong>丑数</strong><br>题意：把质因子只含2，3，5的数定义为丑数，默认第一个丑数为1，要求输出第n个丑数<br>解答：DP，状态转移方程是dp[i] = min(dp[p1] <em> 2, min(dp[p2] </em> 3, dp[p3] <em> 5))，p1,p2,p3分别是上一次乘了2，3，5的丑数位置，取最小的设置为第i个丑数，递推到底就好了。需要注意的是为了防止2\</em>3和3*2判两遍，在判断的时候全都要判一遍</p>
+<pre><code>int GetUglyNumber_Solution(int index) {
+        if(index &lt;= 0) return 0;
+        int p1 = 0, p2 = 0, p3 = 0;
+        vector&lt;int&gt;dp(index);
+        dp[0] = 1;
+        for(int i = 1;i &lt; index;i++)
+        {
+            dp[i] = min(dp[p1] * 2, min(dp[p2] * 3, dp[p3] * 5));
+            if(dp[i] == dp[p1] * 2) p1++;
+            if(dp[i] == dp[p2] * 3) p2++;
+            if(dp[i] == dp[p3] * 5) p3++;
+        }
+        return dp[index - 1];
+    }
+</code></pre><p>数组中的逆序对：<br>题意：就是求逆序对<br>解答：已经完全不会树状数组了……学个简单的用归并来求的方法，复杂度是nlogn，就在归并的时候跑一边前后两个数组，求一下逆序对数。做一遍这样的递归就好了……不知道为什么……二分的时候取(l,mid-1)和(mid,r)一直爆内存，改成(l,mid)和(mid+1,r)就好了</p>
 
       
     </div>

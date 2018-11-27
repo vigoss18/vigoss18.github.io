@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="失业专用…… C/C++extern C的作用：由于C++支持函数重载，但是C并不支持，所有用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。 const的作用：1、用于定义const常量。2、用于修饰函数的参数和返回值等，被修饰的东西都受到了强制保护，能预防意外的发生，提高程序的健壮性。3、const常量赋值时必须被初始化。">
+<meta name="description" content="失业专用…… C/C++extern C的作用：由于C++支持函数重载，但是C并不支持，所以用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。 const的作用：1、用于定义const常量。2、用于修饰函数的参数和返回值等，被修饰的东西都受到了强制保护，能预防意外的发生，提高程序的健壮性。3、const常量赋值时必须被初始化。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试理论性问题汇总">
 <meta property="og:url" content="/2018/11/20/面试题总结/index.html">
 <meta property="og:site_name" content="无业游民">
-<meta property="og:description" content="失业专用…… C/C++extern C的作用：由于C++支持函数重载，但是C并不支持，所有用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。 const的作用：1、用于定义const常量。2、用于修饰函数的参数和返回值等，被修饰的东西都受到了强制保护，能预防意外的发生，提高程序的健壮性。3、const常量赋值时必须被初始化。">
+<meta property="og:description" content="失业专用…… C/C++extern C的作用：由于C++支持函数重载，但是C并不支持，所以用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。 const的作用：1、用于定义const常量。2、用于修饰函数的参数和返回值等，被修饰的东西都受到了强制保护，能预防意外的发生，提高程序的健壮性。3、const常量赋值时必须被初始化。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="/images/排序算法.png">
-<meta property="og:updated_time" content="2018-11-26T06:25:10.006Z">
+<meta property="og:updated_time" content="2018-11-27T07:39:31.174Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试理论性问题汇总">
-<meta name="twitter:description" content="失业专用…… C/C++extern C的作用：由于C++支持函数重载，但是C并不支持，所有用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。 const的作用：1、用于定义const常量。2、用于修饰函数的参数和返回值等，被修饰的东西都受到了强制保护，能预防意外的发生，提高程序的健壮性。3、const常量赋值时必须被初始化。">
+<meta name="twitter:description" content="失业专用…… C/C++extern C的作用：由于C++支持函数重载，但是C并不支持，所以用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。 const的作用：1、用于定义const常量。2、用于修饰函数的参数和返回值等，被修饰的东西都受到了强制保护，能预防意外的发生，提高程序的健壮性。3、const常量赋值时必须被初始化。">
 <meta name="twitter:image" content="/images/排序算法.png">
 
 
@@ -364,23 +364,24 @@
 
       
         <p>失业专用……</p>
-<h2 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h2><p>extern C的作用：<br>由于C++支持函数重载，但是C并不支持，所有用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。</p>
+<h2 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h2><p>extern C的作用：<br>由于C++支持函数重载，但是C并不支持，所以用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。</p>
 <p>const的作用：<br>1、用于定义const常量。<br>2、用于修饰函数的参数和返回值等，被修饰的东西都受到了强制保护，能预防意外的发生，提高程序的健壮性。<br>3、const常量赋值时必须被初始化。</p>
 <p>const和define的区别：<br>1、const有数据类型，而define没有。<br>2、const能由编译器进行安全检查，但是define只是单纯的字符串替换，没有安全性。<br>3、集成化的调试工具能对const常量进行调试，但是不能对宏常量进行调试。</p>
 <p>在const成员函数中，用mutable修饰成员变量名之后就可以修改类的成员变量了。</p>
-<p>sizeof是一个运算符，sizeof()，括号内的内容是被替代类型，如：<br>int a = 8;sizeof(a)，这个a会被替代成int。用来计算一个类型的字节大小。<br>如果sizeof里面是指针，返回的永远是4。</p>
+<p>sizeof是一个运算符，sizeof()，括号内的内容是被替代类型，如：<br>int a = 8;sizeof(a)，这个a会被替代成int。用来计算一个类型的字节大小。<br>如果sizeof里面是指针，返回的永远是4（备注：64位系统指针返回的是8）</p>
 <a id="more"></a>
 <p>内联函数和宏的差别：<br>1、内联函数在编译的时候可以直接被镶嵌到目标代码里去，宏只是简单的替换。<br>2、内联函数要做参数安全检查，宏不能。<br>3、内联函数是以增加空间消耗为代价的。</p>
 <p>内联函数的适用：<br>1、一个函数不断被重复调用。<br>2、函数简短，且不包含for、while、switch等语句。</p>
 <p>指针和引用的区别：<br>1、非空区别。任何情况下引用都不可能指向空值。<br>2、合法性区别。由于指针可能为空值，所以需要被测试，而引用则不需要测试合法性。<br>3、可修改区别。指针可以被赋值指向不同的对象，但是引用则只能指向在初始化时被指定的对象，但是对象的内容是可以改变的。<br>4、应用区别。综合上面三点区别，指针通常在考虑到可能会不指向任何对象的可能，或者可能会指向不同对象的可能时使用，其他时刻应该使用引用。</p>
-<p>引用传递，修改的结果直接影响实参。</p>
 <p>struct和类的区别是struct里面默认的访问控制是public，class里是private。</p>
 <p>覆盖和重载：<br>覆盖是子类重新定义父类虚函数的做法，重载是允许存在多个重名函数，但这些函数的参数表不同。</p>
 <p>派生类的三种继承方式：<br>1、公有继承方式：公有继承时，派生类的对象可以访问基类中的公有成员，派生类的的成员函数可以访问基类中的公有成员和保护成员。<br>2、私有继承方式：私有继承时，基类的成员只能由直接派生类访问，无法再往下继承。<br>3、保护继承方式：与私有继承方式相似。</p>
 <p>private修饰符表示只能由同类里面的成员访问，protected修饰符表示继承时子类可以对基类拥有完全访问权。</p>
-<p><strong>虚函数和多态：</strong><br>多态简而言之就是用父类型的指针指向子类中的实例，通过父类的指针调用实际子类的中的成员函数<br>虚函数的创建过程：在编译时，编译器会给每个有虚函数的类创建一个虚函数表，他就像图一样，指明了实际应该调用的函数<br>虚析构函数的作用：为了使基类的指针删除派生类的对象时，也能够调用派生类的析构函数</p>
+<p><strong>虚函数和多态：</strong><br>多态简而言之就是用父类型的指针指向子类中的实例，通过父类的指针调用实际子类的中的成员函数<br>虚函数的创建过程：在编译时，编译器会给每个有虚函数的类创建一个虚函数表，指明了每一个虚函数实际应该调用的函数，同一类的不同实例共用同一份虚函数表<br>虚析构函数的作用：为了使基类的指针删除派生类的对象时，也能够调用派生类的析构函数</p>
+<p><a herf="https://blog.twofei.com/496/#comments">关于虚函数的具体讲解</a></p>
 <p>内存分配方式：<br>1、栈区：由编译器自动分配释放(即我们程序中用到的int之类的)<br>2、堆区：由程序员自己控制分配释放，如果不管他，结束的时候可能会由系统自动回收（用malloc或者new申请的东西）<br>3、全局区（静态区）：全局变量和静态变量的存储是放在一起的，在程序结束之后由系统释放<br>4、文字常量区<br>5、程序代码区：存放函数体二进制代码的地方</p>
 <p>内存相关的常见错误：<br>1、内存分配可能失败，所以在使用之前要检查指针是否为空<br>2、内存虽然分配成功了，但是没有初始化就开始使用了<br>3、操作越过了内存的边界<br>4、使用完毕之后没有及时释放内存，导致内存泄露<br>5、内存释放之后还在继续使用</p>
+<p>new和malloc的区别：<br>1、属性：new是c++操作符，只要编译器支持就好了；malloc是库函数，需要头文件<br>2、参数：new申请内存时不需要制定大小，由编译器自行控制；malloc需要显式地指出需要的内存大小<br>3、返回类型：内存分配成功时，new返回的是对象类型的指针；malloc返回的是*void，需要自己进行强制类型转换<br>4、new g[]的时候，先把内存全部申请好，再多次调用构造函数，delete的时候先多次调用析构函数，再一次性释放内存；而malloc和free只能申请和释放动态内存，干不了别的</p>
 <p>智能指针：<br>使用普通指针容易造成内存泄漏等问题，使用智能指针可以更好的管理堆内存。<br>c++提供了shared_prt类来作为智能指针使用，他使用的是引用计数，每一个shared_ptr的拷贝都指向相同的内存，每使用一次，内部引用计数加一，每析构一次，引用计数减一，当减为0时，自动删除所指向的堆内存。</p>
 <h2 id="线程与进程相关"><a href="#线程与进程相关" class="headerlink" title="线程与进程相关"></a>线程与进程相关</h2><p><strong>多线程和多进程的区别？</strong><br>进程具有独立的地址空间，由操作系统管理，进程与进程之间是逻辑隔离的，一般不会互相影响，优点是隔离性高，稳定，缺点是信息资源共享麻烦；<br>线程是进程启动的执行单元，优点是创建、销毁、切换比较方便，CPU利用率更高，占用内存少，缺点是需要管控的东西比较多，线程之间互相影响出问题的几率更大，一个线程挂了会导致整个进程都挂掉，所以才有线程安全这个说法</p>
 <p>什么是线程安全？<br>线程安全的代码会通过同步机制保证各个线程都是正常的执行，不会出现数据污染的情况</p>
@@ -408,6 +409,10 @@
 <p><strong>红黑树</strong><br>在STL中运用到红黑树的有set，map等<br>特性：<br>0、每个节点非红即黑<br>1、根节点是黑色的<br>2、空的叶子节点是黑色的<br>3、一个节点是红色的话，他的子节点必须是黑色的<br>4、从根节点到任意一个空子节点的路径上的黑色节点数量是一致的<br>最坏情况下的树的深度为2logn，也就是两倍的全黑路径长度，最坏复杂度为logn</p>
 <p>添加操作：首先把红黑树当作是普通二分查找树，插入节点；然后把节点变成红色；进行旋转或着色，使其重新成为一颗红黑树</p>
 <p>因为最坏情况下也是logn的复杂度，所以优于BST（二分查找树）<br>相比较于AVL（完全平衡树）虽然时间复杂度一样，但是统计性能更高，插入新节点后的维护操作还是红黑树比较快</p>
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p>这里只简单的写一些概念，具体实现之类的去runoob看</p>
+<p><strong>单例模式</strong><br>解释：保证了一个类只会被实例化一次，并提供了供全局访问的一个点<br>使用情况：当一个实例会被频繁的创建和销毁时使用，使用单例模式之后可以控制实例数量，节省系统资源<br>关键点：构造函数是私有函数，这样就保证其不会在外部被实例化<br>一般实现方式：在第一次被调用的时候创建该实例<br>优点：在内存中只有一个实例，减少了内存开销；避免了某实例频繁的创建和销毁；避免对资源的多重占用<br>缺点：没有接口，不能继承<br>适用场景：比如一个文件会被多个进程操作，此时应用可以保证文件的处理通过唯一的实例进行；一个医院只能有一个院长；在web页面中的计数器，先用单例存起来，最后再更新到数据库中去</p>
+<p><strong>工厂模式</strong><br>解释：定义了一个创建类的接口，让子类自己决定实例化哪一个工厂类<br>关键点：创建实例在子类进行<br>优点：调用者想要创建一个实例只需要知道名字就好了；扩展性高，想要增加一个产品，只要扩展一个工厂类就好了<br>缺点：每增加一个产品都要增加一个具体的产品类和对象实现工厂，增加了系统的复杂度<br>适用场景：当一个类的构造比较复杂的时候，使用工厂模式，就不需要关注他的构造过程，直接用就好了，<br>吐槽：感觉工厂模式就没啥用啊……构造不都是在构造函数里实现的么……理解起来感觉就是简单的封装，数据库上可以用一下</p>
+<p><strong>代理模式</strong><br>解释：为其他对象提供代理以控制对这个对象的访问<br>解决问题：当直接访问某对象时，由于权限、对象创建开销大、需要进程外的访问等问题，需要在访问此对象时加上对该对象的访问层<br>优点：扩展性高，智能化<br>缺点：由于多出了中间环节，所以可能会造成请求的速度变慢</p>
 <h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p>Redis是一种key-value数据库，里面支持string，list，set，hash等数据结构。redis具有持久化的特性，虽然他的所有数据都是保存在内存中的，但是还是会把数据（改动）同步到硬盘中去</p>
 <p>Redis的优势：<br>1、性能极高，io速度快<br>2、数据类型丰富<br>3、原子性的操作，对于单次操作要么成功要么失败完全不执行<br>Redis的缺点：<br>1、由于物理内存的限制，不能处理海量数据，只能适用于数据不是很多的情况<br>2、集群中扩容困难，需要运维提前设置好足够多的内存，否则扩容起来相当麻烦</p>
 <p>RDB持久化：也称半持久化，在指定的时间间隔内，会把内存中的数据集写入到磁盘中，实际的操作是fork一个子进程，将数据集中写到临时文件中，写入成功后再替换之前的文件。<br>优点：由于是直接存储数据，所以灾后数据恢复会比较快；由于只是fork了一个子进程，所以性能较高<br>缺点：由于是间隔性的存储数据，不能保证数据的高可用性；当数据集过大时，可能会引起服务器短暂停止服务（几百毫秒级别）</p>
@@ -604,7 +609,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-C"><span class="nav-number">1.</span> <span class="nav-text">C/C++</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程与进程相关"><span class="nav-number">2.</span> <span class="nav-text">线程与进程相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库"><span class="nav-number">3.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机网络"><span class="nav-number">4.</span> <span class="nav-text">计算机网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法方面"><span class="nav-number">5.</span> <span class="nav-text">算法方面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis"><span class="nav-number">6.</span> <span class="nav-text">Redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django"><span class="nav-number">7.</span> <span class="nav-text">Django</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-C"><span class="nav-number">1.</span> <span class="nav-text">C/C++</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程与进程相关"><span class="nav-number">2.</span> <span class="nav-text">线程与进程相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库"><span class="nav-number">3.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机网络"><span class="nav-number">4.</span> <span class="nav-text">计算机网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法方面"><span class="nav-number">5.</span> <span class="nav-text">算法方面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式"><span class="nav-number">6.</span> <span class="nav-text">设计模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis"><span class="nav-number">7.</span> <span class="nav-text">Redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django"><span class="nav-number">8.</span> <span class="nav-text">Django</span></a></li></ol></div>
             
 
           </div>
