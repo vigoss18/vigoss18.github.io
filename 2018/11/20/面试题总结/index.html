@@ -89,7 +89,7 @@
 <meta property="og:image" content="/images/三次握手.png">
 <meta property="og:image" content="/images/四次挥手.png">
 <meta property="og:image" content="/images/排序算法.png">
-<meta property="og:updated_time" content="2018-11-27T13:27:24.688Z">
+<meta property="og:updated_time" content="2018-11-28T12:23:48.699Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试理论性问题汇总">
 <meta name="twitter:description" content="失业专用…… C/C++extern C的作用：由于C++支持函数重载，但是C并不支持，所以用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。 const的作用：1、用于定义const常量，具有不变性。2、用于修饰函数的参数和返回值等，被修饰的东西都受到了强制保护，能预防意外的发生，提高程序的健壮性。3、const常量赋值时必须">
@@ -415,6 +415,8 @@
 <p><strong>红黑树</strong><br>在STL中运用到红黑树的有set，map等<br>特性：<br>0、每个节点非红即黑<br>1、根节点是黑色的<br>2、空的叶子节点是黑色的<br>3、一个节点是红色的话，他的子节点必须是黑色的<br>4、从根节点到任意一个空子节点的路径上的黑色节点数量是一致的<br>最坏情况下的树的深度为2logn，也就是两倍的全黑路径长度，最坏复杂度为logn</p>
 <p>添加操作：首先把红黑树当作是普通二分查找树，插入节点；然后把节点变成红色；进行旋转或着色，使其重新成为一颗红黑树</p>
 <p>因为最坏情况下也是logn的复杂度，所以优于BST（二分查找树）<br>相比较于AVL（完全平衡树）虽然时间复杂度一样，但是统计性能更高，插入新节点后的维护操作还是红黑树比较快</p>
+<p><strong>快速排序</strong><br>快速排序一直用库函数sort，懒得自己去仔细看或者实现一遍，这里简单说一下快排的实现和非递归写法<br>快排是一种交换排序，排序方式是在当前数组中随机选一个数，把所有比他大的扔到他的后面去，所有比他小的扔到他的前面去，下面扔一下他的交换函数</p>
+<p><strong>A*算法</strong></p>
 <h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p>这里只简单的写一些概念，具体实现之类的去runoob看</p>
 <p><strong>单例模式</strong><br>解释：保证了一个类只会被实例化一次，并提供了供全局访问的一个点<br>使用情况：当一个实例会被频繁的创建和销毁时使用，使用单例模式之后可以控制实例数量，节省系统资源<br>关键点：构造函数是私有函数，这样就保证其不会在外部被实例化<br>一般实现方式：在第一次被调用的时候创建该实例<br>优点：在内存中只有一个实例，减少了内存开销；避免了某实例频繁的创建和销毁；避免对资源的多重占用<br>缺点：没有接口，不能继承<br>适用场景：比如一个文件会被多个进程操作，此时应用可以保证文件的处理通过唯一的实例进行；一个医院只能有一个院长；在web页面中的计数器，先用单例存起来，最后再更新到数据库中去</p>
 <p><strong>工厂模式</strong><br>解释：定义了一个创建类的接口，让子类自己决定实例化哪一个工厂类<br>关键点：创建实例在子类进行<br>优点：调用者想要创建一个实例只需要知道名字就好了；扩展性高，想要增加一个产品，只要扩展一个工厂类就好了<br>缺点：每增加一个产品都要增加一个具体的产品类和对象实现工厂，增加了系统的复杂度<br>适用场景：当一个类的构造比较复杂的时候，使用工厂模式，就不需要关注他的构造过程，直接用就好了，<br>吐槽：感觉工厂模式就没啥用啊……构造不都是在构造函数里实现的么……理解起来感觉就是简单的封装，数据库上可以用一下</p>
@@ -463,8 +465,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/20/博客迁移（物理上）/" rel="prev" title="重新开始更新博客了">
-                重新开始更新博客了 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/20/工作面试汇总/" rel="prev" title="公司面试汇总">
+                公司面试汇总 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -553,7 +555,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">91</span>
+                  <span class="site-state-item-count">92</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
