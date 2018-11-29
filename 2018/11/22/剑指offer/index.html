@@ -87,7 +87,7 @@
 <meta property="og:description" content="LeetCode有点多……先把剑指offer刷一遍复健一下…… 二维数组中的查找：题意：一个从左到右，从上到下都是递增的二维数组，求是否存在n解法：for一遍，对于第x行，判断n是否在v[x][0]到v[x][v[x].size() - 1]之间，判断成功再for一遍check该行是否存在n就行了 替换空格：题意：给一个字符串，把其中的空格替换成%20解法：本来想用纯c的，写来写去都CE，干脆用s">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="/images/剑指offer顺时针打印矩形.png">
-<meta property="og:updated_time" content="2018-11-27T03:20:43.830Z">
+<meta property="og:updated_time" content="2018-11-29T09:38:00.387Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="剑指offer题目大意和思路汇总">
 <meta name="twitter:description" content="LeetCode有点多……先把剑指offer刷一遍复健一下…… 二维数组中的查找：题意：一个从左到右，从上到下都是递增的二维数组，求是否存在n解法：for一遍，对于第x行，判断n是否在v[x][0]到v[x][v[x].size() - 1]之间，判断成功再for一遍check该行是否存在n就行了 替换空格：题意：给一个字符串，把其中的空格替换成%20解法：本来想用纯c的，写来写去都CE，干脆用s">
@@ -439,6 +439,7 @@
         return dp[index - 1];
     }
 </code></pre><p>数组中的逆序对：<br>题意：就是求逆序对<br>解答：已经完全不会树状数组了……学个简单的用归并来求的方法，复杂度是nlogn，就在归并的时候跑一边前后两个数组，求一下逆序对数。做一遍这样的递归就好了……不知道为什么……二分的时候取(l,mid-1)和(mid,r)一直爆内存，改成(l,mid)和(mid+1,r)就好了</p>
+<p>机器人的运动范围：<br>题意，对于一个由n*m个方格组成的矩形，给出一个k，合法方格为数位和小于k的方格，求最多能从(0,0)出发去多少个方格<br>解答：广搜即可，不知道为啥我memset没法初始化整个vis数组……然后要注意k可能为负数</p>
 
       
     </div>
