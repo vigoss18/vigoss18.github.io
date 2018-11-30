@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="无业游民">
 <meta property="og:description" content="记录一下去各个公司面试的大致内容汇总 XX工业安全设备抱着多面面总没有坏处的想法去的，面试的岗位是软件工程师，一开始我还以为是做嵌入式方面的……结果人家和我和我说完之后我感觉有一种闲杂工的感觉，网页也要写，app也要做，主要负责嵌入式设备的数据传过来之后的一些处理，展示到前端。面试的题目只有两个，一道智力题，问你一炷香烧完一小时，怎么用两柱香计时45分钟，香的长短粗细不一，只能保证完全烧完的时间是">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-29T05:55:41.213Z">
+<meta property="og:updated_time" content="2018-11-30T10:21:15.046Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="公司面试汇总">
 <meta name="twitter:description" content="记录一下去各个公司面试的大致内容汇总 XX工业安全设备抱着多面面总没有坏处的想法去的，面试的岗位是软件工程师，一开始我还以为是做嵌入式方面的……结果人家和我和我说完之后我感觉有一种闲杂工的感觉，网页也要写，app也要做，主要负责嵌入式设备的数据传过来之后的一些处理，展示到前端。面试的题目只有两个，一道智力题，问你一炷香烧完一小时，怎么用两柱香计时45分钟，香的长短粗细不一，只能保证完全烧完的时间是">
@@ -368,6 +368,10 @@
 <h2 id="XX游戏公司（上海）"><a href="#XX游戏公司（上海）" class="headerlink" title="XX游戏公司（上海）"></a>XX游戏公司（上海）</h2><p>这一家也是主动找我的，面试的岗位是游戏开发工程师（前端UE3）。面试题目如下：<br>1、堆栈区别，这道题没背过。。还以为是普通的堆栈，最后被告知原来就是内存分配的时候的堆栈，就顺利回答出来了<br>2、指针和引用的区别，背烂的题目<br>3、简述多态，背烂的题目<br>4、new/delete和malloc/free的区别，前两天刚记的，开心<br>5、编程题，根据索引，快速删除数组中的该值。一开始没懂，后来告知索引就是下标，脑子一抽说像链表一样直接删，然后想起数组的内存是连续的，于是又改口说把该索引后面的数一个一个挪上来，面试官继续开导问我能不能O(1)，于是就想到了把尾巴上的数扔过来，至此得到了正解。<br>6、编程题，从(0,50]中返回随机的30个数。一开始想的很复杂，vector，queue什么乱套，后来被提示说日常生活中的随机发牌是怎么做的，又联想到题目5的做法，就得到了正解，每次rand一个数，然后把剩余的数用题目5的办法合并，就好了<br>7、双向链表的头尾增加和删减，这道题他没说什么，自己写的时候注意增强一下程序健壮性就好了，要判node为NULL和插入的链表为NULL的情况<br>8、描述A*算法，我佛了，又是这个，被问到了好几次了……等会我写完一定要去系统的学一下……<br>9、有1W个在2D平面的运动的球，会互相碰撞，怎么去更新他们的状态比较好？这个一开始没想明白，YY了一下说每次遍历的时候找出下一对最近时间会碰撞的球，更新到那个时间，然后继续遍历。显然是不对的……面试管提醒了一下，说要划分区域，我一下就明白了，这tm不就是预处理嘛，把平面预处理成N*M块，每块存一下当前在该区域的点，接下来就只要每次跑这些区域块就好了，可以较快的算出哪些球会发生碰撞而不是O(N^2)暴力跑</p>
 <p>不得不说这个面试官人还是很好的，和我谈笑风生……我回答不出来的时候也会引导我一下，总体来说面试体验很好</p>
 <p>接下来是HR面……我第一次遇到HR谈的比技术面还要久的，有点可怕，最后聊了一下薪资待遇，比我前一份工作少了点，但是总体来说还算可以吧，还是先继续面试，看看能不能有横向对比的offer</p>
+<h2 id="XX游戏公司（上海）-1"><a href="#XX游戏公司（上海）-1" class="headerlink" title="XX游戏公司（上海）"></a>XX游戏公司（上海）</h2><p>这家是我自己投的简历，本来看公司挺大的，感觉自己就是不报希望的随便一投，不过没想到竟然……</p>
+<p>这一家我投的是C++服务端开发，进去先是来一套和公务员行测一样的智商题，做起来还行。做完之后等了一会就有人带我去面试了，面试官一男一女有两个，第一次遇到两个面试官的，而且这算是我面试的里面比较想去的一家，所以比较紧张……大多数的问题都忘了，就记得一两个自己之前的面试总结里没有的回答不上来的问题……一是函数运行的时候函数的参数是从左往右还是从右往左读的，我就随便猜了一个从左往右，现在回想起来，感觉不应该xjb猜还说自己是猜的……直接说不知道就完事了。二是类B如何读取类A中的私有变量。三是从你输入网址到网页显示完毕的过程，最后说断开tcp连接的时候有点困惑，搞混了到底最后断开连接是服务端说了算还是客户端说了算。四是如何限制类对象只在堆（栈）上分配空间。其余还问了啥我几乎都快忘了。</p>
+<p>虽然该答不上来的还是没答上来，但是hr表示问题不大，因为刚好缺这么一个人，很急很关键……当晚就发了offer，5号就要上班……真的很急的样子……</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>其实一开始做好了长期奋斗的准备……甚至有了年后才工作的准备，想不到这么快就找到了心仪的工作，怎么说呢……感觉我三次找工作都挺快的，只能感叹自己运气好了吧……希望能把这份工作做好。</p>
 
       
     </div>
@@ -550,7 +554,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#XX工业安全设备"><span class="nav-number">1.</span> <span class="nav-text">XX工业安全设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XX游戏公司（上海）"><span class="nav-number">2.</span> <span class="nav-text">XX游戏公司（上海）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#XX工业安全设备"><span class="nav-number">1.</span> <span class="nav-text">XX工业安全设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XX游戏公司（上海）"><span class="nav-number">2.</span> <span class="nav-text">XX游戏公司（上海）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XX游戏公司（上海）-1"><span class="nav-number">3.</span> <span class="nav-text">XX游戏公司（上海）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
