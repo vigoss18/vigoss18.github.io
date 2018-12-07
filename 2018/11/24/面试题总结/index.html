@@ -89,7 +89,7 @@
 <meta property="og:image" content="/images/三次握手.png">
 <meta property="og:image" content="/images/四次挥手.png">
 <meta property="og:image" content="/images/排序算法.png">
-<meta property="og:updated_time" content="2018-11-30T14:47:24.147Z">
+<meta property="og:updated_time" content="2018-11-30T14:51:43.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试理论性问题汇总">
 <meta name="twitter:description" content="失业专用…… C/C++extern C的作用：由于C++支持函数重载，但是C并不支持，函数在编译在库中的名字和C的不同，所以用extern C来表明这个函数或者变量是用C语言来编译和连接的，这样做可以解决名字匹配问题，实现C++和C的混合变成。 const的作用：1、想要阻止一个变量被改变，可以用const关键字2、用于修饰函数的参数和返回值等，被修饰的东西都受到了强制保护，能预防意外的发生，提">
@@ -401,8 +401,17 @@ public:
         delete this;  
     }  
 };  
-</code></pre><p>2、只能在栈上分配内存的话，重写operator new就好了<br>    class A<br>    {<br>    private:<br>        void<em> operator new(size_t t){}     // 注意函数的第一个参数和返回值都是固定的<br>        void operator delete(void</em> ptr){} // 重载了new就需要重载delete<br>    public:<br>        A(){}<br>        ~A(){}<br>    };  </p>
-<p>new和malloc的区别：<br>1、属性：new是c++操作符，只要编译器支持就好了；malloc是库函数，需要头文件<br>2、参数：new申请内存时不需要制定大小，由编译器自行控制；malloc需要显式地指出需要的内存大小<br>3、返回类型：内存分配成功时，new返回的是对象类型的指针；malloc返回的是*void，需要自己进行强制类型转换<br>4、new g[]的时候，先把内存全部申请好，再多次调用构造函数，delete的时候先多次调用析构函数，再一次性释放内存；而malloc和free只能申请和释放动态内存，干不了别的</p>
+</code></pre><p>2、只能在栈上分配内存的话，重写operator new就好了</p>
+<pre><code>class A  
+{  
+private:  
+    void* operator new(size_t t){}     // 注意函数的第一个参数和返回值都是固定的  
+    void operator delete(void* ptr){} // 重载了new就需要重载delete  
+public:  
+    A(){}  
+    ~A(){}  
+};  
+</code></pre><p>new和malloc的区别：<br>1、属性：new是c++操作符，只要编译器支持就好了；malloc是库函数，需要头文件<br>2、参数：new申请内存时不需要制定大小，由编译器自行控制；malloc需要显式地指出需要的内存大小<br>3、返回类型：内存分配成功时，new返回的是对象类型的指针；malloc返回的是*void，需要自己进行强制类型转换<br>4、new g[]的时候，先把内存全部申请好，再多次调用构造函数，delete的时候先多次调用析构函数，再一次性释放内存；而malloc和free只能申请和释放动态内存，干不了别的</p>
 <p>智能指针：<br>使用普通指针容易造成内存泄漏等问题，使用智能指针可以更好的管理堆内存。<br>c++提供了shared_prt类来作为智能指针使用，他使用的是引用计数，每一个shared_ptr的拷贝都指向相同的内存，每使用一次，内部引用计数加一，每析构一次，引用计数减一，当减为0时，自动删除所指向的堆内存。</p>
 <p>函数参数的执行顺序：参数入栈时是从右向左入栈的，但是入栈前会把参数列表从右向左算一遍得到表达式的结果，对于一般的操作，参数入栈时的值时直接从变量的地址取的，但是对于a++编译器会开辟一个缓冲区把a存进去，再进行运算，最后入栈的时候时从缓冲区取值的，下面来举个例子，<code>a=10;printf(&quot;%d %d %d\n&quot;,a++,++a,a,a++)</code>得到的结果就是12,13,13,10，理解一下就会了</p>
 <h2 id="线程与进程相关"><a href="#线程与进程相关" class="headerlink" title="线程与进程相关"></a>线程与进程相关</h2><p><strong>多线程和多进程的区别？</strong><br>进程具有独立的地址空间，由操作系统管理，进程与进程之间是逻辑隔离的，一般不会互相影响，优点是隔离性高，稳定，缺点是信息资源共享麻烦；<br>线程是进程启动的执行单元，优点是创建、销毁、切换比较方便，CPU利用率更高，占用内存少，缺点是需要管控的东西比较多，线程之间互相影响出问题的几率更大，一个线程挂了会导致整个进程都挂掉，所以才有线程安全这个说法</p>
@@ -613,7 +622,7 @@ while(!st.empty())
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">92</span>
+                  <span class="site-state-item-count">93</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -624,7 +633,7 @@ while(!st.empty())
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
