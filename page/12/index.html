@@ -262,6 +262,171 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2015/07/20/代码小细节(20150726update)/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vigoss18">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无业游民">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/07/20/代码小细节(20150726update)/" itemprop="url">做题时需要注意的小细节</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-07-20T00:00:00+08:00">
+                2015-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/07/20/代码小细节(20150726update)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/20/代码小细节(20150726update)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>发现自己在做题的时候经常会重复犯一些很难发现的小细节错误，在这里记录下来，望谨记。</p>
+<p><code>unsigned LL ou = 0;
+ou += (unsigned LL)pow(2.0,i);</code>平时我在写题的时候从来不会注意强制转化的问题，但其实我已经好几次因为强制转化没有处理而wa了，而且每一次都会要找半天，pow函数返回的类型为double在加在例如LL，int等类型的数据上的时候，会出现一丝误差，需要强制转换才能解决，所以以后使用类似pow这种返回值和需要使用的值数据类型不同的时候，注意强制转化。</p>
+<p>在使用STL类priority_queue时，对于队列里面的每一个值是默认从小到大排序的，也就是说如果你插入队列的值为1，2，3，4，5，那么从队列口开始依次是5，4，3，2，1，当你想要自定义优先队列的排列方式时，需要自己手写一个cmp结构体重载一下。举例如下</p>
+<pre><code>struct cmp
+{
+    bool operator()(const pair&lt;int,int&gt; a,const pair&lt;int,int&gt; b)const
+    {
+        if(a.first != b.first)
+            return a.first &lt; b.first;
+        return a.second &gt; b.second;
+    }   
+};
+</code></pre><p><code>priority_queue&lt; pair&lt;int,int&gt;,vector&lt;pair&lt;int,int&gt; &gt;,cmp&gt;hp;</code><br><br>这是一个手写的存储形式为pair的优先队列，需要注意的是，如果你需要先按照第一个值从小到大，第二个值从大到小排列，根据优先队列默认<code>less&lt;T&gt;</code>的效果，你需要把所有手写的排序顺序反一下，比如上面的代码，如果你输入五个pair分别为(1,2),(1,3),(2,3),(2,4),(2,5),那么排好序后从队列头开始依次为(2,3),(2,4),(2,5),(1,2),(1,3)。优先队列可以在需要节省时间的时候用到，前提是你的代码不会爆内存。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="/2015/07/15/用概率dp求期望/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1225,7 +1390,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">94</span>
+                  <span class="site-state-item-count">95</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
