@@ -83,10 +83,10 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="最大匹配解法学习">
 <meta property="og:url" content="/2015/11/10/最大匹配解法学习/index.html">
-<meta property="og:site_name" content="那些阳光灿烂的日子">
+<meta property="og:site_name" content="我们回不到那天">
 <meta property="og:description" content="这两天抽空看了一下最大匹配的解法，发现还真的蛮常用的，学习，学习一下。不得不说kuangbin的blog真的很有用啊，不愧是大神……学习地址1学习地址2 所谓最大匹配，最简单的理解方法就是字面意思了，最大，匹配，就是给你一个图，让你找出一种选择配对的情况使得最多的点能互相两两配对。那么如何来求得最大配对呢？就要引入几个定义了。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-20T13:37:57.916Z">
+<meta property="og:updated_time" content="2019-08-17T02:17:14.897Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最大匹配解法学习">
 <meta name="twitter:description" content="这两天抽空看了一下最大匹配的解法，发现还真的蛮常用的，学习，学习一下。不得不说kuangbin的blog真的很有用啊，不愧是大神……学习地址1学习地址2 所谓最大匹配，最简单的理解方法就是字面意思了，最大，匹配，就是给你一个图，让你找出一种选择配对的情况使得最多的点能互相两两配对。那么如何来求得最大配对呢？就要引入几个定义了。">
@@ -125,7 +125,7 @@
 
 
 
-  <title>最大匹配解法学习 | 那些阳光灿烂的日子</title>
+  <title>最大匹配解法学习 | 我们回不到那天</title>
   
 
 
@@ -165,7 +165,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">那些阳光灿烂的日子</span>
+        <span class="site-title">我们回不到那天</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -271,7 +271,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="那些阳光灿烂的日子">
+      <meta itemprop="name" content="我们回不到那天">
     </span>
 
     
@@ -365,7 +365,7 @@
 <p>所谓最大匹配，最简单的理解方法就是字面意思了，最大，匹配，就是给你一个图，让你找出一种选择配对的情况使得最多的点能互相两两配对。那么如何来求得最大配对呢？就要引入几个定义了。</p>
 <a id="more"></a>
 <p><strong>交替路</strong>：从一个未匹配点出发，依次经过非匹配边、匹配边、非匹配边…形成的路径叫交替路。</p>
-<p><strong>增广路</strong>：从一个未匹配点出发，走交替路，如果途径了一个未匹配点，那么这条路就是增光路。此时匹配边比未匹配边少一条，只要互换就可以改进匹配了。</p>
+<p><strong>增广路</strong>：从一个未匹配点出发，走交替路，如果途径了一个未匹配点，那么这条路就是增广路。此时匹配边比未匹配边少一条，只要互换就可以改进匹配了。</p>
 <p>学完这些概念，我脑子里第一个蹦出来的是用dfs来写，不过感觉写起来有点困难，就copy了一份别人的模板来用，确实很短啊。</p>
 <pre><code>//************************************************
 
@@ -708,8 +708,8 @@ int main()
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/14/HDU5533/" rel="prev" title="HDU5533">
-                HDU5533 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/11/14/字典树的学习/" rel="prev" title="字典树的学习">
+                字典树的学习 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -789,7 +789,7 @@ int main()
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-count">114</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -812,22 +812,6 @@ int main()
 
           
 
-          
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/vigoss18" target="_blank" title="github">
-                      
-                        <i class="fa fa-fw fa-globe"></i>github</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.zhihu.com/people/ma-wu-yuan" target="_blank" title="zhihu">
-                      
-                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
-                  </span>
-                
-            </div>
           
 
           
