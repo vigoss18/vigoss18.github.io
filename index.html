@@ -262,6 +262,171 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="/2019/10/25/GDI泄露分析/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="vigoss18">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/头像.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我们回不到那天">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/25/GDI泄露分析/" itemprop="url">GDI对象泄露分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-25T16:22:17+08:00">
+                2019-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/杂乱的学习/" itemprop="url" rel="index">
+                    <span itemprop="name">杂乱的学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/25/GDI泄露分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/10/25/GDI泄露分析/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近在魔改一个比我还老的MFC项目……主要是用于读取dxf文件进行数据分析并且绘制图像，花了两三天弄下来之后已经变得有模有样了，结果我在无意间拖动的时候发现我只要对这个图像多拖动一会，程序竟然就自动奔溃了……然后我就开始了问题分析之旅。</p>
+<p>GDI就是操作系统提供给显示器之类的输出设备的标准，在mfc中有不少GDI对象类比如CBrush刷子，CPen笔等，在绘制之前的初始化中会创建GDI对象，将其选入Windows设备描述表中，使用完成之后恢复设备描述表的原GDI对象，再删除创建出来的这个GDI对象，具体使用例如：</p>
+<pre><code>HPEN pen = CreatePen(PS_SOLID, 0, rgbcolor);
+oldpen = (HPEN)SelectObject(hdc, pen);
+MoveTo(x, y);
+...
+SelectObject(hdc, oldpen);
+DeleteObject(pen);
+</code></pre><p>利用任务管理器可以监控一个程序的GDI对象使用数量，打开任务管理器之后转到详细信息，右键第一列选择“选择列”，勾选GDI对象后即可。我对软件的GDI对象进行监控之后发现GDI的对象上升快的吓人，主要因为这个老项目每一次鼠标进行像素点的移动都会重绘整个图像。通过滚轮放大缩小对单次绘制的GDI对象泄露数量进行观察，发现是6个，刚好我这个图像里也有六个文字，于是进行了对应的跟踪调试，发现原来是我在魔改的时候忘记注释了一行代码，导致绘制所有TEXT对象的时候没有及时回收GDI对象，从而导致的泄露。真是debug半年，改改一分钟……</p>
+<p>不过这个老项目本身也有一个地方存在GDI对象泄露，所以一开始误导了我的方向……</p>
+<p>原代码中有一处，每次通过<code>GetDC()</code>来判断鼠标的移动位置合法性，这样返回的指向CDC的指针没有保存，而他本身不会自动释放，就会导致GDI资源的泄露，需要用以下形式代替：</p>
+<pre><code>CDC* pDC = this-&gt;GetDC();
+...
+ReleaseDC(pDC);
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="/2019/10/19/闲聊/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1340,163 +1505,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2019/05/12/19年5月12日周记/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="vigoss18">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/头像.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="我们回不到那天">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/12/19年5月12日周记/" itemprop="url">19年5月12日周记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-12T16:57:16+08:00">
-                2019-05-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/周记/" itemprop="url" rel="index">
-                    <span itemprop="name">周记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/05/12/19年5月12日周记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/05/12/19年5月12日周记/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这周竟然是双休，在家享受了两天悠闲的假期，感觉整个人都好起来了……</p>
-<p>由于人员变动的缘故，游戏剧情一直没有推进下去，所以剧情组这边还是比较空的，就是做一些现在能想到的机制。所以我这周基本都是七八点就下班了，但是感觉下班好累啊……要走半个小时，然后再在地铁里站半个小时，所以偶尔我还是会摸鱼到10点然后打车下班</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/12/19年5月12日周记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1549,7 +1557,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">114</span>
+                  <span class="site-state-item-count">115</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="本来这是一道水题的，不过学习到了T神的二分姿势，以后要记牢这个姿势啊！ 求阶乘后面有N个零是哪些数。">
+<meta name="description" content="最近在魔改一个比我还老的MFC项目……主要是用于读取dxf文件进行数据分析并且绘制图像，花了两三天弄下来之后已经变得有模有样了，结果我在无意间拖动的时候发现我只要对这个图像多拖动一会，程序竟然就自动奔溃了……然后我就开始了问题分析之旅。 GDI就是操作系统提供给显示器之类的输出设备的标准，在mfc中有不少GDI对象类比如CBrush刷子，CPen笔等，在绘制之前的初始化中会创建GDI对象，将其选入">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Codeforces 633B(二分)">
-<meta property="og:url" content="/2016/02/28/Codeforces 633B(二分)/index.html">
+<meta property="og:title" content="GDI对象泄露分析">
+<meta property="og:url" content="/2019/10/25/GDI泄露分析/index.html">
 <meta property="og:site_name" content="我们回不到那天">
-<meta property="og:description" content="本来这是一道水题的，不过学习到了T神的二分姿势，以后要记牢这个姿势啊！ 求阶乘后面有N个零是哪些数。">
+<meta property="og:description" content="最近在魔改一个比我还老的MFC项目……主要是用于读取dxf文件进行数据分析并且绘制图像，花了两三天弄下来之后已经变得有模有样了，结果我在无意间拖动的时候发现我只要对这个图像多拖动一会，程序竟然就自动奔溃了……然后我就开始了问题分析之旅。 GDI就是操作系统提供给显示器之类的输出设备的标准，在mfc中有不少GDI对象类比如CBrush刷子，CPen笔等，在绘制之前的初始化中会创建GDI对象，将其选入">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-20T13:36:03.813Z">
+<meta property="og:updated_time" content="2019-10-26T01:22:34.561Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Codeforces 633B(二分)">
-<meta name="twitter:description" content="本来这是一道水题的，不过学习到了T神的二分姿势，以后要记牢这个姿势啊！ 求阶乘后面有N个零是哪些数。">
+<meta name="twitter:title" content="GDI对象泄露分析">
+<meta name="twitter:description" content="最近在魔改一个比我还老的MFC项目……主要是用于读取dxf文件进行数据分析并且绘制图像，花了两三天弄下来之后已经变得有模有样了，结果我在无意间拖动的时候发现我只要对这个图像多拖动一会，程序竟然就自动奔溃了……然后我就开始了问题分析之旅。 GDI就是操作系统提供给显示器之类的输出设备的标准，在mfc中有不少GDI对象类比如CBrush刷子，CPen笔等，在绘制之前的初始化中会创建GDI对象，将其选入">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="/2016/02/28/Codeforces 633B(二分)/">
+  <link rel="canonical" href="/2019/10/25/GDI泄露分析/">
 
 
 
 
 
-  <title>Codeforces 633B(二分) | 我们回不到那天</title>
+  <title>GDI对象泄露分析 | 我们回不到那天</title>
   
 
 
@@ -262,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2016/02/28/Codeforces 633B(二分)/">
+    <link itemprop="mainEntityOfPage" href="/2019/10/25/GDI泄露分析/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vigoss18">
@@ -279,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Codeforces 633B(二分)</h1>
+          <h1 class="post-title" itemprop="name headline">GDI对象泄露分析</h1>
         
 
         <div class="post-meta">
@@ -291,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-28T13:25:47+08:00">
-                2016-02-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-25T16:22:17+08:00">
+                2019-10-25
               </time>
             
 
@@ -314,8 +314,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM</span>
+                  <a href="/categories/杂乱的学习/" itemprop="url" rel="index">
+                    <span itemprop="name">杂乱的学习</span>
                   </a>
                 </span>
 
@@ -332,8 +332,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/02/28/Codeforces 633B(二分)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/28/Codeforces 633B(二分)/" itemprop="commentCount"></span>
+                <a href="/2019/10/25/GDI泄露分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/10/25/GDI泄露分析/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -361,68 +361,20 @@
       
 
       
-        <p>本来这是一道水题的，不过学习到了T神的二分姿势，以后要记牢这个姿势啊！</p>
-<p>求阶乘后面有N个零是哪些数。</p>
-<a id="more"></a>
-<pre><code>#include &lt;bits/stdc++.h&gt; 
-using namespace std;
-typedef long long ll;
-#define PB push_back
-#define UB upper_bound
-#define LB lower_bound
-#define MP make_pair
-#define pii pair&lt;int,int&gt;
-#define vi vector&lt;int&gt;
-#define vii vector&lt;vi&gt;
-#define mst(x,y) memset(x,y,sizeof(x))
-#define fr(x) freopen(x,&quot;r&quot;,stdin)
-#define fw(x) freopen(x,&quot;w&quot;,stdout)
-#define sp system(&quot;pause&quot;)
-#define INF 1e9
-#define MAXN 200005
-#define PI acos(-1.0)
-#define eps 1e-10
-const ll MOD = 1e9 + 7;
-
-int get(int x)
-{
-    int re = 0;
-    while(x &gt;= 5)
-    {
-        re += x / 5;
-        x /= 5;
-    }
-    return re;
-}
-
-int main()   
-{   
-    int n;
-    cin &gt;&gt; n;
-    int l = 1,r = INF;
-    while(l &lt; r)
-    {
-        int mid = (l + r) &gt;&gt; 1;
-        if(get(mid) &lt; n)
-            l = mid + 1;
-        else
-            r = mid;
-    }
-    int mid = (l + r) &gt;&gt; 1,cnt = 0,sv[1111];
-    while(get(mid) == n)
-    {
-        sv[cnt++] = mid;
-        mid++;
-    }
-    cout &lt;&lt; cnt &lt;&lt; endl;
-    if(cnt)
-    {
-        cout &lt;&lt; sv[0];
-        for(int i = 1;i &lt; cnt;i++)
-            cout &lt;&lt; &quot; &quot; &lt;&lt; sv[i];
-        cout &lt;&lt; endl;
-    }
-}
+        <p>最近在魔改一个比我还老的MFC项目……主要是用于读取dxf文件进行数据分析并且绘制图像，花了两三天弄下来之后已经变得有模有样了，结果我在无意间拖动的时候发现我只要对这个图像多拖动一会，程序竟然就自动奔溃了……然后我就开始了问题分析之旅。</p>
+<p>GDI就是操作系统提供给显示器之类的输出设备的标准，在mfc中有不少GDI对象类比如CBrush刷子，CPen笔等，在绘制之前的初始化中会创建GDI对象，将其选入Windows设备描述表中，使用完成之后恢复设备描述表的原GDI对象，再删除创建出来的这个GDI对象，具体使用例如：</p>
+<pre><code>HPEN pen = CreatePen(PS_SOLID, 0, rgbcolor);
+oldpen = (HPEN)SelectObject(hdc, pen);
+MoveTo(x, y);
+...
+SelectObject(hdc, oldpen);
+DeleteObject(pen);
+</code></pre><p>利用任务管理器可以监控一个程序的GDI对象使用数量，打开任务管理器之后转到详细信息，右键第一列选择“选择列”，勾选GDI对象后即可。我对软件的GDI对象进行监控之后发现GDI的对象上升快的吓人，主要因为这个老项目每一次鼠标进行像素点的移动都会重绘整个图像。通过滚轮放大缩小对单次绘制的GDI对象泄露数量进行观察，发现是6个，刚好我这个图像里也有六个文字，于是进行了对应的跟踪调试，发现原来是我在魔改的时候忘记注释了一行代码，导致绘制所有TEXT对象的时候没有及时回收GDI对象，从而导致的泄露。真是debug半年，改改一分钟……</p>
+<p>不过这个老项目本身也有一个地方存在GDI对象泄露，所以一开始误导了我的方向……</p>
+<p>原代码中有一处，每次通过<code>GetDC()</code>来判断鼠标的移动位置合法性，这样返回的指向CDC的指针没有保存，而他本身不会自动释放，就会导致GDI资源的泄露，需要用以下形式代替：</p>
+<pre><code>CDC* pDC = this-&gt;GetDC();
+...
+ReleaseDC(pDC);
 </code></pre>
       
     </div>
@@ -447,8 +399,8 @@ int main()
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/27/ZOJ3781/" rel="next" title="ZOJ3781（最短路）">
-                <i class="fa fa-chevron-left"></i> ZOJ3781（最短路）
+              <a href="/2019/10/19/闲聊/" rel="next" title="闲聊">
+                <i class="fa fa-chevron-left"></i> 闲聊
               </a>
             
           </div>
@@ -456,10 +408,6 @@ int main()
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/02/ZOJ3602（树的同构）/" rel="prev" title="ZOJ3602（树的同构）">
-                ZOJ3602（树的同构） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -493,7 +441,7 @@ int main()
 
   
     <div class="comments" id="comments">
-      <div class="ds-thread" data-thread-key="2016/02/28/Codeforces 633B(二分)/" data-title="Codeforces 633B(二分)" data-url="/2016/02/28/Codeforces 633B(二分)/">
+      <div class="ds-thread" data-thread-key="2019/10/25/GDI泄露分析/" data-title="GDI对象泄露分析" data-url="/2019/10/25/GDI泄露分析/">
       </div>
     </div>
 
